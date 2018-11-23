@@ -1,4 +1,23 @@
-$main-color: red;
-body {
-    color: $main-color;
+$violet: #645394;
+%button-click {
+  background: $violet;
+  color: #fff;
+}
+
+button {
+  width: 5rem;
+  height: 2rem;
+  border: 1px solid $violet;
+  background: #fff;
+  &:hover {
+    @extend %button-click;
+  }
+  &.round {
+    border-radius: 28px;
+  }
+  &.sharp {
+  }
+  &.hover {
+    @extend %button-click;
+  }
 }
