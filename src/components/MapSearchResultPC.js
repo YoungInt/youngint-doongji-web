@@ -2,7 +2,7 @@ import React from "react";
 
 export default class MapSearchResult extends React.Component {
   render() {
-    const { filteredData, onClickPoint } = this.props;
+    const { filteredData, onClickPoint, clickPoint } = this.props;
     console.log(filteredData);
     return (
       <React.Fragment>
@@ -13,6 +13,7 @@ export default class MapSearchResult extends React.Component {
               <div
                 onClick={e => {
                   onClickPoint(point.map.latitude, point.map.longitude);
+                  clickPoint(point.vending_machine.place, point.marker);
                 }}
               >
                 {point.vending_machine.place}

@@ -16,7 +16,8 @@ export default class Map extends React.Component {
       filteredData,
       movePosition,
       getLocation,
-      onSearchFilter
+      onSearchFilter,
+      clickPoint
     } = this.props;
 
     return (
@@ -28,6 +29,7 @@ export default class Map extends React.Component {
         <MapSearchResultPC
           filteredData={filteredData}
           onClickPoint={movePosition}
+          clickPoint={clickPoint}
         />
       </React.Fragment>
     );

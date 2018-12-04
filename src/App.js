@@ -14,7 +14,8 @@ export default class App extends Component {
             movePosition,
             getLocation,
             onSearchFilter,
-            filteredData
+            filteredData,
+            clickPoint
           }) => (
             <Map
               drawMap={drawMap}
@@ -22,6 +23,7 @@ export default class App extends Component {
               onSearchFilter={onSearchFilter}
               movePosition={movePosition}
               filteredData={filteredData}
+              clickPoint={clickPoint}
             />
           )}
         </MapConsumer>

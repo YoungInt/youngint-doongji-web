@@ -2,6 +2,7 @@ import React from "react";
 import * as nameStickerData from "../API/vending_machine_map.json";
 
 const { Provider, Consumer } = React.createContext();
+let prev_infowindow = null;
 
 class MapProvider extends React.Component {
   state = {
@@ -31,64 +32,50 @@ class MapProvider extends React.Component {
 
   // 마커 생성 함수
   drawMarker = daumMap => {
-    nameStickerData.data.map(position => {
+    nameStickerData.data.map((point, index) => {
       var imageSize = new daum.maps.Size(24, 35);
       // 추후 마커 이미지 포인트별로 수정하기
       const imageSrc =
         "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png";
       var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+      const position = new daum.maps.LatLng(
+        point.map.latitude,
+        point.map.longitude
+      );
       const marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(
-          position.map.latitude,
-          position.map.longitude
-        ),
-        title: position.vending_machine.place,
+        position,
+        title: point.vending_machine.place,
         image: markerImage,
         map: daumMap,
         clickable: true
       });
-
+      // 배열에 마커 추가
+      nameStickerData.data[index].marker = marker;
       // 마커 인포 윈도우
-      const iwContent = `<div>${position.vending_machine.place}</div>`;
-
-      const iwPosition = new daum.maps.LatLng(
-        position.map.latitude,
-        position.map.longitude
-      );
-      const infowindow = new daum.maps.InfoWindow({
-        content: iwContent
-      });
-      daum.maps.event.addListener(
-        marker,
-        "mouseover",
-        makeOverListener(daumMap, marker, infowindow)
-      );
+      const iwContent = point.vending_machine.place;
       // 마커 클릭 시 지도 이동 이벤트
       daum.maps.event.addListener(marker, "click", () => {
-        this.movePosition(position.map.latitude, position.map.longitude);
+        this.movePosition(point.map.latitude, point.map.longitude);
+        this.drawInfo(iwContent, daumMap, marker);
       });
-      daum.maps.event.addListener(
-        marker,
-        "mouseout",
-        makeOutListener(infowindow)
-      );
-
-      // 마커 마우스 오버 이벤트
-
-      function makeOverListener(map, marker, infowindow) {
-        return function() {
-          infowindow.open(map, marker);
-        };
-      }
-
-      // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-      function makeOutListener(infowindow) {
-        return function() {
-          infowindow.close();
-        };
-      }
     });
   };
+  clickPoint = (content, marker) => {
+    this.drawInfo(content, this.state.daumMap, marker);
+  };
+  drawInfo = (content, map, marker) => {
+    content = `<div>${content}</div>`;
+    // 커스텀 오버레이를 생성합니다
+    var infowindow = new daum.maps.InfoWindow({
+      content: content,
+      removable: true
+    });
+    prev_infowindow && prev_infowindow.close();
+    // 커스텀 오버레이를 지도에 표시합니다
+    infowindow.open(map, marker);
+    prev_infowindow = infowindow;
+  };
+
   // test
 
   showLocation = position => {
@@ -164,7 +151,8 @@ class MapProvider extends React.Component {
       movePosition: this.movePosition,
       getLocation: this.getLocation,
       onSearchFilter: this.onSearchFilter,
-      filteredData: this.state.filteredData
+      filteredData: this.state.filteredData,
+      clickPoint: this.clickPoint
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }
