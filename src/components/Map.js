@@ -29,8 +29,10 @@ export default class Map extends React.Component {
     this.drawMaker(daumMap);
   };
   movePosition = (lat, lng) => {
+    const { daumMap } = this.state;
     const moveLatLng = new daum.maps.LatLng(lat, lng);
-    this.state.daumMap.setCenter(moveLatLng);
+    daumMap.setCenter(moveLatLng);
+    daumMap.setLevel(3);
   };
 
   // 마커 생성 함수
