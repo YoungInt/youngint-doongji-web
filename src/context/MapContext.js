@@ -116,14 +116,21 @@ class MapProvider extends React.Component {
   };
   // 검색 결과 데이터 필터링
   filteringData = (district, text) => {
+    const textArray = text.split(" ").filter(text => text !== "");
+    console.log(textArray);
     const filteredData = nameStickerData.data.filter(point => {
       const address = point.map.jibunAddress;
-      if (address && district === "전체" && address.includes(text)) {
+      // 네임스티커 데이터에 지번주소가 없을 경우
+      if (
+        address &&
+        district === "전체" &&
+        textArray.every(text => address.includes(text))
+      ) {
         return point;
       } else if (
         address &&
         address.includes(district) &&
-        address.includes(text)
+        textArray.every(text => address.includes(text))
       ) {
         return point;
       }
