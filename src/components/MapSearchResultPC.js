@@ -8,8 +8,8 @@ export default class MapSearchResult extends React.Component {
       <React.Fragment>
         <div>결과</div>
         {filteredData ? (
-          filteredData.map(point => (
-            <div key={point.vending_machine.place}>
+          filteredData.map((point, index) => (
+            <div key={index}>
               <div
                 onClick={e => {
                   onClickPoint(point.map.latitude, point.map.longitude);

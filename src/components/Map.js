@@ -16,8 +16,6 @@ export default class Map extends React.Component {
   }
   // 지도를 그리는 함수
   drawMap = async () => {
-    this.getLocation();
-
     const { Lat, Lng } = this.state;
     const mapEl = document.getElementById("map");
     let daumMap = new daum.maps.Map(mapEl, {
@@ -95,23 +93,50 @@ export default class Map extends React.Component {
       }
     });
   };
-  // 사용자의 좌표값을 가져오는 함수
+
+  // test
+
+  showLocation = position => {
+    console.log("show location");
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    console.log(latitude, longitude);
+    this.movePosition(latitude, longitude);
+  };
+
+  errorHandler = err => {
+    console.log(err);
+    if (err.code == 1) {
+      alert("Error: Access is denied!");
+    } else if (err.code == 2) {
+      alert(err.message);
+    }
+  };
+
   getLocation = () => {
+    console.log("get location");
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.moveCurrentPosition);
+      // timeout at 60000 milliseconds (60 seconds)
+      const options = { timeout: 60000 };
+      navigator.geolocation.getCurrentPosition(
+        this.showLocation,
+        this.errorHandler,
+        options
+      );
     } else {
-      console.log("위치 안잡힘");
+      alert("Sorry, browser does not support geolocation!");
     }
   };
 
   // 현재 위치로 상태 좌표를 업데이트하는 함수
   moveCurrentPosition = position => {
+    console.log(position);
     this.setState({
       Lat: position.coords.latitude,
       Lng: position.coords.longitude
     });
 
-    this.movePosition(this.state.Lat, this.state.Lng);
+    this.movePosition(position.coords.latitude, position.coords.longitude);
   };
 
   // 검색 기능
@@ -162,6 +187,7 @@ export default class Map extends React.Component {
         <div>
           {this.state.Lat}/{this.state.Lng}
         </div>
+        <button onClick={this.getLocation}>위치 가져오기</button>
         <MapSearchPC onSearchFilter={this.onSearchFilter} />
         <MapSearchResultPC
           filteredData={filteredData}
