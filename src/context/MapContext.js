@@ -2,32 +2,56 @@ import React from "react";
 import * as nameStickerData from "../API/vending_machine_map.json";
 
 const { Provider, Consumer } = React.createContext();
+
 let prev_infowindow = null;
 
 class MapProvider extends React.Component {
   state = {
-    Lat: 37.53461990237368,
-    Lng: 127.09418404928212,
+    Lat: nameStickerData.data[0].map.latitude,
+    Lng: nameStickerData.data[0].map.longitude,
     daumMap: null,
-    filteredData: null
+    filteredData: null,
+    prevId: null
   };
+  async componentDidMount() {
+    await this.drawMap();
+  }
   // 지도를 그리는 함수
-  drawMap = async () => {
+  drawMap = () => {
     const { Lat, Lng } = this.state;
     const mapEl = document.getElementById("map");
     let daumMap = new daum.maps.Map(mapEl, {
       center: new daum.maps.LatLng(Lat, Lng)
     });
-    await this.setState({
+    this.setState({
       daumMap
     });
     this.drawMarker(daumMap);
   };
-  movePosition = (lat, lng) => {
-    const { daumMap } = this.state;
-    const moveLatLng = new daum.maps.LatLng(lat, lng);
-    daumMap.setCenter(moveLatLng);
-    daumMap.setLevel(5);
+  movePosition = (lat, lng, id) => {
+    if (this.state.prevId !== id) {
+      const { daumMap } = this.state;
+      const moveLatLng = new daum.maps.LatLng(lat, lng);
+      daumMap.setCenter(moveLatLng);
+      daumMap.setLevel(5);
+      this.drawInfo(
+        nameStickerData.data[id].vending_machine.place,
+        this.state.daumMap,
+        nameStickerData.data[id].marker
+      );
+      this.props.history.replace(`/map/${id}`);
+      this.setState({
+        prevId: id
+      });
+    }
+  };
+  // url로 접속 시에 movePosition, drawInfo 실행하기
+  getLatLng = id => {
+    this.movePosition(
+      nameStickerData.data[id].map.latitude,
+      nameStickerData.data[id].map.longitude,
+      id
+    );
   };
 
   // 마커 생성 함수
@@ -55,14 +79,12 @@ class MapProvider extends React.Component {
       const iwContent = point.vending_machine.place;
       // 마커 클릭 시 지도 이동 이벤트
       daum.maps.event.addListener(marker, "click", () => {
-        this.movePosition(point.map.latitude, point.map.longitude);
         this.drawInfo(iwContent, daumMap, marker);
+        this.props.history.replace(`/map/${index}`);
       });
     });
   };
-  clickPoint = (content, marker) => {
-    this.drawInfo(content, this.state.daumMap, marker);
-  };
+
   drawInfo = (content, map, marker) => {
     content = `<div>${content}</div>`;
     // 커스텀 오버레이를 생성합니다
@@ -118,7 +140,7 @@ class MapProvider extends React.Component {
   filteringData = (district, text) => {
     const textArray = text.split(" ").filter(text => text !== "");
     console.log(textArray);
-    const filteredData = nameStickerData.data.filter(point => {
+    const filteredData = nameStickerData.data.filter((point, index) => {
       const address = point.map.jibunAddress;
       // 네임스티커 데이터에 지번주소가 없을 경우
       if (
@@ -126,19 +148,25 @@ class MapProvider extends React.Component {
         district === "전체" &&
         textArray.every(text => address.includes(text))
       ) {
+        point.id = index;
         return point;
       } else if (
         address &&
         address.includes(district) &&
         textArray.every(text => address.includes(text))
       ) {
+        point.id = index;
         return point;
       }
     });
     // 필터링 된 데이터 지점이 0보다 크면, 배열의 첫 번째 장소로 지도를 이동
     if (filteredData.length > 0) {
       const firstPoint = filteredData[0].map;
-      this.movePosition(firstPoint.latitude, firstPoint.longitude);
+      this.movePosition(
+        firstPoint.latitude,
+        firstPoint.longitude,
+        filteredData[0].id
+      );
       this.setState({
         filteredData
       });
@@ -159,7 +187,8 @@ class MapProvider extends React.Component {
       getLocation: this.getLocation,
       onSearchFilter: this.onSearchFilter,
       filteredData: this.state.filteredData,
-      clickPoint: this.clickPoint
+      clickPoint: this.clickPoint,
+      getLatLng: this.getLatLng
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }
