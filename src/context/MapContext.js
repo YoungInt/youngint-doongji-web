@@ -164,11 +164,12 @@ class MapProvider extends React.Component {
     }
     // 재 검색할 경우 검색 결과가 없으면 지도를 이동하진 않고 전 검색 지도로 사용함
   };
+  splitText = text => {
+    return text.split(" ").filter(value => value !== "");
+  };
   // 검색 결과 데이터 필터링
   filteringData = (district, inputValue) => {
-    const inputValueArray = inputValue
-      .split(" ")
-      .filter(inputValue => inputValue !== "");
+    const inputValueArray = this.splitText(inputValue);
     console.log(inputValue);
     const filteredData = nameStickerData.data.filter((point, index) => {
       const address = point.map.jibunAddress;
