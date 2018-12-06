@@ -167,6 +167,10 @@ class MapProvider extends React.Component {
   splitText = text => {
     return text.split(" ").filter(value => value !== "");
   };
+  isAllMatchText = (array, sentence) => {
+    return array.every(value => sentence.includes(value));
+  };
+
   // 검색 결과 데이터 필터링
   filteringData = (district, inputValue) => {
     const inputValueArray = this.splitText(inputValue);
@@ -178,12 +182,12 @@ class MapProvider extends React.Component {
       if (address) {
         if (
           district === "전체" &&
-          inputValueArray.every(inputValue => address.includes(inputValue))
+          this.isAllMatchText(inputValueArray, address)
         ) {
           id = true;
         } else if (
           address.includes(district) &&
-          inputValueArray.every(inputValue => address.includes(inputValue))
+          this.isAllMatchText(inputValueArray, address)
         ) {
           id = true;
         }
