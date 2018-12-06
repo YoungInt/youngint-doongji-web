@@ -38,10 +38,14 @@ class MapProvider extends React.Component {
     const { latitude, longitude } = data.map;
     const { place } = data.vending_machine;
     const { daumMap } = this.state;
+    this.drawInfo(place, daumMap, data.marker);
+    this.setCenterMap(latitude, longitude);
+  };
+  setCenterMap = (latitude, longitude, level = 5) => {
+    const { daumMap } = this.state;
     const moveLatLng = new daum.maps.LatLng(latitude, longitude);
     daumMap.setCenter(moveLatLng);
-    daumMap.setLevel(setLevel);
-    this.drawInfo(place, daumMap, data.marker);
+    daumMap.setLevel(level);
   };
   changeUrl = id => {
     this.props.history.replace(`/map/${id}`);
@@ -107,25 +111,21 @@ class MapProvider extends React.Component {
     console.log("show location");
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    const moveLatLng = new daum.maps.LatLng(latitude, longitude);
-    this.state.daumMap.setCenter(moveLatLng);
-    this.state.daumMap.setLevel(5);
+    this.setCenterMap(latitude, longitude, 3);
     const imageSize = new daum.maps.Size(24, 35);
     const imageSrc =
       "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png";
+    const { daumMap } = this.state;
     const marker = this.drawMarker(
-      this.state.daumMap,
+      daumMap,
       latitude,
       longitude,
       "현재 위치",
       imageSrc,
       imageSize
     );
-    const infowindow = new daum.maps.InfoWindow({
-      content: "여기에 계신가요?",
-      removable: true
-    });
-    infowindow.open(this.state.daumMap, marker);
+
+    this.drawInfo("여기에 계신가요?", daumMap, marker);
   };
 
   errorHandler = err => {
