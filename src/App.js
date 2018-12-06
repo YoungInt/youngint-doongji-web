@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./App.scss";
-import { Route, HashRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import MapPage from "./pages/MapPage";
 import MainPage from "./pages/MainPage";
 
