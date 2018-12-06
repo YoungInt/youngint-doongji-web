@@ -1,6 +1,6 @@
 import React from "react";
 import * as nameStickerData from "../API/vending_machine_map.json";
-
+// 네임 스티커 자판기의 아이디 값은 인덱스 값임
 const { Provider, Consumer } = React.createContext();
 
 let prev_infowindow = null;
@@ -10,8 +10,7 @@ class MapProvider extends React.Component {
     Lat: nameStickerData.data[0].map.latitude,
     Lng: nameStickerData.data[0].map.longitude,
     daumMap: null,
-    filteredData: null,
-    prevId: null
+    filteredData: null
   };
   async componentDidMount() {
     await this.drawMap();
@@ -28,30 +27,21 @@ class MapProvider extends React.Component {
     });
     this.drawMarker(daumMap);
   };
-  movePosition = (lat, lng, id) => {
-    if (this.state.prevId !== id) {
-      const { daumMap } = this.state;
-      const moveLatLng = new daum.maps.LatLng(lat, lng);
-      daumMap.setCenter(moveLatLng);
-      daumMap.setLevel(5);
-      this.drawInfo(
-        nameStickerData.data[id].vending_machine.place,
-        this.state.daumMap,
-        nameStickerData.data[id].marker
-      );
-      this.props.history.replace(`/map/${id}`);
-      this.setState({
-        prevId: id
-      });
-    }
+
+  // id값만 가져와서 함수를 사용할 수 있도록 수정하기
+  movePosition = id => {
+    // setLevel 설정
+    const setLevel = 5;
+    const data = nameStickerData.data[id];
+    const { latitude, longitude } = data.map;
+    const { daumMap } = this.state;
+    const moveLatLng = new daum.maps.LatLng(latitude, longitude);
+    daumMap.setCenter(moveLatLng);
+    daumMap.setLevel(setLevel);
+    this.drawInfo(data.vending_machine.place, this.state.daumMap, data.marker);
   };
-  // url로 접속 시에 movePosition, drawInfo 실행하기
-  getLatLng = id => {
-    this.movePosition(
-      nameStickerData.data[id].map.latitude,
-      nameStickerData.data[id].map.longitude,
-      id
-    );
+  changeUrl = id => {
+    this.props.history.replace(`/map/${id}`);
   };
 
   // 마커 생성 함수
@@ -80,6 +70,7 @@ class MapProvider extends React.Component {
       // 마커 클릭 시 지도 이동 이벤트
       daum.maps.event.addListener(marker, "click", () => {
         this.drawInfo(iwContent, daumMap, marker);
+        // 마커 클릭 시 라우터 url 변경
         this.props.history.replace(`/map/${index}`);
       });
     });
@@ -161,12 +152,7 @@ class MapProvider extends React.Component {
     });
     // 필터링 된 데이터 지점이 0보다 크면, 배열의 첫 번째 장소로 지도를 이동
     if (filteredData.length > 0) {
-      const firstPoint = filteredData[0].map;
-      this.movePosition(
-        firstPoint.latitude,
-        firstPoint.longitude,
-        filteredData[0].id
-      );
+      this.movePosition(filteredData[0].id);
       this.setState({
         filteredData
       });
@@ -187,8 +173,7 @@ class MapProvider extends React.Component {
       getLocation: this.getLocation,
       onSearchFilter: this.onSearchFilter,
       filteredData: this.state.filteredData,
-      clickPoint: this.clickPoint,
-      getLatLng: this.getLatLng
+      changeUrl: this.changeUrl
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }

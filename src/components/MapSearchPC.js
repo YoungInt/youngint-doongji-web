@@ -1,4 +1,5 @@
 import React from "react";
+import { MapConsumer } from "../context/MapContext";
 
 export default class MapSearchPC extends React.Component {
   state = {
@@ -30,9 +31,8 @@ export default class MapSearchPC extends React.Component {
       district: e.target.value
     });
   };
-  handleInputSubmit = e => {
+  handleInputSubmit = (e, onSearchFilter) => {
     e.preventDefault();
-    const { onSearchFilter } = this.props;
     onSearchFilter(this.state.district, this.state.inputText);
   };
   handleInputChange = e => {
@@ -41,27 +41,28 @@ export default class MapSearchPC extends React.Component {
     });
   };
   render() {
-    const { onSearchFilter } = this.props;
     return (
-      <React.Fragment>
-        <div className="search__filter">
-          <div className="search__filter-option">
-            <select name="" id="" onChange={this.handleOptionChange}>
-              {this.districts.map(district => (
-                <option key={district} value={district}>
-                  {district}
-                </option>
-              ))}
-            </select>
+      <MapConsumer>
+        {({ onSearchFilter }) => (
+          <div className="search__filter">
+            <div className="search__filter-option">
+              <select name="" id="" onChange={this.handleOptionChange}>
+                {this.districts.map(district => (
+                  <option key={district} value={district}>
+                    {district}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="search__filter-input">
+              <form onSubmit={e => this.handleInputSubmit(e, onSearchFilter)}>
+                <input type="text" onChange={this.handleInputChange} />
+                <button>검색</button>
+              </form>
+            </div>
           </div>
-          <div className="search__filter-input">
-            <form onSubmit={this.handleInputSubmit}>
-              <input type="text" onChange={this.handleInputChange} />
-              <button>검색</button>
-            </form>
-          </div>
-        </div>
-      </React.Fragment>
+        )}
+      </MapConsumer>
     );
   }
 }

@@ -10,25 +10,12 @@ class MapPage extends React.Component {
     return (
       <MapProvider id={match.params.id} history={history} location={location}>
         <MapConsumer>
-          {({
-            drawMap,
-            movePosition,
-            getLocation,
-            onSearchFilter,
-            filteredData,
-            clickPoint,
-            getLatLng
-          }) => (
+          {({ drawMap, movePosition, getLocation }) => (
             <Map
-              match={match}
-              getLatLng={getLatLng}
               match={match}
               drawMap={drawMap}
               getLocation={getLocation}
-              onSearchFilter={onSearchFilter}
               movePosition={movePosition}
-              filteredData={filteredData}
-              clickPoint={clickPoint}
             />
           )}
         </MapConsumer>
