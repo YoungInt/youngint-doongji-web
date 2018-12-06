@@ -148,31 +148,7 @@ class MapProvider extends React.Component {
 
   // 검색 기능
   onSearchFilter = (district, address) => {
-    this.filteringData(district, address);
-  };
-  // 검색 결과 데이터 필터링
-  filteringData = (district, text) => {
-    const textArray = text.split(" ").filter(text => text !== "");
-    console.log(textArray);
-    const filteredData = nameStickerData.data.filter((point, index) => {
-      const address = point.map.jibunAddress;
-      // 네임스티커 데이터에 지번주소가 없을 경우
-      if (
-        address &&
-        district === "전체" &&
-        textArray.every(text => address.includes(text))
-      ) {
-        point.id = index;
-        return point;
-      } else if (
-        address &&
-        address.includes(district) &&
-        textArray.every(text => address.includes(text))
-      ) {
-        point.id = index;
-        return point;
-      }
-    });
+    const filteredData = this.filteringData(district, address);
     // 필터링 된 데이터 지점이 0보다 크면, 배열의 첫 번째 장소로 지도를 이동
     if (filteredData.length > 0) {
       this.movePosition(filteredData[0].id);
@@ -187,6 +163,37 @@ class MapProvider extends React.Component {
         });
     }
     // 재 검색할 경우 검색 결과가 없으면 지도를 이동하진 않고 전 검색 지도로 사용함
+  };
+  // 검색 결과 데이터 필터링
+  filteringData = (district, inputValue) => {
+    const inputValueArray = inputValue
+      .split(" ")
+      .filter(inputValue => inputValue !== "");
+    console.log(inputValue);
+    const filteredData = nameStickerData.data.filter((point, index) => {
+      const address = point.map.jibunAddress;
+      // 네임스티커 데이터에 지번주소가 없을 경우에는 넣지 filteringData에 넣지 않음
+      let id;
+      if (address) {
+        if (
+          district === "전체" &&
+          inputValueArray.every(inputValue => address.includes(inputValue))
+        ) {
+          id = true;
+        } else if (
+          address.includes(district) &&
+          inputValueArray.every(inputValue => address.includes(inputValue))
+        ) {
+          id = true;
+        }
+        if (id) {
+          point.id = index;
+          return point;
+        }
+      }
+    });
+    console.log(filteredData);
+    return filteredData;
   };
 
   render() {
