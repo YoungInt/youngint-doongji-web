@@ -7,20 +7,24 @@ let prev_infowindow = null;
 
 class MapProvider extends React.Component {
   state = {
-    Lat: nameStickerData.data[0].map.latitude,
-    Lng: nameStickerData.data[0].map.longitude,
+    defaultPoint: 0,
     daumMap: null,
     filteredData: null
   };
   async componentDidMount() {
     await this.drawMap();
+    // props.id가 없으면 처음 -> 특정 지점 보여주기 // drawMap에서 기본 지점 설정 함. drawInfo만 해주면 됨
+    !this.props.id && this.movePosition(this.state.defaultPoint);
   }
   // 지도를 그리는 함수
   drawMap = () => {
-    const { Lat, Lng } = this.state;
+    const { defaultPoint } = this.state;
     const mapEl = document.getElementById("map");
     let daumMap = new daum.maps.Map(mapEl, {
-      center: new daum.maps.LatLng(Lat, Lng)
+      center: new daum.maps.LatLng(
+        nameStickerData.data[defaultPoint].map.latitude,
+        nameStickerData.data[defaultPoint].map.longitude
+      )
     });
     this.setState({
       daumMap
@@ -47,11 +51,11 @@ class MapProvider extends React.Component {
   // 마커 생성 함수
   drawMarker = daumMap => {
     nameStickerData.data.map((point, index) => {
-      var imageSize = new daum.maps.Size(24, 35);
+      const imageSize = new daum.maps.Size(24, 35);
       // 추후 마커 이미지 포인트별로 수정하기
       const imageSrc =
         "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png";
-      var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+      const markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
       const position = new daum.maps.LatLng(
         point.map.latitude,
         point.map.longitude
@@ -79,7 +83,7 @@ class MapProvider extends React.Component {
   drawInfo = (content, map, marker) => {
     content = `<div>${content}</div>`;
     // 커스텀 오버레이를 생성합니다
-    var infowindow = new daum.maps.InfoWindow({
+    const infowindow = new daum.maps.InfoWindow({
       content: content,
       removable: true
     });
@@ -93,23 +97,34 @@ class MapProvider extends React.Component {
 
   showLocation = position => {
     console.log("show location");
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    console.log(latitude, longitude);
-    this.movePosition(latitude, longitude);
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const moveLatLng = new daum.maps.LatLng(latitude, longitude);
+    this.state.daumMap.setCenter(moveLatLng);
+    this.state.daumMap.setLevel(5);
+    const imageSize = new daum.maps.Size(24, 35);
+    const imageSrc =
+      "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png";
+    const markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+    const marker = new daum.maps.Marker({
+      position: moveLatLng,
+      title: "hi",
+      image: markerImage,
+      map: this.state.daumMap,
+      clickable: true
+    });
+    const infowindow = new daum.maps.InfoWindow({
+      content: "여기에 계신가요?",
+      removable: true
+    });
+    infowindow.open(this.state.daumMap, marker);
   };
 
   errorHandler = err => {
-    console.log(err);
-    if (err.code == 1) {
-      alert("Error: Access is denied!");
-    } else if (err.code == 2) {
-      alert(err.message);
-    }
+    alert(`위치를 받아올 수 없습니다: ${err.message}`);
   };
 
   getLocation = () => {
-    console.log("get location");
     if (navigator.geolocation) {
       // timeout at 60000 milliseconds (60 seconds)
       const options = { timeout: 60000 };
@@ -119,7 +134,7 @@ class MapProvider extends React.Component {
         options
       );
     } else {
-      alert("Sorry, browser does not support geolocation!");
+      alert("브라우저가 location api를 지원하지 않습니다.");
     }
   };
 
