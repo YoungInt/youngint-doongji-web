@@ -2,6 +2,7 @@ import React from "react";
 import Map from "../components/Map";
 import { MapProvider, MapConsumer } from "../context/MapContext";
 import { withRouter } from "react-router";
+import { Helmet } from "react-helmet";
 
 class MapPage extends React.Component {
   render() {
@@ -11,15 +12,22 @@ class MapPage extends React.Component {
       <MapProvider id={match.params.id} history={history} location={location}>
         <MapConsumer>
           {({ drawMap, movePosition, getLocation }) => (
-            <Map
-              match={match}
-              drawMap={drawMap}
-              getLocation={getLocation}
-              movePosition={movePosition}
-            />
+            <div>
+              <Helmet>
+                <meta charSet="utf-8" />
+                <title>네임 스티커 지도 😈 👿</title>
+                <link rel="" href="" />
+              </Helmet>
+              <Map
+                match={match}
+                drawMap={drawMap}
+                getLocation={getLocation}
+                movePosition={movePosition}
+              />
+              <div>{match.params.id}</div>
+            </div>
           )}
         </MapConsumer>
-        <div>{match.params.id}</div>
       </MapProvider>
     );
   }
