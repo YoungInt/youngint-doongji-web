@@ -20,16 +20,14 @@ class MapProvider extends React.Component {
   drawMap = () => {
     const { defaultPoint } = this.state;
     const mapEl = document.getElementById("map");
+    const { latitude, longitude } = nameStickerData.data[defaultPoint].map;
     let daumMap = new daum.maps.Map(mapEl, {
-      center: new daum.maps.LatLng(
-        nameStickerData.data[defaultPoint].map.latitude,
-        nameStickerData.data[defaultPoint].map.longitude
-      )
+      center: new daum.maps.LatLng(latitude, longitude)
     });
     this.setState({
       daumMap
     });
-    this.drawMarker(daumMap);
+    this.drawAllMarker(daumMap);
   };
 
   // id값만 가져와서 함수를 사용할 수 있도록 수정하기
@@ -38,35 +36,32 @@ class MapProvider extends React.Component {
     const setLevel = 5;
     const data = nameStickerData.data[id];
     const { latitude, longitude } = data.map;
+    const { place } = data.vending_machine;
     const { daumMap } = this.state;
     const moveLatLng = new daum.maps.LatLng(latitude, longitude);
     daumMap.setCenter(moveLatLng);
     daumMap.setLevel(setLevel);
-    this.drawInfo(data.vending_machine.place, this.state.daumMap, data.marker);
+    this.drawInfo(place, daumMap, data.marker);
   };
   changeUrl = id => {
     this.props.history.replace(`/map/${id}`);
   };
 
-  // 마커 생성 함수
-  drawMarker = daumMap => {
+  // 모든 지점의 마커 생성
+  drawAllMarker = daumMap => {
     nameStickerData.data.map((point, index) => {
-      const imageSize = new daum.maps.Size(24, 35);
+      const imgSize = new daum.maps.Size(24, 35);
       // 추후 마커 이미지 포인트별로 수정하기
-      const imageSrc =
+      const imgSrc =
         "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png";
-      const markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
-      const position = new daum.maps.LatLng(
+      const marker = this.drawMarker(
+        daumMap,
         point.map.latitude,
-        point.map.longitude
+        point.map.longitude,
+        point.vending_machine.place,
+        imgSrc,
+        imgSize
       );
-      const marker = new daum.maps.Marker({
-        position,
-        title: point.vending_machine.place,
-        image: markerImage,
-        map: daumMap,
-        clickable: true
-      });
       // 배열에 마커 추가
       nameStickerData.data[index].marker = marker;
       // 마커 인포 윈도우
@@ -78,6 +73,20 @@ class MapProvider extends React.Component {
         this.props.history.replace(`/map/${index}`);
       });
     });
+  };
+
+  // 마커 그리는 함수
+  drawMarker = (map, latitude, longitude, title, imgSrc, imgSize) => {
+    const markerImg = new daum.maps.MarkerImage(imgSrc, imgSize);
+    const position = new daum.maps.LatLng(latitude, longitude);
+    const marker = new daum.maps.Marker({
+      position,
+      title,
+      map,
+      clickable: true,
+      image: markerImg
+    });
+    return marker;
   };
 
   drawInfo = (content, map, marker) => {
@@ -93,8 +102,7 @@ class MapProvider extends React.Component {
     prev_infowindow = infowindow;
   };
 
-  // test
-
+  // 내 위치 가져오기
   showLocation = position => {
     console.log("show location");
     const latitude = position.coords.latitude;
@@ -105,14 +113,14 @@ class MapProvider extends React.Component {
     const imageSize = new daum.maps.Size(24, 35);
     const imageSrc =
       "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png";
-    const markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
-    const marker = new daum.maps.Marker({
-      position: moveLatLng,
-      title: "hi",
-      image: markerImage,
-      map: this.state.daumMap,
-      clickable: true
-    });
+    const marker = this.drawMarker(
+      this.state.daumMap,
+      latitude,
+      longitude,
+      "현재 위치",
+      imageSrc,
+      imageSize
+    );
     const infowindow = new daum.maps.InfoWindow({
       content: "여기에 계신가요?",
       removable: true
