@@ -23,7 +23,8 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true
+              modules: true,
+              localIdentName: "[local]"
             }
           },
           { loader: "sass-loader" }
