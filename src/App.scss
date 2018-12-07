@@ -1,4 +1,29 @@
-$main-color: red;
+$memberImg-width: 300px;
+
+// TeamPC
+// .team {
+//   color: red;
+//   &__title {
+//   }
+//   &__member {
+//     .button {
+//     }
+//     .carousel {
+//       .item {
+//         &__img {
+//           img {
+//             width: $memberImg-width;
+//             height: $memberImg-width;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+.team {
+  color: blue;
+}
 body {
-    color: $main-color;
+  color: yellow;
 }
