@@ -24,7 +24,7 @@ class MapPage extends React.Component {
                 getLocation={getLocation}
                 movePosition={movePosition}
               />
-              <div>{match.params.id}</div>
+              <div className="test">{match.params.id}</div>
             </div>
           )}
         </MapConsumer>

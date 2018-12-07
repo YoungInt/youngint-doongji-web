@@ -1,29 +1,90 @@
-$memberImg-width: 300px;
-
+$memberImg-width: 160px;
+$memberImg-width-big: 250px;
+$class-slug: for !default;
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5625);
+  }
+}
+@mixin keyframes-slide($num) {
+  @keyframes slide {
+    0% {
+    }
+    100% {
+      right: $num * 250px;
+      background: red;
+    }
+  }
+}
 // TeamPC
-// .team {
-//   color: red;
-//   &__title {
-//   }
-//   &__member {
-//     .button {
-//     }
-//     .carousel {
-//       .item {
-//         &__img {
-//           img {
-//             width: $memberImg-width;
-//             height: $memberImg-width;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
 .team {
-  color: blue;
+  &__title {
+  }
+  &__member {
+    // display: flex;
+
+    .button {
+    }
+    .carousel-box {
+      margin: auto;
+      width: $memberImg-width-big * 5;
+      height: $memberImg-width-big;
+      overflow: scroll;
+      position: relative;
+      border: 1px solid black;
+      box-sizing: border-box;
+
+      @for $i from 1 through 13 {
+        $width: 250px * $i;
+        .carousel-#{$i} {
+          transform: translate(-250px * $i);
+          // &.right {
+          //   transform: translate(-250px * $i);
+          // }
+          // &.left {
+          // }
+        }
+      }
+      .carousel {
+        position: relative;
+        left: 250 * 2px;
+        display: flex;
+        transition: transform 1s;
+
+        .item {
+          background: palegoldenrod;
+          border: 1px solid black;
+          box-sizing: border-box;
+          min-width: $memberImg-width-big;
+          min-height: $memberImg-width-big;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &__img {
+            display: flex;
+            width: $memberImg-width;
+            height: $memberImg-width;
+            &.active {
+              animation-name: scale;
+              animation-duration: 1s;
+              animation-fill-mode: forwards;
+            }
+            img {
+              max-width: 100%;
+              max-height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-body {
-  color: yellow;
-}
+
+// 데스크탑이나 태블릿일 떄는 5 개 지만 모바일로는 한 개 보이고 양 옆으로 힌트 주기
+// 사람 이름이나 닉네임,
+// 라인 프렌즈
+// 나머지는 거의 700px 이고 좀 긴 것도 있고
+// map이랑 product 페이지만 있음

@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 export default class TeamPC extends React.Component {
   members = [
@@ -28,8 +29,31 @@ export default class TeamPC extends React.Component {
     {
       img: "https://www.jspsych.org/img/blue.png",
       message: "5 아무말 "
+    },
+    {
+      img: "https://www.jspsych.org/img/blue.png",
+      message: "6 아무말 "
+    },
+    {
+      img: "https://www.jspsych.org/img/blue.png",
+      message: "7 아무말 "
+    },
+    {
+      img: "https://www.jspsych.org/img/blue.png",
+      message: "8 아무말 "
+    },
+    {
+      img: "https://www.jspsych.org/img/blue.png",
+      message: "9 아무말 "
+    },
+    {
+      img: "https://www.jspsych.org/img/blue.png",
+      message: "10 아무말 "
     }
   ];
+  state = {
+    activeId: 2
+  };
   render() {
     return (
       <React.Fragment>
@@ -37,18 +61,60 @@ export default class TeamPC extends React.Component {
           <div className="team__title">MEET OUR TEAM</div>
 
           <div className="team__member">
-            <div className="button left" />
-            <div className="carousel">
-              {this.members.map(member => (
-                <div className="item">
-                  <div className="item__img">
-                    <img src={member.img} alt="" />
-                  </div>
-                </div>
-              ))}
+            <div
+              className="button left"
+              onClick={e =>
+                this.state.activeId > 2 &&
+                this.setState({
+                  activeId: --this.state.activeId
+                })
+              }
+            >
+              뒤로
             </div>
-            <div className="button right" />
+            <div className="carousel-box">
+              <div
+                className={classNames(
+                  "carousel",
+                  `carousel-${this.state.activeId}`
+                )}
+              >
+                {this.members.map((member, index) => (
+                  <div
+                    onClick={e => {
+                      this.setState({ activeId: index });
+                      console.log(this.state.activeId, index);
+                    }}
+                    key={index}
+                    className={classNames("item", {
+                      // active: this.state.activeId + 2 === index
+                    })}
+                  >
+                    <div
+                      className={classNames("item__img", {
+                        active: this.state.activeId === index
+                      })}
+                    >
+                      <img src={member.img} alt="" />
+                      <div>index: {index}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div
+              className="button right"
+              onClick={e =>
+                this.state.activeId !== this.members.length - 3 &&
+                this.setState({
+                  activeId: ++this.state.activeId
+                })
+              }
+            >
+              >앞으로
+            </div>
           </div>
+          <div>activeId {this.state.activeId}</div>
           <div className="team__message" />
         </div>
       </React.Fragment>
