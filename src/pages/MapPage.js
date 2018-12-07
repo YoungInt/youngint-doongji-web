@@ -15,7 +15,7 @@ class MapPage extends React.Component {
             <div>
               <Helmet>
                 <meta charSet="utf-8" />
-                <title>네임 스티커 지도 😈 👿</title>
+                <title>네임 스티커 지도 😈 👿 | 영인터내셔널</title>
                 <link rel="" href="" />
               </Helmet>
               <Map
