@@ -1,12 +1,11 @@
 const webpack = require("webpack");
 const path = require("path");
-
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.join(__dirname, "public", "index.html"),
   filename: "./index.html"
 });
+
 module.exports = {
   entry: ["@babel/polyfill", path.join(__dirname, "src", "App.jsx")],
   module: {
@@ -29,11 +28,20 @@ module.exports = {
           },
           { loader: "sass-loader" }
         ]
+      },
+      {
+        test: /\.(png)$/,
+        loader: "file-loader",
+        options: {
+          name: "[path][name].[ext]",
+          outputPath: "./",
+          publicPath: "/"
+        }
       }
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ["*", ".js", ".jsx", ".png"]
   },
   output: {
     path: __dirname + "/dist",

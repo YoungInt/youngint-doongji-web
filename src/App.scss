@@ -32,12 +32,14 @@ $class-slug: for !default;
       margin: auto;
       width: $memberImg-width-big * 5;
       height: $memberImg-width-big;
-      overflow: scroll;
+      // overflow: scroll;
+      overflow: hidden;
+
       position: relative;
       border: 1px solid black;
       box-sizing: border-box;
 
-      @for $i from 1 through 13 {
+      @for $i from 0 through 13 {
         $width: 250px * $i;
         .carousel-#{$i} {
           transform: translate(-250px * $i);
@@ -55,7 +57,6 @@ $class-slug: for !default;
         transition: transform 1s;
 
         .item {
-          background: palegoldenrod;
           border: 1px solid black;
           box-sizing: border-box;
           min-width: $memberImg-width-big;

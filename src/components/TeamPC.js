@@ -1,59 +1,38 @@
 import React from "react";
 import classNames from "classnames";
+import members from "../API/memberAPI";
 
 export default class TeamPC extends React.Component {
-  members = [
-    {
-      img: "https://www.jspsych.org/img/blue.png",
-      message: "0 오늘도 열심히 일했다"
-    },
-    {
-      img:
-        "https://cdn7.bigcommerce.com/s-fhu3o9zjsj/images/stencil/500x659/products/1293/9619/img-thing__52728.1492104647.jpg?c=2",
-      message: "1 칼퇴하자"
-    },
-    {
-      img:
-        "http://upload.wikimedia.org/wikipedia/commons/0/0e/Ski_trail_rating_symbol-green_circle.svg",
-      message: "2 아무말"
-    },
-    {
-      img:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Location_dot_yellow.svg/768px-Location_dot_yellow.svg.png",
-      message: "3 아무말"
-    },
-    {
-      img: "https://www.jspsych.org/img/blue.png",
-      message: "4 아무말"
-    },
-    {
-      img: "https://www.jspsych.org/img/blue.png",
-      message: "5 아무말 "
-    },
-    {
-      img: "https://www.jspsych.org/img/blue.png",
-      message: "6 아무말 "
-    },
-    {
-      img: "https://www.jspsych.org/img/blue.png",
-      message: "7 아무말 "
-    },
-    {
-      img: "https://www.jspsych.org/img/blue.png",
-      message: "8 아무말 "
-    },
-    {
-      img: "https://www.jspsych.org/img/blue.png",
-      message: "9 아무말 "
-    },
-    {
-      img: "https://www.jspsych.org/img/blue.png",
-      message: "10 아무말 "
-    }
-  ];
   state = {
-    activeId: 2
+    activeId: 2,
+    scrollPositon: 0,
+    srcoll: true
   };
+  static timer = false;
+
+  throttling = async (e, func) => {
+    const deltaX = e.deltaX;
+    if (!this.timer) {
+      func(deltaX);
+      this.timer = true;
+      await setTimeout(() => {
+        this.timer = false;
+      }, 2000);
+    }
+  };
+  handleScroll = deltaX => {
+    const direction = deltaX;
+    if (direction > 0 && this.state.activeId < members.length) {
+      this.setState({
+        activeId: ++this.state.activeId
+      });
+    } else if (direction < 0 && this.state.activeId > 0) {
+      this.setState({
+        activeId: --this.state.activeId
+      });
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -72,14 +51,18 @@ export default class TeamPC extends React.Component {
             >
               뒤로
             </div>
-            <div className="carousel-box">
+            <div
+              className="carousel-box"
+              id="carousel-box"
+              onWheel={e => this.throttling(e, this.handleScroll)}
+            >
               <div
                 className={classNames(
                   "carousel",
                   `carousel-${this.state.activeId}`
                 )}
               >
-                {this.members.map((member, index) => (
+                {members.map((member, index) => (
                   <div
                     onClick={e => {
                       this.setState({ activeId: index });
@@ -105,7 +88,7 @@ export default class TeamPC extends React.Component {
             <div
               className="button right"
               onClick={e =>
-                this.state.activeId !== this.members.length - 3 &&
+                // this.state.activeId !== this.members.length - 3 &&
                 this.setState({
                   activeId: ++this.state.activeId
                 })
