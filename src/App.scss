@@ -7,18 +7,29 @@ $point-font-bold: "Montserrat", sans-serif;
 $main-font-light: "NanumSquareLight", sans-serif;
 $main-font-ExtraBold: "NanumSquareExtraBold", sans-serif;
 $main-font-Bold: "NanumSquareBold", sans-serif;
-
+$main-font-color: #1e1e1e;
 @font-face {
   font-family: "NanumSquareLight";
   src: url("./fonts/NanumSquareLight.ttf") format("truetype");
 }
 @font-face {
   font-family: "NanumSquareBold";
-  src: url("/src/fonts/NanumSquareBold.ttf") format("truetype");
+  src: url("./fonts/NanumSquareBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "NanumSquareExtraBold";
-  src: url("/src/fonts/NanumSquareExtraBold.ttf") fromat("truetype");
+  src: url("./fonts/NanumSquareExtraBold.ttf") fromat("truetype");
+}
+%title-font {
+  font-size: 24px;
+  font-family: $point-font-bold;
+}
+%border-bottom {
+  border-bottom: 2px solid $main-font-color;
+}
+%point-text {
+  font-size: 48px;
+  font-family: "NanumSquareExtraBold";
 }
 @keyframes scale {
   0% {
@@ -28,6 +39,7 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
     transform: scale(1.5625);
   }
 }
+
 @mixin keyframes-slide($num) {
   @keyframes slide {
     0% {
@@ -43,6 +55,7 @@ body {
   margin: 0;
   font-family: "NanumSquareLight";
   font-size: 16px;
+  color: $main-font-color;
 }
 
 //  MainTop 컴포넌트
@@ -93,12 +106,89 @@ body {
         margin: 0;
       }
       .title {
-        font-size: 48px;
-        font-family: "NanumSquareExtraBold";
+        @extend %point-text;
       }
       .desc {
         p {
           margin: 8px;
+        }
+      }
+    }
+  }
+}
+//  philosophy 컴포넌트
+
+.philosophy {
+  height: 130vh;
+  background: #f2f2f2;
+  display: flex;
+  &__wrap {
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    .title {
+      display: inline-block;
+      @extend %title-font;
+      @extend %border-bottom;
+    }
+    .content {
+      padding-top: 3rem;
+      width: 90%;
+      height: 90%;
+      margin: auto;
+      &__keyword {
+        height: 50%;
+        .wrap {
+          height: 90%;
+          @extend %border-bottom;
+          display: flex;
+          justify-content: space-between;
+
+          div {
+            font-size: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 300px;
+            border: 2px solid $main-font-color;
+            border-radius: 50%;
+          }
+        }
+      }
+      &__desc {
+        padding-top: 3rem;
+        height: 40%;
+        .wrap {
+          height: 90%;
+          display: flex;
+          .img {
+            width: 50%;
+            height: 100%;
+            img {
+              width: 90%;
+              height: 100%;
+            }
+          }
+          .text {
+            .title {
+              font-size: 48px;
+              font-family: "NanumSquareLight";
+              margin: 0;
+              line-height: 1.29;
+              p {
+                margin: 0;
+              }
+              div {
+                margin: 0;
+                display: flex;
+                p {
+                  margin: 0;
+                  @extend %point-text;
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -124,12 +214,11 @@ body {
     &__title {
       background: paleturquoise;
       .title {
-        font-size: 21px;
-        font-family: $point-font-bold;
+        @extend %title-font;
         display: flex;
         background: palevioletred;
         display: inline-block;
-        border-bottom: 2px solid black;
+        @extend %border-bottom;
       }
     }
     &__message {
