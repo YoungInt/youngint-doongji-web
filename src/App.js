@@ -5,7 +5,6 @@ import "./App.scss";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import MapPage from "./pages/MapPage";
 import MainPage from "./pages/MainPage";
-
 export default class App extends Component {
   render() {
     return (

@@ -1,6 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+
 $memberImg-width: 160px;
 $memberImg-width-big: 250px;
 $class-slug: for !default;
+$point-font-bold: "Montserrat", sans-serif;
+$main-font-light: "NanumSquareLight", sans-serif;
+$main-font-ExtraBold: "NanumSquareExtraBold", sans-serif;
+$main-font-Bold: "NanumSquareBold", sans-serif;
+
+@font-face {
+  font-family: "NanumSquareLight";
+  src: url("./fonts/NanumSquareLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumSquareBold";
+  src: url("/src/fonts/NanumSquareBold.ttf") format("truetype");
+}
 @keyframes scale {
   0% {
     transform: scale(1);
@@ -38,20 +53,20 @@ $class-slug: for !default;
 
     &__title {
       background: paleturquoise;
-
-      font-size: 21pt;
-
       .title {
+        font-size: 21pt;
+        font-family: $point-font-bold;
+        // font-family: "NanumSquareBold";
         display: flex;
         background: palevioletred;
         display: inline-block;
-        border-bottom: 1px solid black;
+        border-bottom: 2px solid black;
       }
-      // montserrat bold
     }
     &__message {
-      background: peachpuff;
       font-size: 48pt;
+      font-family: "NanumSquareLight";
+      background: peachpuff;
       text-align: center;
     }
     &__member {
