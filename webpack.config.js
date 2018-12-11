@@ -1,12 +1,11 @@
 const webpack = require("webpack");
 const path = require("path");
-
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.join(__dirname, "public", "index.html"),
   filename: "./index.html"
 });
+
 module.exports = {
   entry: ["@babel/polyfill", path.join(__dirname, "src", "App.jsx")],
   module: {
@@ -23,16 +22,34 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true
+              modules: true,
+              localIdentName: "[local]"
             }
           },
           { loader: "sass-loader" }
         ]
+      },
+      {
+        test: /\.(png)$/,
+        loader: "file-loader",
+        options: {
+          name: "[path][name].[ext]",
+          outputPath: "./",
+          publicPath: "/"
+        }
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          outputPath: "fonts/"
+        }
       }
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ["*", ".js", ".jsx", ".png"]
   },
   output: {
     path: __dirname + "/dist",

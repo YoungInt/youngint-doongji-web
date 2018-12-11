@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+
+$memberImg-width: 160px;
+$memberImg-width-big: 250px;
+$class-slug: for !default;
+$point-font-bold: "Montserrat", sans-serif;
+$main-font-light: "NanumSquareLight", sans-serif;
+$main-font-ExtraBold: "NanumSquareExtraBold", sans-serif;
+$main-font-Bold: "NanumSquareBold", sans-serif;
+
+@font-face {
+  font-family: "NanumSquareLight";
+  src: url("./fonts/NanumSquareLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumSquareBold";
+  src: url("/src/fonts/NanumSquareBold.ttf") format("truetype");
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5625);
+  }
+}
+@mixin keyframes-slide($num) {
+  @keyframes slide {
+    0% {
+    }
+    100% {
+      right: $num * 250px;
+      background: red;
+    }
+  }
+}
+// TeamPC
+.team-container {
+  background: pink;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .team {
+    background: red;
+    width: 80%;
+    height: 70%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__title {
+      background: paleturquoise;
+      .title {
+        font-size: 21pt;
+        font-family: $point-font-bold;
+        // font-family: "NanumSquareBold";
+        display: flex;
+        background: palevioletred;
+        display: inline-block;
+        border-bottom: 2px solid black;
+      }
+    }
+    &__message {
+      font-size: 48pt;
+      font-family: "NanumSquareLight";
+      background: peachpuff;
+      text-align: center;
+    }
+    &__member {
+      display: inline-block;
+      background: powderblue;
+      margin: auto;
+
+      // display: flex;
+      display: flex;
+      .button {
+        background: peru;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .carousel-box {
+        margin: auto;
+        width: $memberImg-width-big * 5;
+        height: $memberImg-width-big;
+        // overflow: scroll;
+        overflow: hidden;
+        position: relative;
+
+        @for $i from 0 through 33 {
+          $width: 250px * $i;
+          .carousel-#{$i} {
+            transform: translate(-250px * $i);
+          }
+        }
+
+        .carousel {
+          position: relative;
+          left: 250 * 2px;
+          display: flex;
+          transition: transform 1s;
+
+          .item {
+            min-width: $memberImg-width-big;
+            min-height: $memberImg-width-big;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &__img {
+              display: flex;
+              width: $memberImg-width;
+              height: $memberImg-width;
+              &.active {
+                animation-name: scale;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+              }
+              img {
+                max-width: 100%;
+                max-height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 데스크탑이나 태블릿일 떄는 5 개 지만 모바일로는 한 개 보이고 양 옆으로 힌트 주기
+// 사람 이름이나 닉네임,
+// 라인 프렌즈
+// 나머지는 거의 700px 이고 좀 긴 것도 있고
+// map이랑 product 페이지만 있음
