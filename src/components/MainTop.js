@@ -5,16 +5,16 @@ export default class MainHeader extends React.Component {
     return (
       <React.Fragment>
         <div className="mainTop">
-          <div className="mainTop__header">
+          <header className="mainTop__header">
             <div className="log">logo-img</div>
-            <div className="menu">
+            <nav className="menu">
               <ul>
                 <li>About</li>
                 <li>Brand</li>
                 <li>Contact</li>
               </ul>
-            </div>
-          </div>
+            </nav>
+          </header>
           <div className="mainTop__img">
             <div className="content">
               <div className="title">

@@ -16,6 +16,10 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
   font-family: "NanumSquareBold";
   src: url("/src/fonts/NanumSquareBold.ttf") format("truetype");
 }
+@font-face {
+  font-family: "NanumSquareExtraBold";
+  src: url("/src/fonts/NanumSquareExtraBold.ttf") fromat("truetype");
+}
 @keyframes scale {
   0% {
     transform: scale(1);
@@ -37,6 +41,8 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
 
 body {
   margin: 0;
+  font-family: "NanumSquareLight";
+  font-size: 16px;
 }
 
 //  MainTop 컴포넌트
@@ -66,7 +72,7 @@ body {
         padding: 0;
         li {
           font-family: $point-font-bold;
-          font-size: 18pt;
+          font-size: 18px;
           align-self: center;
 
           list-style: none;
@@ -87,13 +93,10 @@ body {
         margin: 0;
       }
       .title {
-        font-size: 48pt;
+        font-size: 48px;
         font-family: "NanumSquareExtraBold";
       }
       .desc {
-        font-size: 16pt;
-
-        font-family: "NanumSquareLight";
         p {
           margin: 8px;
         }
@@ -121,9 +124,8 @@ body {
     &__title {
       background: paleturquoise;
       .title {
-        font-size: 21pt;
+        font-size: 21px;
         font-family: $point-font-bold;
-        // font-family: "NanumSquareBold";
         display: flex;
         background: palevioletred;
         display: inline-block;
@@ -131,7 +133,7 @@ body {
       }
     }
     &__message {
-      font-size: 48pt;
+      font-size: 48px;
       font-family: "NanumSquareLight";
       background: peachpuff;
       text-align: center;
@@ -192,6 +194,39 @@ body {
             }
           }
         }
+      }
+    }
+  }
+}
+// footer 컴포넌트
+
+.footer {
+  padding-top: 47px;
+  background: #4a4a4a;
+  color: #ffffff;
+  height: 25vh;
+  &__wrap {
+    line-height: 1.69;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    .right {
+      p {
+        margin: 0;
+        &:nth-child(1) {
+          font-family: "NanumSquareBold";
+          font-size: 24px;
+        }
+      }
+    }
+    .left {
+      p {
+        margin: 0;
+      }
+      .address {
+        display: flex;
+        font-style: normal;
       }
     }
   }
