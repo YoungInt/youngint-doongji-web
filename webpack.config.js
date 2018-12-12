@@ -26,6 +26,13 @@ module.exports = {
               localIdentName: "[local]"
             }
           },
+          // {
+          //   loader: "resolve-url-loader",
+          //   options: {
+          //     root: "",
+          //     includeRoot: true
+          //   }
+          // },
           { loader: "sass-loader" }
         ]
       },
