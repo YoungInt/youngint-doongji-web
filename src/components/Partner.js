@@ -1,4 +1,5 @@
 import React from "react";
+import partner from "../images/partnership";
 
 export default class Pratner extends React.Component {
   render() {
@@ -9,7 +10,7 @@ export default class Pratner extends React.Component {
             <div>PARTNERSHIP</div>
           </div>
           <div className="img">
-            <img src="/src/images/partnership.png" alt="" />
+            <img src={partner} alt="" />
           </div>
           <div className="desc">
             더 좋은 서비스를 제공하고 더 많은 고객들과 만나기 위해 다양한

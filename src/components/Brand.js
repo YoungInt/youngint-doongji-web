@@ -1,11 +1,13 @@
 import React from "react";
-
+import happy from "../images/main_happy";
+import pola from "../images/main_polapolar";
 export default class Brand extends React.Component {
   render() {
     return (
       <React.Fragment>
         <div className="brand-container ">
           <div className="brand happy">
+            <img className="happy-img" src={happy} alt="" />
             <div className="wrap happy">
               <div className="container-title">
                 <div className="title">OUR BRAND</div>
@@ -22,6 +24,7 @@ export default class Brand extends React.Component {
             </div>
           </div>
           <div className="brand pola">
+            <img className="pola-img" src={pola} alt="" />
             <div className="wrap pola">
               <div className="container-title" />
               <div className="content">

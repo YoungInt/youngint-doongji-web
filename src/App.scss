@@ -32,10 +32,9 @@ $main-font-color: #1e1e1e;
 }
 %point-text {
   font-size: 48px;
-  font-family: "NanumSquareExtraBold" "sans-serif";
+  font-family: $main-font-ExtraBold;
 }
-%brand-button {
-}
+
 @keyframes scale {
   0% {
     transform: scale(1);
@@ -58,7 +57,7 @@ $main-font-color: #1e1e1e;
 
 body {
   margin: 0;
-  font-family: "NanumSquareLight";
+  font-family: $main-font-light;
   font-size: 16px;
   color: $main-font-color;
 }
@@ -121,6 +120,25 @@ body {
     }
   }
 }
+.map {
+  height: 700px;
+  position: relative;
+  .wrap {
+    width: 80%;
+    margin: auto;
+    .content {
+      position: absolute;
+      bottom: 3rem;
+      p {
+        line-height: 1.69;
+        &:nth-child(1) {
+          @extend %point-text;
+          line-height: 1.29;
+        }
+      }
+    }
+  }
+}
 //  philosophy 컴포넌트
 
 .philosophy {
@@ -178,7 +196,7 @@ body {
           .text {
             .title {
               font-size: 48px;
-              font-family: "NanumSquareLight";
+              font-family: $main-font-light;
               margin: 0;
               line-height: 1.29;
               p {
@@ -203,9 +221,8 @@ body {
 .brand-container {
   height: 960px;
   overflow: hidden;
-
+  background: linear-gradient(to bottom, #fdecbe, #fbd48a);
   display: flex;
-  // background-image: linear-gradient(to bottom, #fdecbe, #fbd48a);
 
   .button {
     width: 140px;
@@ -222,11 +239,28 @@ body {
   .brand {
     display: flex;
     width: 50%;
+    position: relative;
+    .happy-img {
+      position: absolute;
+      bottom: 0;
+    }
+    .pola-img {
+      position: absolute;
+      bottom: 0;
+    }
     &.happy {
-      background-image: linear-gradient(to bottom, #fdecbe, #fbd48a);
     }
     &.pola {
-      background-image: linear-gradient(to bottom, #d5edff, #abd7ff);
+      // border-bottom: 960px solid;
+      // border-bottom-width: 960px;
+      // border-bottom-style: solid;
+      border-left: 100px solid transparent;
+      border-bottom: 960px solid red;
+
+      // border-image-source: linear-gradient(to bottom, #d5edff, #abd7ff);
+      // background: linear-gradient(to bottom, #d5edff, #abd7ff);
+      // background-size: cover;
+      // background-repeat: no-repeat;
     }
     .container-title {
       .title {
@@ -255,7 +289,7 @@ body {
         .title {
           p {
             font-size: 24px;
-            font-family: "NanumSquareBold";
+            font-family: $main-font-Bold;
             display: inline-block;
             &:nth-child(1) {
               margin-bottom: 0;
@@ -303,14 +337,13 @@ body {
 }
 // TeamPC 컴포넌트
 .team-container {
-  background: pink;
   height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #fbd48a;
 
   .team {
-    background: red;
     width: 80%;
     height: 70%;
 
@@ -319,30 +352,33 @@ body {
     justify-content: center;
 
     &__title {
-      background: paleturquoise;
       .title {
         @extend %title-font;
         display: flex;
-        background: palevioletred;
+
         display: inline-block;
         @extend %border-bottom;
       }
     }
     &__message {
-      font-size: 48px;
-      font-family: "NanumSquareLight";
-      background: peachpuff;
-      text-align: center;
+      p {
+        margin: 1rem 0;
+        text-align: center;
+        font-family: $main-font-Bold;
+      }
+      .bold {
+        font-size: 36px;
+        font-family: $main-font-light;
+      }
     }
     &__member {
       display: inline-block;
-      background: powderblue;
+
       margin: auto;
 
       // display: flex;
       display: flex;
       .button {
-        background: peru;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -411,7 +447,7 @@ body {
       p {
         margin: 0;
         &:nth-child(1) {
-          font-family: "NanumSquareBold";
+          font-family: $main-font-Bold;
           font-size: 24px;
         }
       }
@@ -423,6 +459,11 @@ body {
       .address {
         display: flex;
         font-style: normal;
+        a {
+          text-decoration: none;
+          color: #ffffff;
+          margin: 0 3px;
+        }
       }
     }
   }
@@ -448,9 +489,12 @@ body {
     }
     .img {
       padding: 3rem 0;
-      width: 90%;
-      height: 60%;
+      height: 50%;
       margin: auto;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
     .desc {
       width: 90%;

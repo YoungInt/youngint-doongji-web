@@ -33,6 +33,23 @@ export default class MainHeader extends React.Component {
             </div>
           </div>
         </div>
+        <div className="map">
+          <div className="wrap">
+            <div className="content">
+              <p>
+                세계로 나아가는 <br />
+                글로벌 기업
+              </p>
+              <p>
+                영인터내셔널은 해외 고객사와도 함께합니다.
+                <br />
+                싱가폴, 말레이시아, 인도네시아, 일본, 캐나다,
+                <br />
+                대만, 남아프리카공화국 등에 진출해 있습니다.
+              </p>
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     );
   }

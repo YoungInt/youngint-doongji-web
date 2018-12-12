@@ -11,11 +11,11 @@ export default class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <Contact />
-        <Partner />
-        <Brand />
         <MainTop />
         <Philosophy />
+        <Brand />
+        <Partner />
+        <Contact />
         <TeamPC />
         <Footer />
       </div>
