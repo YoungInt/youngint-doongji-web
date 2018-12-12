@@ -23,13 +23,16 @@ $main-font-color: #1e1e1e;
 %title-font {
   font-size: 24px;
   font-family: $point-font-bold;
+  display: inline;
 }
 %border-bottom {
   border-bottom: 2px solid $main-font-color;
 }
 %point-text {
   font-size: 48px;
-  font-family: "NanumSquareExtraBold";
+  font-family: "NanumSquareExtraBold" "sans-serif";
+}
+%brand-button {
 }
 @keyframes scale {
   0% {
@@ -194,6 +197,74 @@ body {
     }
   }
 }
+// our brand 컴포넌트
+.brand-container {
+  height: 90vh;
+  overflow: hidden;
+
+  display: flex;
+  // background-image: linear-gradient(to bottom, #fdecbe, #fbd48a);
+
+  background: linear-gradient(to bottom, #fdecbe, #fbd48a);
+
+  .button {
+    width: 140px;
+    height: 42px;
+    border-radius: 22px;
+    background: $main-font-color;
+    color: #ffffff;
+    text-align: center;
+    line-height: 42px;
+    font-family: $main-font-ExtraBold;
+    margin-top: 3rem;
+  }
+
+  .brand {
+    display: flex;
+    width: 50%;
+
+    &.happy {
+    }
+    &.pola {
+      background-image: linear-gradient(to bottom, #d5edff, #abd7ff);
+    }
+    .container-title {
+      .title {
+        @extend %title-font;
+        display: inline-block;
+        @extend %border-bottom;
+      }
+    }
+    .wrap {
+      &.pola {
+      }
+      width: 80%;
+      margin: auto;
+      height: 80%;
+      background: palevioletred;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      .content {
+        background: #fdecbe;
+        height: 95%;
+        .title {
+          p {
+            font-size: 24px;
+            font-family: "NanumSquareBold";
+            display: inline-block;
+            &:nth-child(1) {
+              margin-bottom: 0;
+              @extend %point-text;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 // TeamPC 컴포넌트
 .team-container {
   background: pink;
