@@ -27,7 +27,7 @@ export default class Brand extends React.Component {
             <img className="pola-img" src={pola} alt="" />
             <div className="wrap pola">
               <div className="container-title" />
-              <div className="content">
+              <div className="content pola">
                 <div className="title">
                   <p>폴라폴라</p>
                   <p>POLAPOLAR</p>

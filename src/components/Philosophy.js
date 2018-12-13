@@ -12,7 +12,7 @@ export default class Philosophy extends React.Component {
                 <div className="wrap">
                   <div className="keyword">
                     <div className="text">
-                      <p className="bold">
+                      <p>
                         NEW
                         <br /> VALUE
                       </p>
@@ -24,7 +24,7 @@ export default class Philosophy extends React.Component {
                   </div>
                   <div className="keyword">
                     <div className="text">
-                      <p className="bold">
+                      <p>
                         GROW <br />
                         TOGETHER
                       </p>
@@ -35,7 +35,7 @@ export default class Philosophy extends React.Component {
                   </div>
                   <div className="keyword">
                     <div className="text">
-                      <p className="bold">
+                      <p>
                         RIGHT
                         <br /> DIRECTION
                       </p>

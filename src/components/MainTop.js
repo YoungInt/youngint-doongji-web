@@ -12,6 +12,7 @@ export default class MainHeader extends React.Component {
                 <li>About</li>
                 <li>Brand</li>
                 <li>Contact</li>
+                <li>지구</li>
               </ul>
             </nav>
           </header>

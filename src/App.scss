@@ -1,6 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:700");
 // @import url("src/images/main_happy.png");
 
+// 미디어쿼리
+// 모바일
+$mobile-width: 480px;
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
 $memberImg-width: 160px;
 $memberImg-width-big: 250px;
 $class-slug: for !default;
@@ -177,18 +186,26 @@ body {
             height: 300px;
             border: 2px solid $main-font-color;
             border-radius: 50%;
-            p {
-              line-height: 1.69;
-              font-family: $main-font-Bold;
-            }
-            .bold {
-              margin-top: 1px;
-              font-size: 48px;
-              &::after {
-                content: " ";
-                width: 10px;
-                height: 3px;
-                background: $main-font-color;
+            .text {
+              p {
+                font-size: 48px;
+                margin-bottom: 1rem;
+                &:nth-child(1) {
+                  &:after {
+                    content: " ";
+                    display: block;
+                    width: 50px;
+                    height: 2px;
+                    background-color: $main-font-color;
+                    margin: 1rem auto;
+                  }
+                }
+                &:nth-child(2) {
+                  line-height: 1.69;
+                  margin-top: 1px;
+                  font-size: 16px;
+                  font-family: $main-font-Bold;
+                }
               }
             }
           }
@@ -257,7 +274,7 @@ body {
     .happy-img {
       position: absolute;
       bottom: 0;
-      right: 10px;
+      left: 60px;
     }
     .pola-img {
       position: absolute;
@@ -267,11 +284,11 @@ body {
       width: 50%;
     }
     &.pola {
-      width: 60%;
+      width: 70%;
       background: linear-gradient(to bottom, #d5edff, #abd7ff);
-      transform: skew(-5deg);
+      transform: skew(-7deg);
       position: relative;
-      left: 50px;
+      left: 80px;
     }
     .container-title {
       .title {
@@ -281,11 +298,11 @@ body {
       }
     }
     .pola-img {
-      transform: skew(5deg);
+      transform: skew(7deg);
     }
     .wrap {
       &.pola {
-        transform: skew(5deg);
+        transform: skew(7deg);
       }
       &.happy {
         margin-right: 0;
@@ -297,7 +314,9 @@ body {
       flex-direction: column;
       justify-content: flex-end;
       .content {
-        // background: #fdecbe;
+        &.pola {
+          margin-left: 6rem;
+        }
         height: 95%;
         .title {
           p {
@@ -399,6 +418,9 @@ body {
       .carousel-box {
         margin: auto;
         width: $memberImg-width-big * 5;
+        @include mobile {
+          width: $memberImg-width-big * 1;
+        }
         height: $memberImg-width-big;
         // overflow: scroll;
         overflow: hidden;
