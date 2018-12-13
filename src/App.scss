@@ -314,6 +314,7 @@ body {
       flex-direction: column;
       justify-content: flex-end;
       .content {
+        margin-top: 5rem;
         &.pola {
           margin-left: 6rem;
         }
@@ -517,6 +518,7 @@ body {
     margin-bottom: 0;
 
     .title {
+      margin-bottom: 4rem;
       div {
         @extend %title-font;
         @extend %border-bottom;
@@ -524,7 +526,7 @@ body {
     }
     .img {
       padding: 3rem 0;
-      height: 50%;
+      height: 35%;
       margin: auto;
       img {
         width: 100%;
@@ -532,6 +534,7 @@ body {
       }
     }
     .desc {
+      padding: 2rem 0;
       width: 90%;
       margin: auto;
       text-align: center;
