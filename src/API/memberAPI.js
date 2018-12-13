@@ -11,17 +11,37 @@ import img10 from "../images/ourteam_10";
 import img11 from "../images/ourteam_11";
 
 const members = [
-  { id: 0, img: img1, name: "1", message: "오늘도 열심히 일했다." },
-  { id: 1, img: img2, name: "2", message: "2번 메시지" },
-  { id: 2, img: img3, name: "3", message: "퇴근합시다." },
-  { id: 3, img: img4, name: "4", message: "4번 메시지" },
-  { id: 4, img: img5, name: "5", message: "5번 메시지" },
-  { id: 5, img: img6, name: "6", message: "6번 메시지" },
-  { id: 6, img: img7, name: "7", message: "7번 메시지" },
-  { id: 7, img: img8, name: "8", message: "8번 메시지" },
-  { id: 8, img: img9, name: "9", message: "9번 메시지" },
-  { id: 9, img: img10, name: "10", message: "10번 메시지" },
-  { id: 10, img: img11, name: "11", message: "11번 메시지 " }
+  {
+    id: 0,
+    img: img1,
+    name: "YoungEun, 대표",
+    message: "큰 꿈을 꿉시다. 그대로 됩니다."
+  },
+  { id: 1, img: img2, name: "김영광", message: "2번 메시지" },
+  {
+    id: 2,
+    img: img3,
+    name: "JiHee, 경영지원",
+    message: "나는야 영인터의 살림꾼"
+  },
+  { id: 3, img: img4, name: "박규빈", message: "4번 메시지" },
+  { id: 4, img: img5, name: "김윤배", message: "5번 메시지" },
+  {
+    id: 5,
+    img: img6,
+    name: " EZ,Designer",
+    message: "세상뿌듯! 오늘도 귀여운 걸 만들어냈다"
+  },
+  {
+    id: 6,
+    img: img7,
+    name: "Jini Kim, 영업지원",
+    message: "친절하게 C/S문의 처리중"
+  },
+  { id: 7, img: img8, name: "효원님", message: "8번 메시지" },
+  { id: 8, img: img9, name: "문규님", message: "9번 메시지" },
+  { id: 9, img: img10, name: "나", message: "10번 메시지" },
+  { id: 10, img: img11, name: "승식님", message: "11번 메시지 " }
 ];
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {

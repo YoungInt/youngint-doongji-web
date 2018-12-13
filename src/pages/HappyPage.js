@@ -5,33 +5,61 @@ import happyCulture1 from "../images/happyname_culture_01";
 import happyCulture2 from "../images/happyname_culture_02";
 import happyCulture3 from "../images/happyname_culture_03";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
+import classNames from "classnames";
 
 export default class HappyPage extends React.Component {
+  state = {
+    activeId: 0
+  };
+  happyImages = [
+    "https://images.unsplash.com/photo-1544586571-42a0e47dad19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+    "https://images.unsplash.com/photo-1544555103-3fc48768dcf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80",
+    "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
+  ];
+  componentDidMount() {
+    // 해피 슬라이드
+    // this.happyInterval = setInterval(() => {
+    //   this.state.activeId < this.happyImages.length - 1
+    //     ? this.setState({
+    //         activeId: this.state.activeId + 1
+    //       })
+    //     : this.setState({
+    //         activeId: 0
+    //       });
+    // }, 3000);
+  }
+  componentWillUnmount() {
+    // clearInterval(this.happyInterval);
+  }
   render() {
+    const { activeId } = this.state;
     return (
       <React.Fragment>
         <div className="happy">
           {/*헤더  */}
           <div className="header-wrap">
-            <header className="header">
-              <nav className="nav">
-                <div className="home">
-                  <Link to="/">홈</Link>
-                </div>
-                <div className="lang">지구</div>
-              </nav>
-            </header>
+            <div className="wrap">
+              <header className="header">
+                <nav className="nav">
+                  <div className="home">
+                    <Link to="/">홈</Link>
+                  </div>
+                  <div className="lang">지구</div>
+                </nav>
+              </header>
+            </div>
           </div>
           {/* 메인 */}
 
           <section className="main-wrap">
             <div className="main">
               <div className="main__content">
-                <div className="img">
+                <div className="happy_main-img">
                   <img src={mainHappy} alt="해피 네임" />
                 </div>
                 <p>
-                  누구나 부담없이 만들 수 있는
+                  누구나 부담없이 만들 수 있는 <br />
                   <span className="bold">나만의 네임스티커</span>
                 </p>
                 <div className="img">
@@ -48,24 +76,21 @@ export default class HappyPage extends React.Component {
                   <img src={happy} alt="" />
                 </div>
                 <div className="text">
-                  <div className="title">
-                    <p>해피네임스티커의</p>
-                    <p>새로운 문화</p>
-                  </div>
-                  <div className="desc">
-                    <p>
-                      해피네임스티커는 고객의 취향과 필요에 따라 네임스티커로의
-                      용도만이 아닌
-                    </p>
-                    <p>
-                      친구와 연인간의 기록의 용도와 재미있는 놀이문화로도 자리
-                      잡았습니다.
-                    </p>
-                    <p>
-                      친구와 연인과 네임스티커를 교환하고, 의미있는 곳에 붙여
-                      기록하는 용도로도 사용되고 있습니다.
-                    </p>
-                  </div>
+                  <p className="title">
+                    해피네임스티커의
+                    <span className="bold"> 새로운 문화</span>
+                  </p>
+
+                  <p className="desc">
+                    해피네임스티커는 고객의 취향과 필요에 따라 네임스티커로의
+                    용도만이 아닌
+                    <br />
+                    친구와 연인간의 기록의 용도와 재미있는 놀이문화로도 자리
+                    잡았습니다.
+                    <br />
+                    친구와 연인과 네임스티커를 교환하고, 의미있는 곳에 붙여
+                    기록하는 용도로도 사용되고 있습니다.
+                  </p>
                 </div>
               </div>
               <div className="middle">
@@ -102,7 +127,65 @@ export default class HappyPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="bottom">슬라이드</div>
+              {/* 슬라이드 */}
+              <div className="bottom">
+                <div
+                  className="button-left"
+                  onClick={e =>
+                    activeId != 0
+                      ? this.setState({
+                          activeId: activeId - 1
+                        })
+                      : this.setState({ activeId: this.happyImages.length - 1 })
+                  }
+                >
+                  뒤로
+                </div>
+                <div className="slide">
+                  <ul className="slide__img">
+                    {this.happyImages.map((img, index) => (
+                      <li
+                        key={index}
+                        className={classNames({
+                          active: activeId === index
+                        })}
+                      >
+                        <img src={img} alt={index} />
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="slide__nav">
+                    {this.happyImages.map((img, index) => (
+                      <div
+                        key={index}
+                        className={classNames("dot", {
+                          active: activeId === index
+                        })}
+                        onClick={e =>
+                          this.setState({
+                            activeId: index
+                          })
+                        }
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* 슬라이드 버튼 */}
+                <div
+                  className="button-right"
+                  onClick={e =>
+                    activeId < this.happyImages.length - 1
+                      ? this.setState({
+                          activeId: activeId + 1
+                        })
+                      : this.setState({
+                          activeId: 0
+                        })
+                  }
+                >
+                  앞으로
+                </div>
+              </div>
             </div>
           </section>
           {/* 버전 */}
@@ -112,64 +195,67 @@ export default class HappyPage extends React.Component {
                 해피네임스티커 자판기는 <br />
                 <span className="bold">3가지 버전</span>이 있어
                 <br />
-                상황에 맞는 대응이 가능합니다. 해피네임스티커 자판기는
+                상황에 맞는 대응이 가능합니다.
               </p>
               <ul className="version__list">
                 <li>
                   <div className="img">
                     <img src="" alt="" />
-                    <div className="title">
-                      <p>
-                        인쇄하고 싶은
-                        <br />
-                        아이콘을
-                        <br />
-                        선택할 수 있는
-                        <span className="bold">해피 ver.</span>
-                      </p>
-                    </div>
+                  </div>
+                  <div className="title">
+                    <p>
+                      인쇄하고 싶은
+                      <br />
+                      아이콘을
+                      <br />
+                      선택할 수 있는 <br />
+                      <span className="bold">해피 ver.</span>
+                    </p>
                   </div>
                 </li>
                 <li>
                   <div className="img">
                     <img src="" alt="" />
-                    <div className="title">
-                      <p>
-                        눈에 띄는
-                        <br />
-                        귀여운
-                        <br />
-                        캐릭터 디자인
-                        <span className="bold">캐릭터 ver.</span>
-                      </p>
-                    </div>
+                  </div>
+                  <div className="title">
+                    <p>
+                      눈에 띄는
+                      <br />
+                      귀여운
+                      <br />
+                      캐릭터 디자인
+                      <br />
+                      <span className="bold">캐릭터 ver.</span>
+                    </p>
                   </div>
                 </li>
                 <li>
                   <div className="img">
                     <img src="" alt="" />
-                    <div className="title">
-                      <p>
-                        협력제휴사의
-                        <br />
-                        요청에 맞는
-                        <br />
-                        디자인을 적용
-                        <span className="bold">커스텀 ver.</span>
-                      </p>
-                    </div>
+                  </div>
+                  <div className="title">
+                    <p>
+                      협력제휴사의
+                      <br />
+                      요청에 맞는
+                      <br />
+                      디자인을 적용
+                      <br />
+                      <span className="bold">커스텀 ver.</span>
+                    </p>
                   </div>
                 </li>
               </ul>
-            </div>
-            {/* 버전 상세 */}
-            <div className="version__desc">
-              <div className="version__desc1">
-                <div className="img">
-                  <img src="#" alt="아이콘을 선택하는 이미지" />
+              {/* 버전 상세 */}
+              <div className="version__detail">
+                <div className="detail">
+                  <div className="img">
+                    <img src="#" alt="아이콘을 선택하는 이미지" />
+                  </div>
                   <div className="text">
                     <p>
-                      <span className="bold">글꼴 선택이 가능</span>합니다.
+                      <span className="bold">글꼴 선택이 가능</span>
+                      합니다.
                     </p>
                     <p>
                       여러번의 테스트를 거쳐 사용자가 글꼴을 편집할 수 있도록
@@ -183,10 +269,10 @@ export default class HappyPage extends React.Component {
                     </p>
                   </div>
                 </div>
-              </div>
-              <div className="version__desc2">
-                <div className="img">
-                  <img src="" alt="다양한 캐릭터" />
+                <div className="detail">
+                  <div className="img">
+                    <img src="" alt="다양한 캐릭터" />
+                  </div>
                   <div className="text">
                     <p>
                       고객이 인쇄하고 싶은 <br />
@@ -204,10 +290,11 @@ export default class HappyPage extends React.Component {
                     </p>
                   </div>
                 </div>
-              </div>
-              <div className="version__desc3">
-                <div className="img">
-                  <img src="#" alt="스티커" />
+
+                <div className="detail">
+                  <div className="img">
+                    <img src="#" alt="스티커" />
+                  </div>
                   <div className="text">
                     <p>
                       <span className="bold">우수한 스티커 품질</span>
@@ -224,10 +311,10 @@ export default class HappyPage extends React.Component {
                     </p>
                   </div>
                 </div>
-              </div>
-              <div className="version__desc4">
-                <div className="img">
-                  <img src="" alt="다양한 디자인" />
+                <div className="detail">
+                  <div className="img">
+                    <img src="" alt="다양한 디자인" />
+                  </div>
                   <div className="text">
                     <p>
                       <span className="bold">다양한 형태의 디자인 시도</span>
@@ -247,27 +334,26 @@ export default class HappyPage extends React.Component {
             </div>
           </section>
           {/* 해피네임 비전 */}
-          <section className="vision">
-            <div className="img">
-              <img src="#" alt="해피네임 이미지" />
+          <section className="vision-wrap">
+            <div className="vision">
+              <div className="img">
+                <img src="#" alt="해피네임 이미지" />
+              </div>
               <div className="text">
+                <p className="bold">
+                  더 좋은 제품으로
+                  <br />더 넓은 곳으로
+                </p>
                 <p>
-                  <span className="bold">
-                    더 좋은 제품으로
-                    <br />더 넓은 곳으로
-                  </span>
-                  <p>
-                    해피네임 스티커는 더 넓은 세계로 나가 더 많은 고객들을
-                    만나고,
-                    <br />
-                    고객의 소리에 귀 기울여 더 좋은 제품을 개발할 것을 약속
-                    드립니다.
-                  </p>
+                  해피네임 스티커는 더 넓은 세계로 나가 더 많은 고객들을 만나고,
+                  <br />
+                  고객의 소리에 귀 기울여 더 좋은 제품을 개발할 것을 약속
+                  드립니다.
                 </p>
               </div>
             </div>
           </section>
-          {/* 푸터 컴포넌트 */}
+          <Footer />
         </div>
       </React.Fragment>
     );

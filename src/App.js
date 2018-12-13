@@ -15,6 +15,8 @@ export default class App extends Component {
           <Route path="/map/:id" component={MapPage} />
           <Route path="/map/" component={MapPage} />
           <Route pah="/happy" component={HappyPage} />
+          {/* <Route path="/map/:id" component={MapPage} />
+          <Route path="/map/" component={MapPage} /> */}
         </Switch>
       </Router>
     );
