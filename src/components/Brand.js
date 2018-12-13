@@ -10,7 +10,7 @@ export default class Brand extends React.Component {
             <img className="happy-img" src={happy} alt="" />
             <div className="wrap happy">
               <div className="container-title">
-                <div className="title">OUR BRAND</div>
+                <h2 className="title">OUR BRAND</h2>
               </div>
 
               <div className="content">

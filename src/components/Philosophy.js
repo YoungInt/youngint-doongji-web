@@ -6,7 +6,7 @@ export default class Philosophy extends React.Component {
       <React.Fragment>
         <div className="philosophy">
           <div className="philosophy__wrap">
-            <div className="title">PHILOSOPHY</div>
+            <h2 className="title">PHILOSOPHY</h2>
             <div className="content">
               <div className="content__keyword">
                 <div className="wrap">

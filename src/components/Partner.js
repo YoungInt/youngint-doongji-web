@@ -6,9 +6,7 @@ export default class Pratner extends React.Component {
     return (
       <div className="partner">
         <div className="wrap">
-          <div className="title">
-            <div>PARTNERSHIP</div>
-          </div>
+          <h1 className="title">PARTNERSHIP</h1>
           <div className="img">
             <img src={partner} alt="" />
           </div>

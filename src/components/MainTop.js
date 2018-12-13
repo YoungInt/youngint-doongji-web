@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default class MainHeader extends React.Component {
   render() {
@@ -9,9 +10,15 @@ export default class MainHeader extends React.Component {
             <div className="log">logo-img</div>
             <nav className="menu">
               <ul>
-                <li>About</li>
-                <li>Brand</li>
-                <li>Contact</li>
+                <li>
+                  <a href="/#philosophy">About</a>
+                </li>
+                <li>
+                  <a href="/#brand">Brand</a>
+                </li>
+                <li>
+                  <a href="/#contact">Contact</a>
+                </li>
                 <li>지구</li>
               </ul>
             </nav>

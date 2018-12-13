@@ -665,14 +665,13 @@ body {
             bottom: 0;
             .dot {
               margin: 0.5rem;
-
-              z-index: 10;
-              width: 15px;
-              height: 15px;
+              z-index: 4;
+              width: 10px;
+              height: 10px;
               border-radius: 50%;
               background: #ffffff;
               &.active {
-                background: red;
+                background: $main-font-color;
               }
             }
           }
@@ -814,24 +813,23 @@ body {
 .partner {
   height: 680px;
   display: flex;
+
   .wrap {
+    margin: 3rem 0;
+
     margin: auto;
     width: 80%;
-
+    height: 80%;
     border-bottom: 2px solid #cccccc;
-    height: 90%;
     margin-bottom: 0;
 
     .title {
-      margin-bottom: 4rem;
-      div {
-        @extend %title-font;
-        @extend %border-bottom;
-      }
+      @extend %title-font;
+      @extend %border-bottom;
     }
     .img {
-      padding: 3rem 0;
-      height: 35%;
+      padding: 3rem 0 2rem 0;
+      // height: 35%;
       margin: auto;
       img {
         width: 100%;
@@ -839,9 +837,8 @@ body {
       }
     }
     .desc {
-      padding: 2rem 0;
       width: 90%;
-      margin: auto;
+      margin: 2rem auto;
       text-align: center;
     }
   }

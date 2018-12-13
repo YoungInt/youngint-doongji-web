@@ -12,10 +12,16 @@ export default class MainPage extends React.Component {
     return (
       <div>
         <MainTop />
-        <Philosophy />
-        <Brand />
+        <div id="philosophy">
+          <Philosophy />
+        </div>
+        <div id="brand">
+          <Brand />
+        </div>
         <Partner />
-        <Contact />
+        <div id="contact">
+          <Contact />
+        </div>
         <TeamPC />
         <Footer />
       </div>
