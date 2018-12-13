@@ -5,7 +5,7 @@ export default class Contact extends React.Component {
     return (
       <div className="contact">
         <div className="wrap">
-          <div className="component-title">CONTACT US</div>
+          <h2 className="component-title">CONTACT US</h2>
           <div className="content">
             <div className="content__map">
               <img src="#" alt="" />

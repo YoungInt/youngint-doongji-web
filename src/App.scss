@@ -17,8 +17,12 @@ $point-font-bold: "Montserrat", sans-serif;
 $main-font-light: "NanumSquareLight", sans-serif;
 $main-font-ExtraBold: "NanumSquareExtraBold", sans-serif;
 $main-font-Bold: "NanumSquareBold", sans-serif;
+$header-width: 80px;
 $main-font-color: #1e1e1e;
-
+$yellow: rgb(251, 212, 138);
+$white: rgb(255, 255, 255);
+$alpha-2: 0.2;
+$alpha-5: 0.5;
 @font-face {
   font-family: "NanumSquareLight";
   src: url("./fonts/NanumSquareLight.ttf") format("truetype");
@@ -43,6 +47,14 @@ $main-font-color: #1e1e1e;
   font-size: 48px;
   font-family: $main-font-ExtraBold;
 }
+%happy-font {
+  font-size: 48px;
+  line-height: 1.29;
+
+  .bold {
+    font-family: $main-font-ExtraBold;
+  }
+}
 
 @keyframes scale {
   0% {
@@ -64,6 +76,24 @@ $main-font-color: #1e1e1e;
   }
 }
 
+@keyframes fade {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.99;
+  }
+}
+// @keyframes fade-out {
+//   from {
+//     opacity: 0.9999;
+//   }
+//   to {
+//     opacity: 0.5;
+//   }
+// }
+// TeamPC
+
 body {
   margin: 0;
   font-family: $main-font-light;
@@ -78,7 +108,7 @@ body {
   &__header {
     background: green;
     width: 80%;
-    height: 8%;
+    height: $header-width;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -107,7 +137,7 @@ body {
     }
   }
   &__img {
-    height: 92%;
+    height: calc(100vh - 80px);
     background-image: url("https://images.unsplash.com/photo-1512389098783-66b81f86e199?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80");
     background-size: cover;
     display: flex;
@@ -280,6 +310,7 @@ body {
       position: absolute;
       bottom: 0;
     }
+
     &.happy {
       width: 50%;
     }
@@ -369,6 +400,7 @@ body {
   }
 }
 // TeamPC 컴포넌트
+
 .team-container {
   height: 800px;
   display: flex;
@@ -466,6 +498,278 @@ body {
     }
   }
 }
+// happy page
+
+.happy {
+  // 해피페이지 -헤더
+  .header-wrap {
+    height: $header-width;
+    background-color: $yellow;
+    .wrap {
+      background: rgba($white, $alpha-2);
+      .header {
+        height: 100%;
+        width: 80%;
+        margin: auto;
+        .nav {
+          display: flex;
+          justify-content: space-between;
+          height: 100%;
+          div {
+            line-height: $header-width;
+          }
+        }
+      }
+    }
+    .header {
+      height: 100%;
+      width: 80%;
+      margin: auto;
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        div {
+          line-height: $header-width;
+        }
+      }
+    }
+  }
+  // 메인 섹션
+  .main-wrap {
+    overflow: hidden;
+    height: calc(100vh - 80px);
+    background: #fbd48a;
+    position: relative;
+    .main {
+      width: 80%;
+      margin: auto;
+      &__content {
+        margin-top: 10rem;
+        .happy_main-img {
+          position: absolute;
+          right: 0;
+          bottom: -5px;
+        }
+        p {
+          font-size: 48px;
+          line-height: 1.29;
+          .bold {
+            font-family: $main-font-ExtraBold;
+          }
+        }
+        .img {
+          width: 500px;
+          height: 400px;
+          background: skyblue;
+        }
+      }
+    }
+    // 컬쳐
+  }
+  .culture-wrap {
+    height: 1455px;
+    display: flex;
+
+    .culture {
+      width: 60%;
+      height: 90%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+        .img {
+        }
+        .text {
+          // display: inline;
+
+          .title {
+            margin: 0;
+            display: flex;
+            font-size: 48px;
+            .bold {
+              font-family: $main-font-ExtraBold;
+              margin-left: 1rem;
+            }
+          }
+          .desc {
+            line-height: 1.69;
+          }
+        }
+      }
+      .middle {
+        display: flex;
+        justify-content: space-between;
+        .item {
+          .img {
+          }
+          .text {
+            padding-top: 2rem;
+            border-top: 2px solid $yellow;
+            font-size: 48px;
+            line-height: 1.29;
+          }
+        }
+      }
+      // 슬라이드 해피
+      .bottom {
+        margin: auto;
+        display: flex;
+        .slide {
+          width: 800px;
+          height: 400px;
+          position: relative;
+
+          &__img {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            li {
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 1;
+              opacity: 0.1;
+
+              &.active {
+                z-index: 2;
+                animation-name: fade;
+                animation-timing-function: ease-in-out;
+                animation-duration: 0.5s;
+                animation-fill-mode: forwards;
+              }
+              img {
+                width: 800px;
+                height: 400px;
+              }
+            }
+          }
+          // 슬라이드 내비게이션
+
+          &__nav {
+            list-style: none;
+            margin: auto;
+
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+
+            bottom: 0;
+            .dot {
+              margin: 0.5rem;
+              z-index: 4;
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background: #ffffff;
+              &.active {
+                background: $main-font-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // 버전
+  .version-wrap {
+    background: rgba($yellow, $alpha-5);
+    height: 3659px;
+    display: flex;
+
+    .version {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      height: 95%;
+      margin: auto;
+      &__title {
+        text-align: center;
+        @extend %happy-font;
+      }
+      &__list {
+        background: skyblue;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        height: 26%;
+        li {
+          .img {
+            width: 300px;
+            height: 100px;
+            background: pink;
+          }
+          .title {
+            @extend %happy-font;
+          }
+        }
+      }
+      &__detail {
+        .detail {
+          border-top: 2px solid #ffffff;
+          height: 20%;
+
+          .img {
+            margin: 3rem auto;
+            width: 500px;
+            height: 200px;
+            background: tomato;
+          }
+          .text {
+            text-align: center;
+            line-height: 1.69;
+            p {
+              margin-bottom: 3rem;
+              &:nth-child(1) {
+                @extend %happy-font;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // 해피네임 비전
+  .vision-wrap {
+    height: 700px;
+
+    .vision {
+      height: 100%;
+      width: 80%;
+      margin: auto;
+      display: flex;
+      .img {
+        width: 50%;
+        background: pink;
+      }
+      .text {
+        width: 50%;
+        background: skyblue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        p {
+          background: yellow;
+          line-height: 1.69;
+          &.bold {
+            font-size: 48px;
+            font-family: $main-font-ExtraBold;
+            line-height: 1.29;
+          }
+        }
+      }
+    }
+  }
+}
+
 // footer 컴포넌트
 
 .footer {
@@ -509,24 +813,23 @@ body {
 .partner {
   height: 680px;
   display: flex;
+
   .wrap {
+    margin: 3rem 0;
+
     margin: auto;
     width: 80%;
-
+    height: 80%;
     border-bottom: 2px solid #cccccc;
-    height: 90%;
     margin-bottom: 0;
 
     .title {
-      margin-bottom: 4rem;
-      div {
-        @extend %title-font;
-        @extend %border-bottom;
-      }
+      @extend %title-font;
+      @extend %border-bottom;
     }
     .img {
-      padding: 3rem 0;
-      height: 35%;
+      padding: 3rem 0 2rem 0;
+      // height: 35%;
       margin: auto;
       img {
         width: 100%;
@@ -534,9 +837,8 @@ body {
       }
     }
     .desc {
-      padding: 2rem 0;
       width: 90%;
-      margin: auto;
+      margin: 2rem auto;
       text-align: center;
     }
   }

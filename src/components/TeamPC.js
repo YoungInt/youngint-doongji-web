@@ -50,7 +50,7 @@ export default class TeamPC extends React.Component {
         <div className="team-container">
           <div className="team">
             <div className="team__title">
-              <div className="title">MEET OUR TEAM</div>
+              <h2 className="title">MEET OUR TEAM</h2>
             </div>
             <div className="team__member">
               <div
