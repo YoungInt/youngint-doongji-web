@@ -7,7 +7,7 @@ $point-font-bold: "Montserrat", sans-serif;
 $main-font-light: "NanumSquareLight", sans-serif;
 $main-font-ExtraBold: "NanumSquareExtraBold", sans-serif;
 $main-font-Bold: "NanumSquareBold", sans-serif;
-
+$header-width: 80px;
 @font-face {
   font-family: "NanumSquareLight";
   src: url("./fonts/NanumSquareLight.ttf") format("truetype");
@@ -33,6 +33,9 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
       background: red;
     }
   }
+}
+body {
+  margin: 0;
 }
 // TeamPC
 .team-container {
@@ -129,9 +132,21 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
     }
   }
 }
+// happy page
 
-// 데스크탑이나 태블릿일 떄는 5 개 지만 모바일로는 한 개 보이고 양 옆으로 힌트 주기
-// 사람 이름이나 닉네임,
-// 라인 프렌즈
-// 나머지는 거의 700px 이고 좀 긴 것도 있고
-// map이랑 product 페이지만 있음
+.happy {
+  background: red;
+  .header-wrap {
+    height: $header-width;
+    .header {
+      height: 100%;
+      background: pink;
+      width: 80%;
+      margin: auto;
+    }
+  }
+  .main-wrap {
+    height: calc(100vh - 80px);
+    background: skyblue;
+  }
+}
