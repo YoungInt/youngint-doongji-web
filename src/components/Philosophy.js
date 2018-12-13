@@ -10,9 +10,41 @@ export default class Philosophy extends React.Component {
             <div className="content">
               <div className="content__keyword">
                 <div className="wrap">
-                  <div className="keyword-1">Custom</div>
-                  <div className="keyword-2">Easy</div>
-                  <div className="keyword-3">Fun</div>
+                  <div className="keyword">
+                    <div className="text">
+                      <p className="bold">
+                        NEW
+                        <br /> VALUE
+                      </p>
+                      <p>
+                        새로운 가치를
+                        <br /> 만듭니다
+                      </p>
+                    </div>
+                  </div>
+                  <div className="keyword">
+                    <div className="text">
+                      <p className="bold">
+                        GROW <br />
+                        TOGETHER
+                      </p>
+                      <p>
+                        함께 일하고 <br /> 함께 성장합니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="keyword">
+                    <div className="text">
+                      <p className="bold">
+                        RIGHT
+                        <br /> DIRECTION
+                      </p>
+                      <p>
+                        올바른 길이라면 <br />
+                        힘들어도 나아갑니다.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="content__desc">

@@ -167,15 +167,30 @@ body {
           display: flex;
           justify-content: space-between;
 
-          div {
-            font-size: 48px;
+          .keyword {
+            text-align: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 300px;
             height: 300px;
             border: 2px solid $main-font-color;
             border-radius: 50%;
+            p {
+              line-height: 1.69;
+              font-family: $main-font-Bold;
+            }
+            .bold {
+              margin-top: 1px;
+              font-size: 48px;
+              &::after {
+                content: " ";
+                width: 10px;
+                height: 3px;
+                background: $main-font-color;
+              }
+            }
           }
         }
       }
@@ -238,29 +253,25 @@ body {
 
   .brand {
     display: flex;
-    width: 50%;
     position: relative;
     .happy-img {
       position: absolute;
       bottom: 0;
+      right: 10px;
     }
     .pola-img {
       position: absolute;
       bottom: 0;
     }
     &.happy {
+      width: 50%;
     }
     &.pola {
-      // border-bottom: 960px solid;
-      // border-bottom-width: 960px;
-      // border-bottom-style: solid;
-      border-left: 100px solid transparent;
-      border-bottom: 960px solid red;
-
-      // border-image-source: linear-gradient(to bottom, #d5edff, #abd7ff);
-      // background: linear-gradient(to bottom, #d5edff, #abd7ff);
-      // background-size: cover;
-      // background-repeat: no-repeat;
+      width: 60%;
+      background: linear-gradient(to bottom, #d5edff, #abd7ff);
+      transform: skew(-5deg);
+      position: relative;
+      left: 50px;
     }
     .container-title {
       .title {
@@ -269,17 +280,19 @@ body {
         @extend %border-bottom;
       }
     }
+    .pola-img {
+      transform: skew(5deg);
+    }
     .wrap {
       &.pola {
-        // margin-left: 0;
+        transform: skew(5deg);
       }
       &.happy {
         margin-right: 0;
       }
       margin: auto;
       width: 80%;
-      height: 80%;
-      // background: palevioletred;
+      height: 80%; // background: palevioletred;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
