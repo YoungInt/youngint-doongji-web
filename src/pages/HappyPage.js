@@ -7,7 +7,8 @@ import happyCulture3 from "../images/happyname_culture_03";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import classNames from "classnames";
-
+import { Helmet } from "react-helmet";
+import Slide from "../components/Slide";
 export default class HappyPage extends React.Component {
   state = {
     activeId: 0
@@ -36,6 +37,10 @@ export default class HappyPage extends React.Component {
     const { activeId } = this.state;
     return (
       <React.Fragment>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>해피 네임스티커</title>
+        </Helmet>
         <div className="happy">
           {/*헤더  */}
           <div className="header-wrap">
@@ -129,62 +134,7 @@ export default class HappyPage extends React.Component {
               </div>
               {/* 슬라이드 */}
               <div className="bottom">
-                <div
-                  className="button-left"
-                  onClick={e =>
-                    activeId != 0
-                      ? this.setState({
-                          activeId: activeId - 1
-                        })
-                      : this.setState({ activeId: this.happyImages.length - 1 })
-                  }
-                >
-                  뒤로
-                </div>
-                <div className="slide">
-                  <ul className="slide__img">
-                    {this.happyImages.map((img, index) => (
-                      <li
-                        key={index}
-                        className={classNames({
-                          active: activeId === index
-                        })}
-                      >
-                        <img src={img} alt={index} />
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="slide__nav">
-                    {this.happyImages.map((img, index) => (
-                      <div
-                        key={index}
-                        className={classNames("dot", {
-                          active: activeId === index
-                        })}
-                        onClick={e =>
-                          this.setState({
-                            activeId: index
-                          })
-                        }
-                      />
-                    ))}
-                  </div>
-                </div>
-                {/* 슬라이드 버튼 */}
-                <div
-                  className="button-right"
-                  onClick={e =>
-                    activeId < this.happyImages.length - 1
-                      ? this.setState({
-                          activeId: activeId + 1
-                        })
-                      : this.setState({
-                          activeId: 0
-                        })
-                  }
-                >
-                  앞으로
-                </div>
+                <Slide images={this.happyImages} slideName={"happy"} />
               </div>
             </div>
           </section>
