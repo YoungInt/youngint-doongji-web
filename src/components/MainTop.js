@@ -6,23 +6,25 @@ export default class MainHeader extends React.Component {
     return (
       <React.Fragment>
         <div className="mainTop">
-          <header className="mainTop__header">
-            <div className="log">logo-img</div>
-            <nav className="menu">
-              <ul>
-                <li>
-                  <a href="/#philosophy">About</a>
-                </li>
-                <li>
-                  <a href="/#brand">Brand</a>
-                </li>
-                <li>
-                  <a href="/#contact">Contact</a>
-                </li>
-                <li>지구</li>
-              </ul>
-            </nav>
-          </header>
+          <div className="header-wrap">
+            <header className="header">
+              <div className="log">logo-img</div>
+              <nav className="menu">
+                <ul>
+                  <li>
+                    <a href="/#philosophy">About</a>
+                  </li>
+                  <li>
+                    <a href="/#brand">Brand</a>
+                  </li>
+                  <li>
+                    <a href="/#contact">Contact</a>
+                  </li>
+                  <li>지구</li>
+                </ul>
+              </nav>
+            </header>
+          </div>
           <div className="mainTop__img">
             <div className="content">
               <div className="title">

@@ -24,7 +24,7 @@ const members = [
     name: "JiHee, 경영지원",
     message: "나는야 영인터의 살림꾼"
   },
-  { id: 3, img: img4, name: "규빈님", message: "4번 메시지" },
+  { id: 3, img: img4, name: "규빈님", message: "어라? 왜? 그런거지?" },
   { id: 4, img: img5, name: "윤배님", message: "5번 메시지" },
   {
     id: 5,
