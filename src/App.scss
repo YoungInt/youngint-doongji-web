@@ -317,9 +317,9 @@ body {
     &.pola {
       width: 70%;
       background: linear-gradient(to bottom, #d5edff, #abd7ff);
-      transform: skew(-7deg);
+      transform: skew(-8deg);
       position: relative;
-      left: 80px;
+      left: 100px;
     }
     .container-title {
       .title {
@@ -346,8 +346,10 @@ body {
       justify-content: flex-end;
       .content {
         margin-top: 5rem;
+
         &.pola {
           margin-left: 6rem;
+          margin-top: 9rem;
         }
         height: 95%;
         .title {
