@@ -3,6 +3,9 @@ import { Helmet } from "react-helmet";
 import Slide from "../components/Slide";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import titleNavy from "../images/00_title_navy";
+import titleSub from "../images/00_title_sub";
+import polaDeliver from "../images/10_pola_deliver.gif";
 export default class PolaPage extends React.Component {
   polaImages = [
     "https://images.unsplash.com/photo-1544586571-42a0e47dad19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
@@ -31,9 +34,10 @@ export default class PolaPage extends React.Component {
           {/* 폴라  */}
           <div className="main-wrap">
             <div className="main">
-              <p>POLAROID STICKER DELIVERY</p>
-              <h2>POLAPOLAR</h2>
+              <img className="top" src={titleSub} alt="" />
+              <img className="bottom" src={titleNavy} alt="" />
             </div>
+            <img className="pola" src={polaDeliver} alt="" />
           </div>
           <section className="intro-wrap">
             <div className="intro">
@@ -46,74 +50,63 @@ export default class PolaPage extends React.Component {
               </div>
             </div>
           </section>
-          <section className="use">
-            <ul>
-              <li>
-                <div className="img">
-                  <img src="#" alt="폴라폴라 챗봇" />
-                </div>
-                <div className="text">
-                  <p>
-                    키워드를 입력하여
-                    <br />
-                    폴라폴라와 연결하고
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="img">
-                  <img src="#" alt="폴라폴라 사진선택" />
-                </div>
-                <div className="text">
-                  <p>
-                    채팅창에 바로
-                    <br />
-                    사진을 전송하면
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="img">
-                  <img src="#" alt="" />
-                </div>
-                <div className="text">
-                  <p>
-                    나만의 폴라로이드 사진을
-                    <br />
-                    간편하게 만들 수 있어요
-                    <br />
-                    <span className="bold">참 쉽죠?</span>
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </section>
-          <section className="feature">
-            <div className="img">
-              <img src="#" alt="" />
-            </div>
-            <div className="detail-wrap">
-              <div className="detail-top">
-                <div className="item">
+          <section className="use-wrap">
+            <div className="use">
+              <ul>
+                <li>
                   <div className="img">
-                    <img src="" alt="" />
+                    <img src="#" alt="폴라폴라 챗봇" />
                   </div>
-                  <div className="title">
-                    <span className="bold">절취선</span>이 있어요
+                  <div className="text">
+                    <p>
+                      키워드를 입력하여
+                      <br />
+                      폴라폴라와 연결하고
+                    </p>
                   </div>
-                  <p>
-                    폴라폴라는 가운데에 절취선이 있어서
-                    <br />
-                    취향에 따라, 크기에 맞게 사용할 수 있으며
-                    <br />
-                    친구나 연인과 간편하게 나눌 수 있습니다.
-                  </p>
+                </li>
+                <li>
+                  <div className="img">
+                    <img src="#" alt="폴라폴라 사진선택" />
+                  </div>
+                  <div className="text">
+                    <p>
+                      채팅창에 바로
+                      <br />
+                      사진을 전송하면
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div className="img">
+                    <img src="#" alt="" />
+                  </div>
+                  <div className="text">
+                    <p>
+                      나만의 폴라로이드 사진을
+                      <br />
+                      간편하게 만들 수 있어요
+                      <br />
+                      <span className="bold">참 쉽죠?</span>
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section className="feature-wrap">
+            <div className="feature">
+              <div className="img">
+                <img src="#" alt="" />
+              </div>
+              <div className="detail-wrap">
+                <div className="detail-top">
                   <div className="item">
                     <div className="img">
                       <img src="" alt="" />
                     </div>
                     <div className="title">
-                      <span className="bold">스티커</span>입니다
+                      <span className="bold">절취선</span>이 있어요
                     </div>
                     <p>
                       폴라폴라는 가운데에 절취선이 있어서
@@ -122,40 +115,55 @@ export default class PolaPage extends React.Component {
                       <br />
                       친구나 연인과 간편하게 나눌 수 있습니다.
                     </p>
+                    <div className="item">
+                      <div className="img">
+                        <img src="" alt="" />
+                      </div>
+                      <div className="title">
+                        <span className="bold">스티커</span>입니다
+                      </div>
+                      <p>
+                        폴라폴라는 가운데에 절취선이 있어서
+                        <br />
+                        취향에 따라, 크기에 맞게 사용할 수 있으며
+                        <br />
+                        친구나 연인과 간편하게 나눌 수 있습니다.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="detail-bottom">
-                <div className="item">
-                  <div className="img">
-                    <img src="" alt="" />
+                <div className="detail-bottom">
+                  <div className="item">
+                    <div className="img">
+                      <img src="" alt="" />
+                    </div>
+                    <div className="title">
+                      <span className="bold">방수</span>가 되고 <br />
+                      <span className="bold">내구성</span>이 좋아요
+                    </div>
+                    <p>
+                      폴라폴라의 필름은 방수가 되는 재질입니다. <br />
+                      시간이 지나도 색이 잘 바라거나 찢어지지 않아서
+                      <br />
+                      소중한 사진을 오래 보관할 수 있습니다. <br />
+                    </p>
                   </div>
-                  <div className="title">
-                    <span className="bold">방수</span>가 되고{" "}
-                    <span className="bold">내구성</span>이 좋아요
+                  <div className="item">
+                    <div className="img">
+                      <img src="" alt="" />
+                    </div>
+                    <div className="title">
+                      <span className="bold">팝업(Pop-up) </span>
+                      <br /> <span className="bold"> 한정 테마</span>가 있어요.
+                    </div>
+                    <p>
+                      일정 기간동안만 만나볼 수 있는 한정 테마를 운영합니다.
+                      <br />
+                      여러 캐릭터사의 테마와 이벤트 테마를 준비중입니다.
+                      <br />
+                      다음 팝업테마는 어떤걸까요? 기대해주세요!
+                    </p>
                   </div>
-                  <p>
-                    폴라폴라의 필름은 방수가 되는 재질입니다. 시간이 지나도 색이
-                    잘 바라거나 찢어지지 않아서
-                    <br />
-                    소중한 사진을 오래 보관할 수 있습니다. <br />
-                  </p>
-                </div>
-                <div className="item">
-                  <div className="img">
-                    <img src="" alt="" />
-                  </div>
-                  <div className="title">
-                    <span className="bold">팝업(Pop-up) </span>
-                    <br /> <span className="bold"> 한정 테마</span>가 있어요.
-                  </div>
-                  <p>
-                    일정 기간동안만 만나볼 수 있는 한정 테마를 운영합니다.
-                    <br />
-                    여러 캐릭터사의 테마와 이벤트 테마를 준비중입니다.
-                    <br />
-                    다음 팝업테마는 어떤걸까요? 기대해주세요!
-                  </p>
                 </div>
               </div>
             </div>

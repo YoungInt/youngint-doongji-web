@@ -15,10 +15,10 @@ export default class MainPage extends React.Component {
         <div id="philosophy">
           <Philosophy />
         </div>
+        <Partner />
         <div id="brand">
           <Brand />
         </div>
-        <Partner />
         <div id="contact">
           <Contact />
         </div>

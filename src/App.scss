@@ -84,14 +84,20 @@ $alpha-5: 0.5;
     opacity: 0.99;
   }
 }
-// @keyframes fade-out {
-//   from {
-//     opacity: 0.9999;
-//   }
-//   to {
-//     opacity: 0.5;
-//   }
-// }
+// 폴라 애니메이션
+@keyframes pola-animation {
+  from {
+  }
+  30% {
+    transform: rotate(-20deg);
+  }
+  35% {
+    transform: rotate(0deg);
+  }
+  to {
+    left: 100%;
+  }
+}
 // TeamPC
 
 body {
@@ -99,6 +105,7 @@ body {
   font-family: $main-font-light;
   font-size: 16px;
   color: $main-font-color;
+  line-height: 1.69;
 }
 
 //  MainTop 컴포넌트
@@ -308,6 +315,7 @@ body {
   .brand {
     display: flex;
     position: relative;
+    width: 100vw;
     .happy-img {
       position: absolute;
       bottom: 0;
@@ -317,16 +325,16 @@ body {
       position: absolute;
       bottom: 0;
     }
-
+    // 브랜드 폴라 해피 배경
     &.happy {
       width: 50%;
     }
     &.pola {
       width: 70%;
       background: linear-gradient(to bottom, #d5edff, #abd7ff);
-      transform: skew(-8deg);
+      transform: skew(-10deg);
       position: relative;
-      left: 100px;
+      left: 6%;
     }
     .container-title {
       .title {
@@ -336,11 +344,11 @@ body {
       }
     }
     .pola-img {
-      transform: skew(7deg);
+      transform: skew(10deg);
     }
     .wrap {
       &.pola {
-        transform: skew(7deg);
+        transform: skew(10deg);
       }
       &.happy {
         margin-right: 0;
@@ -416,7 +424,7 @@ body {
   justify-content: center;
   align-items: center;
   background: #fbd48a;
-
+  width: 100vw;
   .team {
     width: 80%;
     height: 70%;
@@ -459,6 +467,7 @@ body {
       }
       .carousel-box {
         margin: auto;
+        background: red;
         width: $memberImg-width-big * 5;
         @include mobile {
           width: $memberImg-width-big * 1;
@@ -482,12 +491,15 @@ body {
           transition: transform 1s;
 
           .item {
+            background: skyblue;
+
             min-width: $memberImg-width-big;
             min-height: $memberImg-width-big;
             display: flex;
             justify-content: center;
             align-items: center;
             &__img {
+              background: red;
               display: flex;
               width: $memberImg-width;
               height: $memberImg-width;
@@ -826,7 +838,6 @@ body {
     margin: auto;
     width: 80%;
     height: 80%;
-    border-bottom: 2px solid #cccccc;
     margin-bottom: 0;
 
     .title {
@@ -957,6 +968,157 @@ body {
           background: $main-font-color;
         }
       }
+    }
+  }
+}
+// 폴라 페이지
+
+.pola {
+  .header-wrap {
+    position: fixed;
+    background: $white;
+    width: 100%;
+    z-index: 10;
+    .header {
+      background: rgba($white, $alpha-2);
+      margin: 0 2rem;
+      border-bottom: 2px solid #d8d8d8;
+      ul {
+        padding: 0 6rem;
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        li {
+        }
+      }
+    }
+  }
+  .main-wrap {
+    position: relative;
+    height: calc(100vh - 80px);
+    padding-top: 80px;
+    .main {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .top {
+        width: 450px;
+        margin-top: 10rem;
+      }
+      .bottom {
+        width: 632.4px;
+        height: 95.1px;
+      }
+    }
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 124px;
+      background-image: linear-gradient(to bottom, #e5f0f8, #c7dcef);
+      position: absolute;
+      bottom: 0;
+    }
+    // 폴라 애니메이션
+    .pola {
+      position: absolute;
+      z-index: 3;
+      width: 150px;
+      height: 147px;
+      bottom: 100px;
+      left: 3%;
+      animation-name: pola-animation;
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+  }
+  .intro-wrap {
+    height: 700px;
+    .intro {
+      .text {
+        text-align: center;
+        @extend %happy-font;
+        h2 {
+          display: inline;
+        }
+      }
+    }
+  }
+  .use-wrap {
+    background-image: linear-gradient(to bottom, #e5f0f8, #c7dcef);
+
+    .use {
+      padding: 120px 0;
+      ul {
+        list-style: none;
+        li {
+          .img {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #9bbedf;
+            padding: 0;
+            margin: auto;
+          }
+          .text {
+            @extend %happy-font;
+            text-align: center;
+          }
+        }
+      }
+      &:after {
+        margin: auto;
+        content: "";
+        display: block;
+        width: 1000px;
+        height: 2px;
+        background: #9bbedf;
+      }
+    }
+  }
+  .feature-wrap {
+    background: #c7dcef;
+    .feature {
+      width: 1000px;
+      margin: auto;
+      display: flex;
+      .img {
+        width: 180px;
+        height: 180px;
+        background: green;
+      }
+      .detail-wrap {
+        display: flex;
+        .item {
+          padding: 3rem 0;
+          background: #ffffff;
+          .img {
+            width: 220px;
+            height: 114px;
+          }
+          .title {
+            @extend %happy-font;
+            line-height: 1.29;
+          }
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  .message {
+    background: #d8d8d8;
+
+    .text {
+      font-size: 48px;
+      text-align: center;
+    }
+    .text {
     }
   }
 }
