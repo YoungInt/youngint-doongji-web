@@ -249,85 +249,97 @@ export default class HappyPage extends React.Component {
               {/* 버전 상세 */}
               <div className="version__detail">
                 <div className="detail">
-                  <div className="img">
-                    <img src="#" alt="아이콘을 선택하는 이미지" />
-                  </div>
-                  <div className="text">
-                    <p>
-                      <span className="bold">글꼴 선택이 가능</span>
-                      합니다.
-                    </p>
-                    <p>
-                      여러번의 테스트를 거쳐 사용자가 글꼴을 편집할 수 있도록
-                      적용했습니다.
-                      <br />
-                      해피버전 UI내에서 네가지 글꼴 중 원하는 글꼴로 선택이
-                      가능합니다.
-                      <br />
-                      소비자와 제휴사의 의견을 적극 반영하여 업데이트 적용한
-                      부분입니다.
-                    </p>
+                  <div className="detail-wrap">
+                    <div className="img">
+                      <img src="#" alt="아이콘을 선택하는 이미지" />
+                    </div>
+                    <div className="text">
+                      <p>
+                        <span className="bold">글꼴 선택이 가능</span>
+                        합니다.
+                      </p>
+                      <p>
+                        여러번의 테스트를 거쳐 사용자가 글꼴을 편집할 수 있도록
+                        적용했습니다.
+                        <br />
+                        해피버전 UI내에서 네가지 글꼴 중 원하는 글꼴로 선택이
+                        가능합니다.
+                        <br />
+                        소비자와 제휴사의 의견을 적극 반영하여 업데이트 적용한
+                        부분입니다.
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="detail">
-                  <div className="img">
-                    <img src="" alt="다양한 캐릭터" />
-                  </div>
-                  <div className="text">
-                    <p>
-                      고객이 인쇄하고 싶은 <br />
-                      <span className="bold">모티브를 선택</span>할 수 있습니다.
-                    </p>
-                    <p>
-                      고객이 직접 원하는 모티브 디자인을 선택할 수 있는 기능으로
-                      <br />
-                      타사와 가장 대비되는 해피네임스티커의 강점입니다.
-                      <br />
-                      모티브는 주기적으로 새로운 디자인으로 업데이트되고 있으며,
-                      <br />
-                      제휴를 맺은 캐릭터사의 디자인도 개발하여 출시하고
-                      있습니다.
-                    </p>
+                  <div className="detail-wrap">
+                    <div className="img">
+                      <img src="" alt="다양한 캐릭터" />
+                    </div>
+                    <div className="text">
+                      <p>
+                        고객이 인쇄하고 싶은 <br />
+                        <span className="bold">모티브를 선택</span>할 수
+                        있습니다.
+                      </p>
+                      <p>
+                        고객이 직접 원하는 모티브 디자인을 선택할 수 있는
+                        기능으로
+                        <br />
+                        타사와 가장 대비되는 해피네임스티커의 강점입니다.
+                        <br />
+                        모티브는 주기적으로 새로운 디자인으로 업데이트되고
+                        있으며,
+                        <br />
+                        제휴를 맺은 캐릭터사의 디자인도 개발하여 출시하고
+                        있습니다.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 <div className="detail">
-                  <div className="img">
-                    <img src="#" alt="스티커" />
-                  </div>
-                  <div className="text">
-                    <p>
-                      <span className="bold">우수한 스티커 품질</span>
-                    </p>
-                    <p>
-                      해피네임 스티커의 인쇄 부분은 여러번 지워도 잘 지워지지
-                      않습니다.
-                      <br />
-                      또한 최고급 품질의 라미네이팅 코팅으로 내구성이 매우
-                      우수하며,
-                      <br />
-                      열에 견디는 정도와 접착력 또한 여러번의 테스트를 통해
-                      검증되었습니다.
-                    </p>
+                  <div className="detail-wrap">
+                    <div className="img">
+                      <img src="#" alt="스티커" />
+                    </div>
+                    <div className="text">
+                      <p>
+                        <span className="bold">우수한 스티커 품질</span>
+                      </p>
+                      <p>
+                        해피네임 스티커의 인쇄 부분은 여러번 지워도 잘 지워지지
+                        않습니다.
+                        <br />
+                        또한 최고급 품질의 라미네이팅 코팅으로 내구성이 매우
+                        우수하며,
+                        <br />
+                        열에 견디는 정도와 접착력 또한 여러번의 테스트를 통해
+                        검증되었습니다.
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="detail">
-                  <div className="img">
-                    <img src="" alt="다양한 디자인" />
-                  </div>
-                  <div className="text">
-                    <p>
-                      <span className="bold">다양한 형태의 디자인 시도</span>
-                    </p>
-                    <p>
-                      해피네임스티커는 디즈니코리아, 산리오코리아, 아이코닉스
-                      핑크퐁 등<br />
-                      여러 캐릭터사의 캐릭터를 적용한 디자인을 출시하고 있으며,
-                      <br />
-                      네임스티커가 더 폭넓은 용도로 사용될 수 있도록,
-                      <br />
-                      새롭고 다양한 칼선을 적용한 스티커를 개발하고 있습니다.
-                    </p>
+                  <div className="detail-wrap">
+                    <div className="img">
+                      <img src="" alt="다양한 디자인" />
+                    </div>
+                    <div className="text">
+                      <p>
+                        <span className="bold">다양한 형태의 디자인 시도</span>
+                      </p>
+                      <p>
+                        해피네임스티커는 디즈니코리아, 산리오코리아, 아이코닉스
+                        핑크퐁 등<br />
+                        여러 캐릭터사의 캐릭터를 적용한 디자인을 출시하고
+                        있으며,
+                        <br />
+                        네임스티커가 더 폭넓은 용도로 사용될 수 있도록,
+                        <br />
+                        새롭고 다양한 칼선을 적용한 스티커를 개발하고 있습니다.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

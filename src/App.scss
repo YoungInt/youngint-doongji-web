@@ -104,45 +104,52 @@ body {
 //  MainTop 컴포넌트
 .mainTop {
   height: 100vh;
-
-  &__header {
+  position: relative;
+  .header-wrap {
     background: green;
-    width: 80%;
+
     height: $header-width;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    .header {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
 
-    .logo {
-    }
-    .menu {
-      width: 35%;
-      background: peru;
+      .logo {
+      }
+      .menu {
+        width: 35%;
+        background: peru;
 
-      ul {
-        justify-content: space-between;
-        display: flex;
+        ul {
+          justify-content: space-between;
+          display: flex;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          li {
+            font-family: $point-font-bold;
+            font-size: 18px;
+            align-self: center;
 
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        li {
-          font-family: $point-font-bold;
-          font-size: 18px;
-          align-self: center;
-
-          list-style: none;
+            list-style: none;
+          }
         }
       }
     }
   }
   &__img {
+    padding-top: 80px;
     height: calc(100vh - 80px);
     background-image: url("https://images.unsplash.com/photo-1512389098783-66b81f86e199?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80");
     background-size: cover;
     display: flex;
     .content {
-      height: 75%;
+      height: 70%;
       width: 80%;
       margin: auto;
       p {
@@ -195,7 +202,7 @@ body {
     }
     .content {
       padding-top: 3rem;
-      width: 90%;
+      width: 1000px;
       height: 90%;
       margin: auto;
       &__keyword {
@@ -507,6 +514,9 @@ body {
   .header-wrap {
     height: $header-width;
     background-color: $yellow;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
     .wrap {
       background: rgba($white, $alpha-2);
       .header {
@@ -523,22 +533,11 @@ body {
         }
       }
     }
-    .header {
-      height: 100%;
-      width: 80%;
-      margin: auto;
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        height: 100%;
-        div {
-          line-height: $header-width;
-        }
-      }
-    }
   }
   // 메인 섹션
   .main-wrap {
+    height: 100vh;
+    padding-top: 80px;
     overflow: hidden;
     height: calc(100vh - 80px);
     background: #fbd48a;
@@ -574,7 +573,7 @@ body {
     display: flex;
 
     .culture {
-      width: 60%;
+      width: 864px;
       height: 90%;
       margin: auto;
       display: flex;
@@ -715,23 +714,28 @@ body {
         }
       }
       &__detail {
+        height: 2655px;
+
         .detail {
           border-top: 2px solid #ffffff;
-          height: 20%;
+          height: 613px;
 
-          .img {
-            margin: 3rem auto;
-            width: 500px;
-            height: 200px;
-            background: tomato;
-          }
-          .text {
-            text-align: center;
-            line-height: 1.69;
-            p {
-              margin-bottom: 3rem;
-              &:nth-child(1) {
-                @extend %happy-font;
+          .detail-wrap {
+            margin-top: 150px;
+            .img {
+              margin: auto;
+              width: 300px;
+              height: 124px;
+              background: tomato;
+            }
+            .text {
+              text-align: center;
+              line-height: 1.69;
+              p {
+                margin: 0;
+                &:nth-child(1) {
+                  @extend %happy-font;
+                }
               }
             }
           }

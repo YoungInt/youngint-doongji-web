@@ -107,7 +107,7 @@ export default class TeamPC extends React.Component {
               </div>
             </div>
             <div className="team__message">
-              <p className="bold">{members[activeId].message}</p>
+              <p className="bold">{`"${members[activeId].message}"`}</p>
               <p>{members[activeId].name}</p>
             </div>
           </div>
