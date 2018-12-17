@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import titleNavy from "../images/00_title_navy";
 import titleSub from "../images/00_title_sub";
 import polaDeliver from "../images/10_pola_deliver.gif";
-import { runInThisContext } from "vm";
+
 export default class PolaPage extends React.Component {
   state = {
     activeId: 0
@@ -30,11 +30,14 @@ export default class PolaPage extends React.Component {
       "그리고 나의 최애를",
       "폴라폴라로 더욱 특별하게 간직하세요"
     ],
-    ["소중한 사진으로 나의 공간을 더욱 의미있게 만들어요"],
+    ["소중한 사진으로", "나의 공간을", "더욱 의미있게 만들어요"],
     ["나만의 커스텀(Custom) 굿즈"],
     ["특별한 날, 오래도록 남는 선물"],
     ["따뜻한 추억들을 간편하게 모아봐요"]
   ];
+  componentDidMount() {
+    window.scroll(0, 0);
+  }
   render() {
     return (
       <React.Fragment>

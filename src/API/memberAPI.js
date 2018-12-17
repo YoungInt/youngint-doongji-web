@@ -25,12 +25,17 @@ const members = [
     message: "나는야 영인터의 살림꾼"
   },
   { id: 3, img: img4, name: "규빈님", message: "어라? 왜? 그런거지?" },
-  { id: 4, img: img5, name: "윤배님", message: "5번 메시지" },
+  {
+    id: 4,
+    img: img5,
+    name: "YB, Developer",
+    message: "음..특별히 할 말은 없습니다."
+  },
   {
     id: 5,
     img: img6,
     name: " EZ,Designer",
-    message: "세상뿌듯! 오늘도 귀여운 걸 만들어냈다"
+    message: "세상뿌듯! 오늘도 귀여운 걸 만들어냈다."
   },
   {
     id: 6,
@@ -48,7 +53,7 @@ const members = [
     id: 8,
     img: img9,
     name: "Idol Master P, Sales",
-    message: "국경의 긴 터널을 빠져나오니 설국이었다"
+    message: "국경의 긴 터널을 빠져나오니 설국이었다."
   },
   { id: 9, img: img10, name: "나", message: "아무말아무말" },
   {

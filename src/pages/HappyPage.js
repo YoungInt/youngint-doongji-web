@@ -19,20 +19,9 @@ export default class HappyPage extends React.Component {
     "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
   ];
   componentDidMount() {
-    // 해피 슬라이드
-    // this.happyInterval = setInterval(() => {
-    //   this.state.activeId < this.happyImages.length - 1
-    //     ? this.setState({
-    //         activeId: this.state.activeId + 1
-    //       })
-    //     : this.setState({
-    //         activeId: 0
-    //       });
-    // }, 3000);
+    window.scroll(0, 0);
   }
-  componentWillUnmount() {
-    // clearInterval(this.happyInterval);
-  }
+
   render() {
     const { activeId } = this.state;
     return (

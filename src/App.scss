@@ -10,8 +10,6 @@ $mobile-width: 480px;
   }
 }
 
-$memberImg-width: 160px;
-$memberImg-width-big: 250px;
 $class-slug: for !default;
 $point-font-bold: "Montserrat", sans-serif;
 $main-font-light: "NanumSquareLight", sans-serif;
@@ -23,6 +21,9 @@ $yellow: rgb(251, 212, 138);
 $white: rgb(255, 255, 255);
 $alpha-2: 0.2;
 $alpha-5: 0.5;
+$memberwidth: 160px;
+$memberMargin: 17px;
+$activeMemberWidth: 250px;
 @font-face {
   font-family: "NanumSquareLight";
   src: url("./fonts/NanumSquareLight.ttf") format("truetype");
@@ -78,7 +79,7 @@ $alpha-5: 0.5;
 
 @keyframes fade {
   0% {
-    opacity: 0.7;
+    opacity: 0.8;
   }
   100% {
     opacity: 0.99;
@@ -98,7 +99,6 @@ $alpha-5: 0.5;
     left: 100%;
   }
 }
-// TeamPC
 
 body {
   margin: 0;
@@ -129,7 +129,7 @@ body {
       .logo {
       }
       .menu {
-        width: 35%;
+        width: 400px;
         background: peru;
 
         ul {
@@ -235,6 +235,7 @@ body {
                 font-size: 48px;
                 margin-bottom: 1rem;
                 &:nth-child(1) {
+                  margin: 0.5rem 0;
                   &:after {
                     content: " ";
                     display: block;
@@ -316,6 +317,9 @@ body {
     display: flex;
     position: relative;
     width: 100vw;
+    a {
+      text-decoration: none;
+    }
     .happy-img {
       position: absolute;
       bottom: 0;
@@ -361,10 +365,10 @@ body {
       justify-content: flex-end;
       .content {
         margin-top: 5rem;
-
+        z-index: 5;
         &.pola {
           margin-left: 6rem;
-          margin-top: 9rem;
+          margin-top: 10.5rem;
         }
         height: 95%;
         .title {
@@ -453,6 +457,7 @@ body {
         font-family: $main-font-light;
       }
     }
+
     &__member {
       display: inline-block;
 
@@ -468,45 +473,49 @@ body {
       .carousel-box {
         margin: auto;
         background: red;
-        width: $memberImg-width-big * 5;
+        width: 958px;
+        //(160px * 4+ 17px * 4 + 250px);
         @include mobile {
-          width: $memberImg-width-big * 1;
+          width: 160 * 1;
         }
-        height: $memberImg-width-big;
-        // overflow: scroll;
+        display: flex;
+        height: $activeMemberWidth;
         overflow: hidden;
         position: relative;
 
         @for $i from 0 through 33 {
-          $width: 250px * $i;
           .carousel-#{$i} {
-            transform: translate(-250px * $i);
+            transform: translate(-177px * $i);
           }
         }
 
         .carousel {
           position: relative;
-          left: 250 * 2px;
+          //
+          left: calc(337px + 8.5px);
           display: flex;
           transition: transform 1s;
-
+          background: red;
           .item {
+            margin: 0 8.5px;
             background: skyblue;
+            min-width: $memberMargin;
+            min-height: $memberwidth;
 
-            min-width: $memberImg-width-big;
-            min-height: $memberImg-width-big;
             display: flex;
             justify-content: center;
             align-items: center;
+            &.active {
+              width: 250px;
+            }
             &__img {
-              background: red;
               display: flex;
-              width: $memberImg-width;
-              height: $memberImg-width;
+              width: $memberwidth;
+              height: $memberwidth;
               &.active {
                 animation-name: scale;
-                animation-duration: 1s;
                 animation-fill-mode: forwards;
+                animation-duration: 1s;
               }
               img {
                 max-width: 100%;
@@ -633,62 +642,6 @@ body {
       // 슬라이드 해피
       .bottom {
         margin: auto;
-
-        // .slide {
-        //   width: 800px;
-        //   height: 400px;
-        //   position: relative;
-
-        //   &__img {
-        //     padding: 0;
-        //     margin: 0;
-        //     list-style: none;
-
-        //     li {
-        //       position: absolute;
-        //       top: 0;
-        //       left: 0;
-        //       z-index: 1;
-        //       opacity: 0.1;
-
-        //       &.active {
-        //         z-index: 2;
-        //         animation-name: fade;
-        //         animation-timing-function: ease-in-out;
-        //         animation-duration: 0.5s;
-        //         animation-fill-mode: forwards;
-        //       }
-        //       img {
-        //         width: 800px;
-        //         height: 400px;
-        //       }
-        //     }
-        //   }
-        //   // 슬라이드 내비게이션
-
-        //   &__nav {
-        //     list-style: none;
-        //     margin: auto;
-
-        //     display: flex;
-        //     justify-content: center;
-        //     position: absolute;
-        //     width: 100%;
-
-        //     bottom: 0;
-        //     .dot {
-        //       margin: 0.5rem;
-        //       z-index: 4;
-        //       width: 10px;
-        //       height: 10px;
-        //       border-radius: 50%;
-        //       background: #ffffff;
-        //       &.active {
-        //         background: $main-font-color;
-        //       }
-        //     }
-        //   }
-        // }
       }
     }
   }
@@ -905,7 +858,6 @@ body {
 // 슬라이드
 .slide-wrap {
   display: flex;
-  background: pink;
   .slide {
     position: relative;
     width: 500px;
@@ -920,19 +872,21 @@ body {
       list-style: none;
       margin: 0;
       padding: 0;
+      background: #1e1e1e;
       li {
         z-index: 1;
-        opacity: 0.1;
+        opacity: 0;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+
         &.active {
           z-index: 2;
           animation-name: fade;
-          animation-timing-function: ease-in-out;
-          animation-duration: 0.5s;
+          animation-timing-function: ease;
+          animation-duration: 0.3s;
           animation-fill-mode: forwards;
         }
         .img {

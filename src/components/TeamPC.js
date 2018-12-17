@@ -73,15 +73,14 @@ export default class TeamPC extends React.Component {
                   {members.map((member, index) => (
                     <div
                       onClick={e => {
-                        console.log(members.length);
-                        console.log(activeId);
-
                         index >= 2 &&
                           index < members.length - 3 &&
                           this.setState({ activeId: index });
                       }}
                       key={index}
-                      className={classNames("item")}
+                      className={classNames("item", {
+                        active: this.state.activeId === index
+                      })}
                     >
                       <div
                         className={classNames("item__img", {

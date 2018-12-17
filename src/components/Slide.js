@@ -9,6 +9,7 @@ export default class Slide extends React.Component {
     this.timeout();
   }
   timeout = () => {
+    const { handleImageChange } = this.props;
     this.state.pause &&
       this.setState({
         pause: false
@@ -21,7 +22,7 @@ export default class Slide extends React.Component {
       this.setState({
         activeId: id
       });
-      this.props.handleImageChange(id);
+      handleImageChange && handleImageChange(id);
     }, 5000);
   };
   pause = () => {
@@ -32,10 +33,11 @@ export default class Slide extends React.Component {
   };
 
   componentWillUnmount() {
-    this.pause;
+    // this.interval && clearInterval(this.interval);
+    this.pause();
   }
   render() {
-    const { images, slideName } = this.props;
+    const { images, slideName, handleImageChange } = this.props;
     const { activeId } = this.state;
     return (
       <div className="slide-wrap">
@@ -46,7 +48,7 @@ export default class Slide extends React.Component {
             this.setState({
               activeId: id
             });
-            this.props.handleImageChange(id);
+            handleImageChange && handleImageChange(id);
           }}
         >
           앞으로
@@ -71,7 +73,7 @@ export default class Slide extends React.Component {
                   this.setState({
                     activeId: index
                   });
-                  this.props.handleImageChange(index);
+                  handleImageChange && handleImageChange(index);
                 }}
                 key={index}
                 className={classnames({ active: index === activeId })}
@@ -91,7 +93,7 @@ export default class Slide extends React.Component {
             this.setState({
               activeId: id
             });
-            this.props.handleImageChange(id);
+            handleImageChange && handleImageChange(id);
           }}
         >
           뒤로
