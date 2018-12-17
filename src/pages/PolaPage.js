@@ -6,11 +6,34 @@ import Footer from "../components/Footer";
 import titleNavy from "../images/00_title_navy";
 import titleSub from "../images/00_title_sub";
 import polaDeliver from "../images/10_pola_deliver.gif";
+import { runInThisContext } from "vm";
 export default class PolaPage extends React.Component {
+  state = {
+    activeId: 0
+  };
   polaImages = [
     "https://images.unsplash.com/photo-1544586571-42a0e47dad19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
     "https://images.unsplash.com/photo-1544555103-3fc48768dcf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80",
+    "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+    "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
     "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
+  ];
+  onImageChange = id => {
+    this.setState({
+      activeId: id
+    });
+    console.log(id);
+  };
+  polaTexts = [
+    [
+      "사랑하는 친구, 가족, 반려동물",
+      "그리고 나의 최애를",
+      "폴라폴라로 더욱 특별하게 간직하세요"
+    ],
+    ["소중한 사진으로 나의 공간을 더욱 의미있게 만들어요"],
+    ["나만의 커스텀(Custom) 굿즈"],
+    ["특별한 날, 오래도록 남는 선물"],
+    ["따뜻한 추억들을 간편하게 모아봐요"]
   ];
   render() {
     return (
@@ -169,15 +192,17 @@ export default class PolaPage extends React.Component {
             </div>
           </section>
           <section className="message">
-            <div className="text">
-              <p>
-                사랑하는 친구, 가족, 반려동물 <br />
-                그리고 나의 최애를 <br />
-                폴라폴라로 더욱 특별하게 간직하세요.
-              </p>
+            <div classsName="text">
+              {this.polaTexts[this.state.activeId].map(line => (
+                <p>{line}</p>
+              ))}
             </div>
             <div className="img">
-              <Slide images={this.polaImages} slideName={"pola"} />
+              <Slide
+                images={this.polaImages}
+                slideName={"pola"}
+                handleImageChange={this.onImageChange}
+              />
             </div>
           </section>
           <Footer />

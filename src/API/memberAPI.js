@@ -38,10 +38,31 @@ const members = [
     name: "Jini Kim, 영업지원",
     message: "친절하게 C/S문의 처리중"
   },
-  { id: 7, img: img8, name: "효원님", message: "8번 메시지" },
-  { id: 8, img: img9, name: "문규님", message: "9번 메시지" },
+  {
+    id: 7,
+    img: img8,
+    name: "Eagle Eye, Sales",
+    message: "믿음 소망 사랑 그중에 제일은 고객이라..."
+  },
+  {
+    id: 8,
+    img: img9,
+    name: "Idol Master P, Sales",
+    message: "국경의 긴 터널을 빠져나오니 설국이었다"
+  },
   { id: 9, img: img10, name: "나", message: "아무말아무말" },
-  { id: 10, img: img11, name: "승식님", message: "11번 메시지 " }
+  {
+    id: 10,
+    img: img11,
+    name: "Ssum Ssum, Sales",
+    message: "기계가 안정화되는 그 날 까지..."
+  },
+  {
+    id: 11,
+    img: img11,
+    name: "LJG, Sales",
+    message: "빠르고! 정확하게! 신갈동호날두"
+  }
 ];
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {

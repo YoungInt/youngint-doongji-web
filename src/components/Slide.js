@@ -14,14 +14,15 @@ export default class Slide extends React.Component {
         pause: false
       });
     this.interval = setInterval(() => {
-      this.state.activeId < this.props.images.length - 1
-        ? this.setState({
-            activeId: this.state.activeId + 1
-          })
-        : this.setState({
-            activeId: 0
-          });
-    }, 3000);
+      const id =
+        this.state.activeId < this.props.images.length - 1
+          ? this.state.activeId + 1
+          : 0;
+      this.setState({
+        activeId: id
+      });
+      this.props.handleImageChange(id);
+    }, 5000);
   };
   pause = () => {
     this.interval && clearInterval(this.interval);
@@ -40,15 +41,13 @@ export default class Slide extends React.Component {
       <div className="slide-wrap">
         <div
           className="backward"
-          onClick={e =>
-            activeId > 0
-              ? this.setState({
-                  activeId: activeId - 1
-                })
-              : this.setState({
-                  activeId: images.length - 1
-                })
-          }
+          onClick={e => {
+            const id = activeId > 0 ? activeId - 1 : images.length - 1;
+            this.setState({
+              activeId: id
+            });
+            this.props.handleImageChange(id);
+          }}
         >
           앞으로
         </div>
@@ -68,33 +67,32 @@ export default class Slide extends React.Component {
           <ul className="slide__nav">
             {images.map((img, index) => (
               <li
-                onClick={e =>
+                onClick={e => {
                   this.setState({
                     activeId: index
-                  })
-                }
+                  });
+                  this.props.handleImageChange(index);
+                }}
                 key={index}
                 className={classnames({ active: index === activeId })}
               />
             ))}
-            <li
+            <div
               onClick={e => (this.state.pause ? this.timeout() : this.pause())}
             >
               {this.state.pause ? "시작" : "멈춤"}
-            </li>
+            </div>
           </ul>
         </div>
         <div
           className="forward"
-          onClick={e =>
-            activeId < images.length - 1
-              ? this.setState({
-                  activeId: activeId + 1
-                })
-              : this.setState({
-                  activeId: 0
-                })
-          }
+          onClick={e => {
+            const id = activeId < images.length - 1 ? activeId + 1 : 0;
+            this.setState({
+              activeId: id
+            });
+            this.props.handleImageChange(id);
+          }}
         >
           뒤로
         </div>
