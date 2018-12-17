@@ -298,9 +298,7 @@ body {
 .brand-container {
   height: 960px;
   overflow: hidden;
-  background: linear-gradient(to bottom, #fdecbe, #fbd48a);
-  display: flex;
-
+  position: relative;
   .button {
     width: 140px;
     height: 42px;
@@ -312,80 +310,87 @@ body {
     font-family: $main-font-ExtraBold;
     margin-top: 3rem;
   }
+  .brand-wrap {
+    width: 2000px;
+    overflow: hidden;
 
-  .brand {
-    display: flex;
-    position: relative;
-    width: 100vw;
-    a {
-      text-decoration: none;
-    }
-    .happy-img {
+    .brand {
+      height: 960px;
+      width: 1000px;
       position: absolute;
-      bottom: 0;
-      left: 60px;
-    }
-    .pola-img {
-      position: absolute;
-      bottom: 0;
-    }
-    // 브랜드 폴라 해피 배경
-    &.happy {
-      width: 50%;
-    }
-    &.pola {
-      width: 70%;
-      background: linear-gradient(to bottom, #d5edff, #abd7ff);
-      transform: skew(-10deg);
-      position: relative;
-      left: 6%;
-    }
-    .container-title {
-      .title {
-        @extend %title-font;
-        display: inline-block;
-        @extend %border-bottom;
-      }
-    }
-    .pola-img {
-      transform: skew(10deg);
-    }
-    .wrap {
-      &.pola {
-        transform: skew(10deg);
-      }
       &.happy {
-        margin-right: 0;
+        transform: skew(-10deg);
+        background-image: linear-gradient(to bottom, #fdecbe, #fbd48a);
+        left: 50%;
       }
-      margin: auto;
-      width: 80%;
-      height: 80%; // background: palevioletred;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      .content {
-        margin-top: 5rem;
-        z-index: 5;
-        &.pola {
-          margin-left: 6rem;
-          margin-top: 10.5rem;
-        }
-        height: 95%;
-        .title {
-          p {
-            font-size: 24px;
-            font-family: $main-font-Bold;
-            display: inline-block;
-            &:nth-child(1) {
-              margin-bottom: 0;
-              @extend %point-text;
+      &.pola {
+        right: 50%;
+        transform: skew(-10deg);
+        background: linear-gradient(to bottom, #d5edff, #abd7ff);
+      }
+    }
+    .box {
+      width: 100vw;
+
+      .center {
+        width: 80%;
+        margin: auto;
+        display: flex;
+
+        .brand-box {
+          border: 1px solid black;
+          width: 770px;
+          height: 960px;
+          z-index: 2;
+          &.happy {
+          }
+          &.pola {
+          }
+          .container-title {
+            height: 300px;
+
+            .title {
+              margin-top: 140px;
+
+              @extend %title-font;
+              display: inline-block;
+              @extend %border-bottom;
+            }
+          }
+          .content {
+            background: red;
+            &.pola {
+              margin-left: 4rem;
+            }
+            .title {
+              display: flex;
+              font-size: 24px;
+              h3 {
+                margin: 0;
+                line-height: 1.9;
+                margin-right: 1rem;
+              }
+              .bold {
+                line-height: 1.29;
+                font-family: $main-font-ExtraBold;
+                font-size: 48px;
+              }
             }
           }
         }
       }
+
+      img {
+        position: absolute;
+        bottom: 0;
+      }
+      a {
+        text-decoration: none;
+      }
     }
   }
 }
+// 해피 폴라 박스
 
 .accomplish {
   height: 800px;
