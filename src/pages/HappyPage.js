@@ -1,6 +1,7 @@
 import React from "react";
 import mainHappy from "../images/main_happy";
 import happy from "../images/happy";
+import happyUsage1 from "../images/happname_usage_1";
 import happyCulture1 from "../images/happyname_culture_01";
 import happyCulture2 from "../images/happyname_culture_02";
 import happyCulture3 from "../images/happyname_culture_03";
@@ -17,7 +18,7 @@ export default class HappyPage extends React.Component {
     activeId: 0
   };
   happyImages = [
-    "https://images.unsplash.com/photo-1544586571-42a0e47dad19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+    happyUsage1,
     "https://images.unsplash.com/photo-1544555103-3fc48768dcf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80",
     "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
   ];
@@ -53,7 +54,7 @@ export default class HappyPage extends React.Component {
           </div>
           {/* 메인 */}
 
-          <section className="main-wrap">
+          <main className="main-wrap">
             <div className="main">
               <div className="main__content">
                 <div className="happy_main-img">
@@ -68,14 +69,14 @@ export default class HappyPage extends React.Component {
                 </div>
               </div>
             </div>
-          </section>
+          </main>
           {/* 컬쳐 */}
           <section className="culture-wrap">
             <div className="culture">
               <div className="top">
                 <div className="text">
                   <p className="title">
-                    견출지 그 이상,
+                    견출지 그 이상, <br />
                     <span className="bold"> 새로운 네임스티커 문화</span>
                   </p>
 
@@ -134,61 +135,63 @@ export default class HappyPage extends React.Component {
           {/* 버전 */}
           <section className="version-wrap">
             <div className="version">
-              <p className="version__title">
-                해피네임스티커 자판기는 <br />
-                <span className="bold">3가지 버전</span>이 있어
-                <br />
-                상황에 맞는 대응이 가능합니다.
-              </p>
-              <ul className="version__list">
-                <li>
-                  <div className="img">
-                    <img src="" alt="" />
-                  </div>
-                  <div className="title">
-                    <p>
-                      인쇄하고 싶은
-                      <br />
-                      아이콘을
-                      <br />
-                      선택할 수 있는 <br />
-                      <span className="bold">해피 ver.</span>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div className="img">
-                    <img src="" alt="" />
-                  </div>
-                  <div className="title">
-                    <p>
-                      눈에 띄는
-                      <br />
-                      귀여운
-                      <br />
-                      캐릭터 디자인
-                      <br />
-                      <span className="bold">캐릭터 ver.</span>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div className="img">
-                    <img src="" alt="" />
-                  </div>
-                  <div className="title">
-                    <p>
-                      협력제휴사의
-                      <br />
-                      요청에 맞는
-                      <br />
-                      디자인을 적용
-                      <br />
-                      <span className="bold">커스텀 ver.</span>
-                    </p>
-                  </div>
-                </li>
-              </ul>
+              <div className="version__title">
+                <p className="title">
+                  해피네임스티커 자판기는 <br />
+                  <span className="bold">3가지 버전</span>이 있어
+                  <br />
+                  상황에 맞는 대응이 가능합니다.
+                </p>
+                <ul className="list">
+                  <li>
+                    <div className="img">
+                      <img src="" alt="" />
+                    </div>
+                    <div className="title">
+                      <p>
+                        인쇄하고 싶은
+                        <br />
+                        아이콘을
+                        <br />
+                        선택할 수 있는 <br />
+                        <span className="bold">해피 ver.</span>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="img">
+                      <img src="" alt="" />
+                    </div>
+                    <div className="title">
+                      <p>
+                        눈에 띄는
+                        <br />
+                        귀여운
+                        <br />
+                        캐릭터 디자인
+                        <br />
+                        <span className="bold">캐릭터 ver.</span>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="img">
+                      <img src="" alt="" />
+                    </div>
+                    <div className="title">
+                      <p>
+                        협력제휴사의
+                        <br />
+                        요청에 맞는
+                        <br />
+                        디자인을 적용
+                        <br />
+                        <span className="bold">커스텀 ver.</span>
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
               {/* 버전 상세 */}
               <div className="version__detail">
                 <div className="detail">
@@ -294,17 +297,20 @@ export default class HappyPage extends React.Component {
               <div className="img">
                 <img src="#" alt="해피네임 이미지" />
               </div>
-              <div className="text">
-                <p className="bold">
-                  더 좋은 제품으로
-                  <br />더 넓은 곳으로
-                </p>
-                <p>
-                  해피네임 스티커는 더 넓은 세계로 나가 더 많은 고객들을 만나고,
-                  <br />
-                  고객의 소리에 귀 기울여 더 좋은 제품을 개발할 것을 약속
-                  드립니다.
-                </p>
+              <div className="text-wrap">
+                <div className="text">
+                  <p className="bold">
+                    더 좋은 제품으로
+                    <br />더 넓은 곳으로
+                  </p>
+                  <p>
+                    해피네임 스티커는 더 넓은 세계로 나가 더 많은 고객들을
+                    만나고,
+                    <br />
+                    고객의 소리에 귀 기울여 더 좋은 제품을 개발할 것을 약속
+                    드립니다.
+                  </p>
+                </div>
               </div>
             </div>
           </section>

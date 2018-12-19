@@ -29,7 +29,7 @@ $activeMemberWidth: 250px;
 $content-width: 1000px;
 @font-face {
   font-family: "NanumSquareLight";
-  src: url("../src/fonts/NanumSquareLight.ttf") format("truetype");
+  src: url("../src/fonts/NanumSquareLight.woff2") format("woff2");
 }
 @font-face {
   font-family: "NanumSquareBold";
@@ -54,7 +54,16 @@ $content-width: 1000px;
 %happy-font {
   font-size: 48px;
   line-height: 1.29;
-
+  letter-spacing: -1.6px;
+  font-family: $main-font-light;
+  .bold {
+    font-family: $main-font-ExtraBold;
+  }
+}
+%happy-font-sub {
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: -0.3;
   .bold {
     font-family: $main-font-ExtraBold;
   }
@@ -173,50 +182,64 @@ body {
     background-image: url("../src/images/main_pic_mono.png");
     background-size: 100vw calc(100vh - 80px);
     height: calc(100vh - 80px);
-    .content {
-      padding-top: 230px;
 
-      height: 70%;
-      // width: 80%;
+    .content {
+      height: 100%;
       width: $content-width;
       margin: auto;
-
-      p {
-        margin: 0;
-      }
-      .title {
-        @extend %point-text;
-      }
-      .desc {
+      position: relative;
+      .content-wrap {
+        position: absolute;
+        bottom: 66px;
         p {
-          margin: 8px;
+          margin: 0;
+        }
+        .title {
+          height: 197px;
+          @extend %point-text;
+          p {
+            line-height: 62px;
+            letter-spacing: -0.7px;
+          }
+        }
+        .desc {
+          p {
+            line-height: 27px;
+            letter-spacing: 0.3px;
+          }
         }
       }
     }
   }
 }
+// map 지도
 .map {
   height: 608px;
   width: 1200px;
-  position: relative;
   background: url("../src/images/main_worldmap.png");
   margin: auto;
   background-size: cover;
   background-repeat: no-repeat;
+
   .wrap {
-    // width: 80%;
     width: $content-width;
     margin: auto;
+    position: relative;
     .content {
       position: absolute;
-      bottom: 3rem;
-      right: 140px;
-
+      top: 260px;
+      right: 0;
+      background: pink;
       p {
-        line-height: 1.69;
+        margin: 0;
         &:nth-child(1) {
           @extend %point-text;
-          line-height: 1.29;
+          line-height: 62px;
+          letter-spacing: -1.6px;
+        }
+        &:nth-child(2) {
+          line-height: 27px;
+          letter-spacing: -0.3px;
         }
       }
     }
@@ -264,21 +287,21 @@ body {
             .text {
               p {
                 font-size: 48px;
-                margin-bottom: 1rem;
+
                 &:nth-child(1) {
-                  margin: 0.5rem 0;
-                  &:after {
-                    content: " ";
-                    display: block;
-                    width: 50px;
-                    height: 2px;
-                    background-color: $main-font-color;
-                    margin: 1rem auto;
-                  }
+                  height: 124px;
+                  line-height: 50px;
+                  margin: 0;
+                  letter-spacing: -1.4px;
                 }
                 &:nth-child(2) {
-                  line-height: 1.69;
-                  margin-top: 1px;
+                  width: 50px;
+                  height: 2px;
+                  background-color: $main-font-color;
+                  margin: 0 auto;
+                }
+                &:nth-child(3) {
+                  line-height: 24px;
                   font-size: 16px;
                   font-family: $main-font-Bold;
                 }
@@ -302,22 +325,17 @@ body {
             }
           }
           .text {
-            .title {
-              font-size: 48px;
-              font-family: $main-font-light;
+            p {
               margin: 0;
-              line-height: 1.29;
-              p {
-                margin: 0;
-              }
-              div {
-                margin: 0;
-                display: flex;
-                p {
-                  margin: 0;
-                  @extend %point-text;
-                }
-              }
+            }
+            .title {
+              border: none;
+              @extend %happy-font;
+            }
+
+            .desc {
+              line-height: 1.69;
+              letter-spacing: -0.3px;
             }
           }
         }
@@ -450,26 +468,19 @@ body {
     height: 70%;
     display: flex;
     .content-text {
-      width: 60%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       .text {
-        .p {
-          line-height: 62px;
-          margin: 0;
-          font-size: 48px;
-          .bold {
-            margin: 0 0 0 5px;
-            display: inline-block;
-            font-family: $main-font-ExtraBold;
-          }
+        p {
+          @extend %happy-font;
         }
       }
     }
     .content-img {
       background: #fbd48a;
-      width: 40%;
+      width: 100px;
+      height: 100px;
     }
   }
 }
@@ -483,10 +494,8 @@ body {
   background: #fbd48a;
   width: 100vw;
   .team {
-    // width: 80%;
     width: $content-width;
     height: 70%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -495,7 +504,6 @@ body {
       .title {
         @extend %title-font;
         display: flex;
-
         display: inline-block;
         @extend %border-bottom;
       }
@@ -531,7 +539,6 @@ body {
         width: 900px;
         //(160px * 4+ 17px * 4 + 250px);
         @include mobile {
-          // width: 160 * 1;
           width: 150px;
         }
         display: flex;
@@ -631,80 +638,67 @@ body {
       }
     }
   }
+
   // 메인 섹션
   .main-wrap {
-    height: 100vh;
-    padding-top: 80px;
-    overflow: hidden;
     height: calc(100vh - 80px);
+    overflow: hidden;
     background: #fbd48a;
-    position: relative;
+    padding-top: 80px;
     .main {
-      // background: pink;
-      // width: 80%;
       width: $content-width;
       margin: auto;
-      &__content {
-        position: relative;
+      position: relative;
+      height: 100%;
+      background: green;
 
-        margin-top: 10rem;
+      &__content {
         .happy_main-img {
           width: 500px;
-
           position: absolute;
           right: 0;
-          bottom: -10px;
+          bottom: 38px;
         }
         p {
-          font-size: 48px;
-          line-height: 1.29;
-          .bold {
-            font-family: $main-font-ExtraBold;
-          }
+          @extend %happy-font;
         }
         .img {
           width: 500px;
           height: 400px;
           background: skyblue;
+          position: absolute;
+          bottom: 80px;
         }
       }
     }
     // 컬쳐
   }
   .culture-wrap {
-    height: 1455px;
+    // 높이 지정하지 않고 패딩으로 조절함.
     display: flex;
-
     .culture {
       width: 864px;
-      height: 90%;
       margin: auto;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
+      padding: 140px 0;
       .top {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 3rem;
 
         .text {
-          background: pink;
           width: 100%;
           text-align: center;
-          .title {
+          p {
             margin: 0;
-
-            font-size: 48px;
-            .bold {
-              display: block;
-              font-family: $main-font-ExtraBold;
-              margin-left: 1rem;
-            }
+          }
+          .title {
+            @extend %happy-font;
           }
           .desc {
-            line-height: 1.69;
+            @extend %happy-font-sub;
           }
         }
       }
@@ -725,7 +719,8 @@ body {
       }
       // 슬라이드 해피
       .middle {
-        margin: auto;
+        margin: 0;
+        padding: 45px 0;
       }
     }
   }
@@ -734,56 +729,62 @@ body {
     background: rgba($yellow, $alpha-5);
 
     .version {
-      height: 95%;
       margin: auto;
-
       &__title {
-        text-align: center;
-        @extend %happy-font;
-      }
-      &__list {
-        padding: 0;
-        list-style: none;
-        height: 26%;
-        margin: auto;
-        width: 1000px;
-        li {
-          display: flex;
-          background: red;
+        padding: 143px 0;
+        .title {
+          text-align: center;
+          @extend %happy-font;
+        }
+        .list {
+          padding: 0;
+          list-style: none;
 
-          .img {
-            width: 780px;
+          margin: auto;
+
+          li {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            background: red;
             height: 330px;
-            background: pink;
-          }
-          .title {
-            background: green;
-            @extend %happy-font;
+            vertical-align: middle;
+            .img {
+              width: 780px;
+              background: pink;
+            }
+            .title {
+              p {
+                vertical-align: text-bottom;
+                width: 334px;
+                background: green;
+                @extend %happy-font;
+                margin: 0;
+              }
+            }
           }
         }
       }
       &__detail {
-        height: 2655px;
-
         .detail {
           border-top: 2px solid #ffffff;
-          height: 613px;
-
+          padding: 135px 0;
           .detail-wrap {
-            margin-top: 150px;
             .img {
               margin: auto;
               width: 300px;
               height: 124px;
               background: tomato;
             }
+
             .text {
-              text-align: center;
-              line-height: 1.69;
+              margin-top: 40px;
               p {
                 margin: 0;
-                &:nth-child(1) {
-                  @extend %happy-font;
+                text-align: center;
+                @extend %happy-font;
+                &:nth-child(2) {
+                  @extend %happy-font-sub;
                 }
               }
             }
@@ -806,19 +807,18 @@ body {
         width: 50%;
         background: pink;
       }
-      .text {
+      .text-wrap {
         width: 50%;
         background: skyblue;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        p {
-          background: yellow;
-          line-height: 1.69;
-          &.bold {
-            font-size: 48px;
-            font-family: $main-font-ExtraBold;
-            line-height: 1.29;
+        .text {
+          background: red;
+          p {
+            margin: 0;
+            @extend %happy-font-sub;
+
+            &:nth-child(1) {
+              @extend %happy-font;
+            }
           }
         }
       }
@@ -879,9 +879,7 @@ body {
 
   .wrap {
     margin: 3rem 0;
-
     margin: auto;
-    // width: 80%;
     width: $content-width;
     height: 80%;
     margin-bottom: 0;
@@ -892,7 +890,6 @@ body {
     }
     .img {
       padding: 3rem 0 2rem 0;
-      // height: 35%;
       margin: auto;
       img {
         width: 100%;
@@ -922,22 +919,28 @@ body {
     }
     .content {
       display: flex;
+      margin-top: 90px;
+      height: 328px;
+
       &__map {
         width: 50%;
+        height: 100%;
+        background: green;
       }
       &__text {
-        width: 50%;
+        height: 100%;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         .title {
-          font-size: 48px;
-          line-height: 1.29;
+          @extend %happy-font;
         }
         .address {
-          line-height: 1.69;
+          @extend %happy-font-sub;
           font-style: normal;
           p {
-            &:nth-child(1) {
-              font-family: $main-font-ExtraBold;
-            }
+            margin: 0;
             a {
               text-decoration: none;
               color: $main-font-color;
@@ -1083,7 +1086,7 @@ body {
       bottom: 100px;
       left: 3%;
       animation-name: pola-animation;
-      animation-duration: 20s;
+      animation-duration: 5s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
     }

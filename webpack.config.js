@@ -31,11 +31,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.(svg|png|gif|ttf)$/,
+        test: /\.(svg|png|gif|ttf|woff2)$/,
         loader: "file-loader",
         options: {
           name: "[path][name].[ext]",
-          outputPath: "/",
+          outputPath: "./",
           publicPath: "/"
         }
       }

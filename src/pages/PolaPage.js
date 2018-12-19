@@ -220,7 +220,9 @@ export default class PolaPage extends React.Component {
           </section>
           <section className="message">
             <div className="text">
-              {this.polaTexts[this.state.activeId].map((line, index) => line)}
+              {this.polaTexts[this.state.activeId].map((line, index) => (
+                <div key={index}>{line}</div>
+              ))}
             </div>
             <div className="img">
               <Slide
