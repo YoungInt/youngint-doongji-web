@@ -83,6 +83,38 @@ export default class Philosophy extends React.Component {
             </div>
           </div>
         </div>
+        <div className="accomplish">
+          <div className="wrap">
+            <div className="content-text">
+              <div className="text">
+                <div className="p">
+                  네임스티커 자판기 개발
+                  <p className="bold">국내 최초</p>
+                </div>
+                <div className="p">
+                  카카오톡 & 키오스크 연동
+                  <p className="bold">국내최초</p>
+                </div>
+                <div className="p">
+                  누적 매출
+                  <p className="bold">70억원</p>
+                </div>
+                <div className="p">
+                  국내 누적 사용자
+                  <p className="bold">300만명</p>
+                </div>
+                <div className="p">
+                  누적 설치대수
+                  <p className="bold">1000대</p>
+                </div>
+              </div>
+              <div className="date">2018년 10월 기준</div>
+            </div>
+            <div className="content-img">
+              <img src="#" alt="" />
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     );
   }

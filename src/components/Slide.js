@@ -51,7 +51,7 @@ export default class Slide extends React.Component {
             handleImageChange && handleImageChange(id);
           }}
         >
-          앞으로
+          앞
         </div>
         <div className={classnames("slide", slideName)}>
           <ul className="list">
@@ -96,7 +96,7 @@ export default class Slide extends React.Component {
             handleImageChange && handleImageChange(id);
           }}
         >
-          뒤로
+          뒤
         </div>
       </div>
     );

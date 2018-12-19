@@ -6,6 +6,14 @@ import Footer from "../components/Footer";
 import titleNavy from "../images/00_title_navy";
 import titleSub from "../images/00_title_sub";
 import polaDeliver from "../images/10_pola_deliver.gif";
+import polabenefit1 from "../images/polapolar_benefit_01";
+import polabenefit2 from "../images/polapolar_benefit_02";
+import polabenefit3 from "../images/polapolar_benefit_03";
+import polabenefit4 from "../images/polapolar_benefit_04";
+import polaChat from "../images/polapolar_keyword ";
+import homeLogo from "../images/button_home.svg";
+
+import langLogo from "../images/button_language.svg";
 
 export default class PolaPage extends React.Component {
   state = {
@@ -51,9 +59,15 @@ export default class PolaPage extends React.Component {
             <header className="header">
               <ul>
                 <li>
-                  <Link to="/">홈</Link>
+                  <Link to="/">
+                    <img src={homeLogo} alt="" />
+                  </Link>
                 </li>
-                <li>지구</li>
+                <li>
+                  <a href="#">
+                    <img src={langLogo} alt="" />
+                  </a>
+                </li>
               </ul>
             </header>
           </div>
@@ -81,7 +95,7 @@ export default class PolaPage extends React.Component {
               <ul>
                 <li>
                   <div className="img">
-                    <img src="#" alt="폴라폴라 챗봇" />
+                    <img src={polaChat} alt="폴라폴라 챗봇" />
                   </div>
                   <div className="text">
                     <p>
@@ -126,24 +140,28 @@ export default class PolaPage extends React.Component {
                 <img src="#" alt="" />
               </div>
               <div className="detail-wrap">
-                <div className="detail-top">
-                  <div className="item">
-                    <div className="img">
-                      <img src="" alt="" />
-                    </div>
-                    <div className="title">
-                      <span className="bold">절취선</span>이 있어요
-                    </div>
-                    <p>
-                      폴라폴라는 가운데에 절취선이 있어서
-                      <br />
-                      취향에 따라, 크기에 맞게 사용할 수 있으며
-                      <br />
-                      친구나 연인과 간편하게 나눌 수 있습니다.
-                    </p>
+                <div className="detail-line">
+                  <div className="item-wrap">
                     <div className="item">
                       <div className="img">
-                        <img src="" alt="" />
+                        <img src={polabenefit1} alt="절취선이 있는 폴라폴라" />
+                      </div>
+                      <div className="title">
+                        <span className="bold">절취선</span>이 있어요
+                      </div>
+                      <p>
+                        폴라폴라는 가운데에 절취선이 있어서
+                        <br />
+                        취향에 따라, 크기에 맞게 사용할 수 있으며
+                        <br />
+                        친구나 연인과 간편하게 나눌 수 있습니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="item-wrap">
+                    <div className="item">
+                      <div className="img">
+                        <img src={polabenefit2} alt="스티커 사진 폴라폴라" />
                       </div>
                       <div className="title">
                         <span className="bold">스티커</span>입니다
@@ -158,47 +176,51 @@ export default class PolaPage extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="detail-bottom">
-                  <div className="item">
-                    <div className="img">
-                      <img src="" alt="" />
+
+                <div className="detail-line">
+                  <div className="item-wrap">
+                    <div className="item">
+                      <div className="img">
+                        <img src={polabenefit3} alt="방수 기능 폴라폴라" />
+                      </div>
+                      <div className="title">
+                        <span className="bold">방수</span>가 되고 <br />
+                        <span className="bold">내구성</span>이 좋아요
+                      </div>
+                      <p>
+                        폴라폴라의 필름은 방수가 되는 재질입니다. <br />
+                        시간이 지나도 색이 잘 바라거나 찢어지지 않아서
+                        <br />
+                        소중한 사진을 오래 보관할 수 있습니다. <br />
+                      </p>
                     </div>
-                    <div className="title">
-                      <span className="bold">방수</span>가 되고 <br />
-                      <span className="bold">내구성</span>이 좋아요
-                    </div>
-                    <p>
-                      폴라폴라의 필름은 방수가 되는 재질입니다. <br />
-                      시간이 지나도 색이 잘 바라거나 찢어지지 않아서
-                      <br />
-                      소중한 사진을 오래 보관할 수 있습니다. <br />
-                    </p>
                   </div>
-                  <div className="item">
-                    <div className="img">
-                      <img src="" alt="" />
+                  <div className="item-wrap">
+                    <div className="item">
+                      <div className="img">
+                        <img src={polabenefit4} alt="한정 테마 폴라폴라" />
+                      </div>
+                      <div className="title">
+                        <span className="bold">팝업(Pop-up) </span>
+                        <br /> <span className="bold"> 한정 테마</span>가
+                        있어요.
+                      </div>
+                      <p>
+                        일정 기간동안만 만나볼 수 있는 한정 테마를 운영합니다.
+                        <br />
+                        여러 캐릭터사의 테마와 이벤트 테마를 준비중입니다.
+                        <br />
+                        다음 팝업테마는 어떤걸까요? 기대해주세요!
+                      </p>
                     </div>
-                    <div className="title">
-                      <span className="bold">팝업(Pop-up) </span>
-                      <br /> <span className="bold"> 한정 테마</span>가 있어요.
-                    </div>
-                    <p>
-                      일정 기간동안만 만나볼 수 있는 한정 테마를 운영합니다.
-                      <br />
-                      여러 캐릭터사의 테마와 이벤트 테마를 준비중입니다.
-                      <br />
-                      다음 팝업테마는 어떤걸까요? 기대해주세요!
-                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </section>
           <section className="message">
-            <div classsName="text">
-              {this.polaTexts[this.state.activeId].map(line => (
-                <p>{line}</p>
-              ))}
+            <div className="text">
+              {this.polaTexts[this.state.activeId].map((line, index) => line)}
             </div>
             <div className="img">
               <Slide

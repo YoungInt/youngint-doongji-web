@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import languageIcon from "../images/button_language.svg";
+
 export default class MainHeader extends React.Component {
   render() {
     return (
       <React.Fragment>
         <div className="mainTop">
+          <div className="box" />
           <div className="header-wrap">
             <header className="header">
               <div className="log">logo-img</div>
@@ -20,7 +23,11 @@ export default class MainHeader extends React.Component {
                   <li>
                     <a href="/#contact">Contact</a>
                   </li>
-                  <li>지구</li>
+                  <li>
+                    <a href="#">
+                      <img src={languageIcon} alt="언어 설정 버튼" />
+                    </a>
+                  </li>
                 </ul>
               </nav>
             </header>
@@ -33,11 +40,11 @@ export default class MainHeader extends React.Component {
                 <p>키오스크 서비스</p>
               </div>
               <div className="desc">
-                <p>영인터내셔널은 고객의 아이덴티티를 만들어주는 키오스크</p>
-                <p>무인 자동화 판매기 개발/유통 회사입니다.</p>
                 <p>
-                  고객들이 키오스크를 사용함에 있어 더 나은 사용환경과 경험을
-                  제공하는 것에 집중하고 있습니다.
+                  영인터내셔널은 고객의 아이덴티티를 만들어주는 <br />
+                  키오스크 (무인 자동화 판매기) 개발/유통 회사입니다. <br />
+                  고객들이 키오스크를 사용함에 있어 더 나은 사용환경과 <br />
+                  경험을 제공하는 것에 집중하고 있습니다.
                 </p>
               </div>
             </div>

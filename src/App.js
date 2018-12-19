@@ -17,17 +17,11 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route
-            onUpdate={() => window.scrollTo(0, 0)}
-            history={browserHistory}
-            exact
-            path="/"
-            component={MainPage}
-          />
-          {/* <Route path="/map/:id" component={MapPage} />
-          <Route path="/map/" component={MapPage} /> */}
+          <Route exact path="/" component={MainPage} />
           <Route path="/pola" component={PolaPage} />
           <Route pah="/happy" component={HappyPage} />
+          {/* <Route path="/map/:id" component={MapPage} />
+          <Route path="/map/" component={MapPage} /> */}
           {/* <Route path="/map/:id" component={MapPage} />
           <Route path="/map/" component={MapPage} /> */}
         </Switch>

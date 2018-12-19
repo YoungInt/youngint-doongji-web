@@ -9,6 +9,9 @@ import Footer from "../components/Footer";
 import classNames from "classnames";
 import { Helmet } from "react-helmet";
 import Slide from "../components/Slide";
+import homeLogo from "../images/button_home.svg";
+import languageLogo from "../images/button_language.svg";
+
 export default class HappyPage extends React.Component {
   state = {
     activeId: 0
@@ -37,9 +40,13 @@ export default class HappyPage extends React.Component {
               <header className="header">
                 <nav className="nav">
                   <div className="home">
-                    <Link to="/">홈</Link>
+                    <Link to="/">
+                      <img src={homeLogo} alt="" />
+                    </Link>
                   </div>
-                  <div className="lang">지구</div>
+                  <div className="lang">
+                    <img src={languageLogo} alt="" />
+                  </div>
                 </nav>
               </header>
             </div>
@@ -66,13 +73,10 @@ export default class HappyPage extends React.Component {
           <section className="culture-wrap">
             <div className="culture">
               <div className="top">
-                <div className="img">
-                  <img src={happy} alt="" />
-                </div>
                 <div className="text">
                   <p className="title">
-                    해피네임스티커의
-                    <span className="bold"> 새로운 문화</span>
+                    견출지 그 이상,
+                    <span className="bold"> 새로운 네임스티커 문화</span>
                   </p>
 
                   <p className="desc">
@@ -88,6 +92,9 @@ export default class HappyPage extends React.Component {
                 </div>
               </div>
               <div className="middle">
+                <Slide images={this.happyImages} slideName={"happy"} />
+              </div>
+              <div className="bottom">
                 <div className="item">
                   <div className="img">
                     <img src={happyCulture1} alt="" />
@@ -122,9 +129,6 @@ export default class HappyPage extends React.Component {
                 </div>
               </div>
               {/* 슬라이드 */}
-              <div className="bottom">
-                <Slide images={this.happyImages} slideName={"happy"} />
-              </div>
             </div>
           </section>
           {/* 버전 */}

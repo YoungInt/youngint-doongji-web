@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:700");
-// @import url("src/images/main_happy.png");
 
 // 미디어쿼리
 // 모바일
@@ -21,20 +20,24 @@ $yellow: rgb(251, 212, 138);
 $white: rgb(255, 255, 255);
 $alpha-2: 0.2;
 $alpha-5: 0.5;
-$memberwidth: 160px;
-$memberMargin: 17px;
+$alpha-8: 0.8;
+// $memberwidth: 160px;
+// $memberMargin: 17px;
+$memberMargin: 20px;
+$memberwidth: 150px;
 $activeMemberWidth: 250px;
+$content-width: 1000px;
 @font-face {
   font-family: "NanumSquareLight";
-  src: url("./fonts/NanumSquareLight.ttf") format("truetype");
+  src: url("../src/fonts/NanumSquareLight.ttf") format("truetype");
 }
 @font-face {
   font-family: "NanumSquareBold";
-  src: url("./fonts/NanumSquareBold.ttf") format("truetype");
+  src: url("../src/fonts/NanumSquareBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "NanumSquareExtraBold";
-  src: url("./fonts/NanumSquareExtraBold.ttf") fromat("truetype");
+  src: url("../src/fonts/NanumSquareExtraBold.ttf") fromat("truetype");
 }
 %title-font {
   font-size: 24px;
@@ -112,15 +115,23 @@ body {
 .mainTop {
   height: 100vh;
   position: relative;
+  padding-top: 80px;
+  .box {
+    // margin: 80px;
+  }
   .header-wrap {
-    background: green;
+    background: rgba($white, $alpha-8);
 
     height: $header-width;
     position: fixed;
+    top: 0;
+
     width: 100%;
     z-index: 10;
+
     .header {
-      width: 80%;
+      // width: 80%;
+      width: $content-width;
       margin: auto;
       display: flex;
       justify-content: space-between;
@@ -130,7 +141,6 @@ body {
       }
       .menu {
         width: 400px;
-        background: peru;
 
         ul {
           justify-content: space-between;
@@ -142,23 +152,35 @@ body {
             font-family: $point-font-bold;
             font-size: 18px;
             align-self: center;
-
             list-style: none;
+            a {
+              text-decoration: none;
+              color: $main-font-color;
+            }
+
+            img {
+              width: 33px;
+              height: 33px;
+
+              display: block;
+            }
           }
         }
       }
     }
   }
   &__img {
-    padding-top: 80px;
+    background-image: url("../src/images/main_pic_mono.png");
+    background-size: 100vw calc(100vh - 80px);
     height: calc(100vh - 80px);
-    background-image: url("https://images.unsplash.com/photo-1512389098783-66b81f86e199?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80");
-    background-size: cover;
-    display: flex;
     .content {
+      padding-top: 230px;
+
       height: 70%;
-      width: 80%;
+      // width: 80%;
+      width: $content-width;
       margin: auto;
+
       p {
         margin: 0;
       }
@@ -174,14 +196,22 @@ body {
   }
 }
 .map {
-  height: 700px;
+  height: 608px;
+  width: 1200px;
   position: relative;
+  background: url("../src/images/main_worldmap.png");
+  margin: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
   .wrap {
-    width: 80%;
+    // width: 80%;
+    width: $content-width;
     margin: auto;
     .content {
       position: absolute;
       bottom: 3rem;
+      right: 140px;
+
       p {
         line-height: 1.69;
         &:nth-child(1) {
@@ -200,7 +230,8 @@ body {
   display: flex;
   &__wrap {
     margin: auto;
-    width: 80%;
+    // width: 80%;
+    width: $content-width;
     height: 80%;
     .title {
       display: inline-block;
@@ -300,40 +331,43 @@ body {
   overflow: hidden;
   position: relative;
   .button {
+    border: none;
     width: 140px;
     height: 42px;
     border-radius: 22px;
     background: $main-font-color;
-    color: #ffffff;
     text-align: center;
     line-height: 42px;
     font-family: $main-font-ExtraBold;
     margin-top: 3rem;
+    z-index: 5;
+    color: #ffffff;
   }
   .brand-wrap {
-    width: 2000px;
+    width: 3000px;
     overflow: hidden;
 
     .brand {
       height: 960px;
-      width: 1000px;
+      width: 1500px;
       position: absolute;
       &.happy {
         transform: skew(-10deg);
         background-image: linear-gradient(to bottom, #fdecbe, #fbd48a);
-        left: 50%;
+        right: 50%;
       }
       &.pola {
-        right: 50%;
-        transform: skew(-10deg);
         background: linear-gradient(to bottom, #d5edff, #abd7ff);
+        left: 50%;
+        transform: skew(-10deg);
       }
     }
     .box {
       width: 100vw;
 
       .center {
-        width: 80%;
+        // width: 80%;
+        width: $content-width;
         margin: auto;
         display: flex;
 
@@ -341,11 +375,22 @@ body {
           border: 1px solid black;
           width: 770px;
           height: 960px;
-          z-index: 2;
-          &.happy {
+          z-index: 1;
+
+          .img {
+            z-index: 1;
+
+            // 해피 캐릭터
+            .happy-img {
+              background: pink;
+              // position: relative;
+            }
+            // 폴라 캐릭터
+            .pola-img {
+              background: yellow;
+            }
           }
-          &.pola {
-          }
+
           .container-title {
             height: 300px;
 
@@ -359,6 +404,8 @@ body {
           }
           .content {
             background: red;
+            position: relative;
+            z-index: 99;
             &.pola {
               margin-left: 4rem;
             }
@@ -394,10 +441,11 @@ body {
 
 .accomplish {
   height: 800px;
-  background: #f2f2f2;
+  background: rgba(242, 242, 242, 0.5);
   display: flex;
   .wrap {
-    width: 80%;
+    // width: 80%;
+    width: $content-width;
     margin: auto;
     height: 70%;
     display: flex;
@@ -435,7 +483,8 @@ body {
   background: #fbd48a;
   width: 100vw;
   .team {
-    width: 80%;
+    // width: 80%;
+    width: $content-width;
     height: 70%;
 
     display: flex;
@@ -478,10 +527,12 @@ body {
       .carousel-box {
         margin: auto;
         background: red;
-        width: 958px;
+        // width: 958px;
+        width: 900px;
         //(160px * 4+ 17px * 4 + 250px);
         @include mobile {
-          width: 160 * 1;
+          // width: 160 * 1;
+          width: 150px;
         }
         display: flex;
         height: $activeMemberWidth;
@@ -490,19 +541,22 @@ body {
 
         @for $i from 0 through 33 {
           .carousel-#{$i} {
-            transform: translate(-177px * $i);
+            // transform: translate(-177px * $i);
+            transform: translate(-170px * $i);
           }
         }
 
         .carousel {
           position: relative;
           //
-          left: calc(337px + 8.5px);
+          // left: calc(337px + 8.5px);
+          left: 330px;
           display: flex;
           transition: transform 1s;
           background: red;
           .item {
-            margin: 0 8.5px;
+            // margin: 0 8.5px;
+            margin: 0 10px;
             background: skyblue;
             min-width: $memberMargin;
             min-height: $memberwidth;
@@ -511,7 +565,8 @@ body {
             justify-content: center;
             align-items: center;
             &.active {
-              width: 250px;
+              // width: 250px;
+              width: 220px;
             }
             &__img {
               display: flex;
@@ -547,7 +602,8 @@ body {
       background: rgba($white, $alpha-2);
       .header {
         height: 100%;
-        width: 80%;
+        // width: 80%;
+        width: $content-width;
         margin: auto;
         .nav {
           display: flex;
@@ -555,6 +611,21 @@ body {
           height: 100%;
           div {
             line-height: $header-width;
+          }
+          .home {
+            a {
+              vertical-align: middle;
+              width: 40px;
+              height: 40px;
+              display: inline-block;
+            }
+          }
+          .lang {
+            img {
+              width: 40px;
+              height: 40px;
+              vertical-align: middle;
+            }
           }
         }
       }
@@ -569,14 +640,20 @@ body {
     background: #fbd48a;
     position: relative;
     .main {
-      width: 80%;
+      // background: pink;
+      // width: 80%;
+      width: $content-width;
       margin: auto;
       &__content {
+        position: relative;
+
         margin-top: 10rem;
         .happy_main-img {
+          width: 500px;
+
           position: absolute;
           right: 0;
-          bottom: -5px;
+          bottom: -10px;
         }
         p {
           font-size: 48px;
@@ -611,16 +688,17 @@ body {
         justify-content: space-between;
         align-items: center;
         margin-bottom: 3rem;
-        .img {
-        }
-        .text {
-          // display: inline;
 
+        .text {
+          background: pink;
+          width: 100%;
+          text-align: center;
           .title {
             margin: 0;
-            display: flex;
+
             font-size: 48px;
             .bold {
+              display: block;
               font-family: $main-font-ExtraBold;
               margin-left: 1rem;
             }
@@ -630,9 +708,10 @@ body {
           }
         }
       }
-      .middle {
+      .bottom {
         display: flex;
         justify-content: space-between;
+        width: 864px;
         .item {
           .img {
           }
@@ -645,7 +724,7 @@ body {
         }
       }
       // 슬라이드 해피
-      .bottom {
+      .middle {
         margin: auto;
       }
     }
@@ -653,32 +732,32 @@ body {
   // 버전
   .version-wrap {
     background: rgba($yellow, $alpha-5);
-    height: 3659px;
-    display: flex;
 
     .version {
-      display: flex;
-      flex-direction: column;
-      width: 80%;
       height: 95%;
       margin: auto;
+
       &__title {
         text-align: center;
         @extend %happy-font;
       }
       &__list {
-        background: skyblue;
+        padding: 0;
         list-style: none;
-        display: flex;
-        justify-content: space-between;
         height: 26%;
+        margin: auto;
+        width: 1000px;
         li {
+          display: flex;
+          background: red;
+
           .img {
-            width: 300px;
-            height: 100px;
+            width: 780px;
+            height: 330px;
             background: pink;
           }
           .title {
+            background: green;
             @extend %happy-font;
           }
         }
@@ -719,7 +798,8 @@ body {
 
     .vision {
       height: 100%;
-      width: 80%;
+      // width: 80%;
+      width: $content-width;
       margin: auto;
       display: flex;
       .img {
@@ -746,7 +826,7 @@ body {
   }
 }
 
-// footer 컴포넌트
+// footer 컴포넌트 푸터
 
 .footer {
   padding-top: 47px;
@@ -754,31 +834,38 @@ body {
   color: #ffffff;
   height: 300px;
   &__wrap {
-    line-height: 1.69;
-    width: 80%;
     margin: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+
     .right {
+      margin-right: 50px;
       p {
         margin: 0;
-        &:nth-child(1) {
+        .bold {
           font-family: $main-font-Bold;
           font-size: 24px;
         }
       }
     }
-    .left {
-      p {
-        margin: 0;
-      }
-      .address {
-        display: flex;
-        font-style: normal;
-        a {
-          text-decoration: none;
-          color: #ffffff;
-          margin: 0 3px;
+    .left-wrap {
+      display: inline;
+
+      .left {
+        p {
+          margin: 0;
+        }
+        .business {
+          margin: 5px 0;
+        }
+        .address {
+          display: flex;
+          font-style: normal;
+          a {
+            text-decoration: none;
+            color: #ffffff;
+            margin: 0 3px;
+          }
         }
       }
     }
@@ -794,7 +881,8 @@ body {
     margin: 3rem 0;
 
     margin: auto;
-    width: 80%;
+    // width: 80%;
+    width: $content-width;
     height: 80%;
     margin-bottom: 0;
 
@@ -824,7 +912,8 @@ body {
   height: 800px;
   display: flex;
   .wrap {
-    width: 80%;
+    // width: 80%;
+    width: $content-width;
     margin: auto;
     height: 70%;
     .component-title {
@@ -931,6 +1020,7 @@ body {
   }
 }
 // 폴라 페이지
+// pola page
 
 .pola {
   .header-wrap {
@@ -948,6 +1038,10 @@ body {
         list-style: none;
         justify-content: space-between;
         li {
+          img {
+            width: 33px;
+            height: 33px;
+          }
         }
       }
     }
@@ -1022,6 +1116,12 @@ body {
             background: #9bbedf;
             padding: 0;
             margin: auto;
+
+            img {
+              width: 300px;
+              height: 350px;
+              margin: 140px 75px 0 75px;
+            }
           }
           .text {
             @extend %happy-font;
@@ -1036,10 +1136,13 @@ body {
         width: 1000px;
         height: 2px;
         background: #9bbedf;
+        margin-top: 150px;
       }
     }
   }
+  // 폴라폴라 기능
   .feature-wrap {
+    height: 1150px;
     background: #c7dcef;
     .feature {
       width: 1000px;
@@ -1048,23 +1151,34 @@ body {
       .img {
         width: 180px;
         height: 180px;
-        background: green;
       }
       .detail-wrap {
-        display: flex;
-        .item {
-          padding: 3rem 0;
-          background: #ffffff;
-          .img {
-            width: 220px;
-            height: 114px;
-          }
-          .title {
-            @extend %happy-font;
-            line-height: 1.29;
-          }
-          p {
-            margin: 0;
+        .detail-line {
+          display: flex;
+          .item-wrap {
+            margin-left: 30px;
+            background: url("../src/images/polapolar_talkbubble.png");
+            background-size: 423px 400px;
+            background-repeat: no-repeat;
+            width: 423px;
+            height: 400px;
+            margin-top: 3rem;
+            .item {
+              margin: 59px 0 0 43px;
+
+              .img {
+                width: 220px;
+                height: 114px;
+              }
+              .title {
+                @extend %happy-font;
+                margin-top: 14px;
+                line-height: 1.29;
+              }
+              p {
+                margin: 0;
+              }
+            }
           }
         }
       }

@@ -5,7 +5,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
   template: path.join(__dirname, "public", "index.html"),
   filename: "./index.html"
 });
-
+require("svg-inline-loader");
 module.exports = {
   entry: ["@babel/polyfill", path.join(__dirname, "src", "App.jsx")],
   module: {
@@ -26,31 +26,17 @@ module.exports = {
               localIdentName: "[local]"
             }
           },
-          // {
-          //   loader: "resolve-url-loader",
-          //   options: {
-          //     root: "",
-          //     includeRoot: true
-          //   }
-          // },
+
           { loader: "sass-loader" }
         ]
       },
       {
-        test: /\.(png|gif)$/,
+        test: /\.(svg|png|gif|ttf)$/,
         loader: "file-loader",
         options: {
           name: "[path][name].[ext]",
-          outputPath: "./",
+          outputPath: "/",
           publicPath: "/"
-        }
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]",
-          outputPath: "fonts/"
         }
       }
     ]

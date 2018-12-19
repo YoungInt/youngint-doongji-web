@@ -62,8 +62,9 @@ export default class TeamPC extends React.Component {
                     });
                 }}
               >
-                뒤로
+                {"<"}
               </div>
+
               <div
                 className="carousel-box"
                 id="carousel-box"
@@ -102,7 +103,7 @@ export default class TeamPC extends React.Component {
                   })
                 }
               >
-                >앞으로
+                >
               </div>
             </div>
             <div className="team__message">
