@@ -12,8 +12,9 @@ import polabenefit3 from "../images/polapolar_benefit_03";
 import polabenefit4 from "../images/polapolar_benefit_04";
 import polaChat from "../images/polapolar_keyword ";
 import homeLogo from "../images/button_home.svg";
-
 import langLogo from "../images/button_language.svg";
+import Text from "../components/Text";
+import { polaText } from "../API/textAPI";
 
 export default class PolaPage extends React.Component {
   state = {
@@ -26,6 +27,8 @@ export default class PolaPage extends React.Component {
     "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
     "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
   ];
+  polabenefit = [polabenefit1, polabenefit2, polabenefit3, polabenefit4];
+
   onImageChange = id => {
     this.setState({
       activeId: id
@@ -47,6 +50,8 @@ export default class PolaPage extends React.Component {
     window.scroll(0, 0);
   }
   render() {
+    const defaultLang = "ko";
+    const text = polaText[defaultLang];
     return (
       <React.Fragment>
         <Helmet>
@@ -82,18 +87,19 @@ export default class PolaPage extends React.Component {
           <section className="intro-wrap">
             <div className="intro">
               <div className="text">
-                폴라로이드 스티커 배달부,
+                {/* 폴라로이드 스티커 배달부,
                 <br />
                 <h2 className="bold">폴라폴라</h2>입니다.
                 <br />
-                소중한 추억을 배달해드려요.
+                소중한 추억을 배달해드려요. */}
+                <Text text={text.main} />
               </div>
             </div>
           </section>
           <section className="use-wrap">
             <div className="use">
               <ul>
-                <li>
+                {/* <li>
                   <div className="img">
                     <img src={polaChat} alt="폴라폴라 챗봇" />
                   </div>
@@ -130,7 +136,17 @@ export default class PolaPage extends React.Component {
                       <span className="bold">참 쉽죠?</span>
                     </p>
                   </div>
-                </li>
+                </li> */}
+                {text.use.map(t => (
+                  <li>
+                    <div className="img">
+                      <img src="#" alt="#" />
+                    </div>
+                    <div className="text">
+                      <Text text={t} />
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </section>
@@ -140,7 +156,7 @@ export default class PolaPage extends React.Component {
                 <img src="#" alt="" />
               </div>
               <div className="detail-wrap">
-                <div className="detail-line">
+                {/* <div className="detail-line">
                   <div className="item-wrap">
                     <div className="item">
                       <div className="img">
@@ -214,7 +230,7 @@ export default class PolaPage extends React.Component {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </section>
