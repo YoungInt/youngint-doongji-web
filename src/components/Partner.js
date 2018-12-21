@@ -1,8 +1,13 @@
 import React from "react";
 import partner from "../images/partnership";
+import { mainText } from "../API/textAPI";
+import Text from "../components/Text";
 
 export default class Pratner extends React.Component {
   render() {
+    const defaultLang = "ko";
+    const text = mainText[defaultLang];
+
     return (
       <div className="partner">
         <div className="wrap">
@@ -11,8 +16,9 @@ export default class Pratner extends React.Component {
             <img src={partner} alt="" />
           </div>
           <div className="desc">
-            더 좋은 서비스를 제공하고 더 많은 고객들과 만나기 위해 다양한
-            협력사와 함께 하고 있습니다.
+            {/* 더 좋은 서비스를 제공하고 더 많은 고객들과 만나기 위해 다양한
+            협력사와 함께 하고 있습니다. */}
+            <Text text={text.p7} />
           </div>
         </div>
       </div>

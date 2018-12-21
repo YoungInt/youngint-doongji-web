@@ -1,7 +1,11 @@
 import React from "react";
+import Text from "../components/Text";
+import { mainText } from "../API/textAPI";
 
 export default class Contact extends React.Component {
   render() {
+    const defaultLang = "ko";
+    const text = mainText[defaultLang];
     return (
       <div className="contact">
         <div className="wrap">
@@ -12,9 +16,10 @@ export default class Contact extends React.Component {
             </div>
             <div className="content__text">
               <div className="title">
-                영인터내셔널은 <br />
+                {/* 영인터내셔널은 <br />
                 입점제안 및 제휴문의를 <br />
-                기다리고 있습니다.
+                기다리고 있습니다. */}
+                <Text text={text.contactTitle} />
               </div>
               <address className="address">
                 <p>

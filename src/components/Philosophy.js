@@ -1,7 +1,11 @@
 import React from "react";
+import Text from "../components/Text";
+import { mainText } from "../API/textAPI";
 
 export default class Philosophy extends React.Component {
   render() {
+    const defaultLang = "ko";
+    const text = mainText[defaultLang];
     return (
       <React.Fragment>
         <div className="philosophy">
@@ -10,7 +14,7 @@ export default class Philosophy extends React.Component {
             <div className="content">
               <div className="content__keyword">
                 <div className="wrap">
-                  <div className="keyword">
+                  {/* <div className="keyword">
                     <div className="text">
                       <p>
                         NEW
@@ -47,7 +51,16 @@ export default class Philosophy extends React.Component {
                         힘들어도 나아갑니다.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
+                  {text.p3.map((t, index) => (
+                    <div className="keyword">
+                      <div className="text">
+                        <Text text={text.t3[index]} />
+                        <p />
+                        <Text text={t} />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="content__desc">
@@ -60,14 +73,15 @@ export default class Philosophy extends React.Component {
                   </div>
                   <div className="text">
                     <div className="title">
-                      <p>
+                      {/* <p>
                         우리는 키오스크를 통한 <br />
                         <span className="bold">새로운 문화를 탐구</span>
                         합니다.
-                      </p>
+                      </p> */}
+                      <Text text={text.t4} />
                     </div>
                     <div className="desc">
-                      <p>
+                      {/* <p>
                         무인 자판기 시장은 오래 되었지만 그동안 큰 변화가
                         없었습니다.
                         <br />
@@ -76,7 +90,8 @@ export default class Philosophy extends React.Component {
                         키오스크의 장점을 '무인'과 '자동화'에만 초점을 두지
                         않고, <br />
                         키오스크를 통한 새로운 문화를 만들어 가고자 합니다.
-                      </p>
+                      </p> */}
+                      <Text text={text.p5} />
                     </div>
                   </div>
                 </div>
@@ -88,7 +103,7 @@ export default class Philosophy extends React.Component {
           <div className="wrap">
             <div className="content-text">
               <div className="text">
-                <p>
+                {/* <p>
                   네임스티커 자판기 개발
                   <span className="bold">국내 최초</span>
                   <br />
@@ -104,9 +119,13 @@ export default class Philosophy extends React.Component {
                   누적 설치대수
                   <span className="bold">1000대</span>
                   <br />
-                </p>
+                </p> */}
+                <Text text={text.t6} />
               </div>
-              <div className="date">2018년 10월 기준</div>
+              <div className="date">
+                {/* 2018년 10월 기준 */}
+                <Text text={text.p6} />
+              </div>
             </div>
             <div className="content-img">
               <img src="#" alt="" />
