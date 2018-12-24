@@ -111,7 +111,68 @@ $content-width: 1000px;
     left: 100%;
   }
 }
-
+@mixin keyframes($animation-name) {
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+@mixin animation($str) {
+  animation: #{$str};
+}
+@include keyframes(chat-animation1) {
+  0% {
+  }
+  80% {
+    transform: scale(1);
+  }
+  95% {
+    transform: scale(0.9);
+  }
+  100% {
+    bottom: 120px;
+    transform: scale(1);
+  }
+}
+@include keyframes(chat-animation2) {
+  0% {
+    transform: sclae(0.7);
+  }
+  50% {
+    bottom: -50px;
+  }
+  88% {
+    transform: scale(1);
+  }
+  98% {
+    transform: scale(0.9);
+  }
+  to {
+    transform: sclae(1);
+    bottom: 75px;
+  }
+}
+@keyframes chat-animation {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+@keyframes swing-animation {
+  from {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 body {
   margin: 0;
   font-family: $main-font-light;
@@ -119,7 +180,9 @@ body {
   color: $main-font-color;
   line-height: 1.69;
 }
-
+p {
+  margin: 0;
+}
 //  MainTop 컴포넌트
 .mainTop {
   height: 100vh;
@@ -657,10 +720,11 @@ body {
           width: 500px;
           position: absolute;
           right: 0;
-          bottom: 38px;
+          bottom: -10px;
         }
         p {
           @extend %happy-font;
+          padding-top: 100px;
         }
         .img {
           width: 500px;
@@ -734,6 +798,7 @@ body {
         padding: 143px 0;
         .title {
           text-align: center;
+          margin-bottom: 60px;
           @extend %happy-font;
         }
         .list {
@@ -754,12 +819,15 @@ body {
               background: pink;
             }
             .title {
+              text-align: left;
+              width: 334px;
+              background: green;
+              @extend %happy-font;
+              margin: 0;
+              display: flex;
+              align-items: flex-end;
               p {
-                vertical-align: text-bottom;
-                width: 334px;
-                background: green;
-                @extend %happy-font;
-                margin: 0;
+                display: inline;
               }
             }
           }
@@ -810,8 +878,12 @@ body {
       .text-wrap {
         width: 50%;
         background: skyblue;
+        position: relative;
         .text {
+          width: 300px;
           background: red;
+          position: absolute;
+          top: 30%;
           p {
             margin: 0;
             @extend %happy-font-sub;
@@ -955,15 +1027,43 @@ body {
 // 슬라이드
 .slide-wrap {
   display: flex;
+  position: relative;
+
+  .button {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    height: 100%;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    color: #ffffff;
+    div {
+      margin: 0 20px;
+      &.backward {
+        height: 30px;
+        background: red;
+      }
+      &.forward {
+        background: blue;
+      }
+    }
+  }
   .slide {
     position: relative;
     width: 500px;
     height: 200px;
+    //  해피 슬라이드
     &.happy {
       width: 864px;
       height: 394px;
     }
+    // 폴라 슬라이드
     &.pola {
+      width: 100vw;
+      height: 800px;
     }
     .list {
       list-style: none;
@@ -1014,7 +1114,7 @@ body {
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background: #ffffff;
+        background-color: rgba(30, 30, 30, 0.5);
         &.active {
           background: $main-font-color;
         }
@@ -1119,16 +1219,60 @@ body {
             background: #9bbedf;
             padding: 0;
             margin: auto;
+            position: relative;
+            &.use-0 {
+              background-image: url("../src/images/polapolar_keyword_0.png");
+              width: 450px;
+              height: 450px;
+            }
+            &.use-1 {
+              position: relative;
+              .arm {
+                position: absolute;
+                top: 230px;
+                right: 133px;
+                width: 90px;
+                height: 90px;
+                margin: 0;
 
+                @include animation("swing-animation 2s infinite");
+              }
+            }
             img {
-              width: 300px;
+              width: 359px;
               height: 350px;
-              margin: 140px 75px 0 75px;
+              margin: 100px 45px 0 45px;
+            }
+            .keyword {
+              img {
+                position: absolute;
+                left: 30%;
+                bottom: -50px;
+                margin: 0;
+              }
+              &-1 {
+                width: 200px;
+                height: 60px;
+                // bottom: 120px;
+                &.active {
+                  @include animation("chat-animation1 1s ease-out forwards");
+                  // animation-fill-mode: forwards;
+                }
+              }
+              &-2 {
+                width: 120px;
+                height: 35px;
+                &.active {
+                  @include animation("chat-animation2 2s ease-out forwards");
+                  // animation-fill-mode: forwards;
+                }
+              }
             }
           }
           .text {
             @extend %happy-font;
             text-align: center;
+            padding: 40px 0;
           }
         }
       }
@@ -1143,7 +1287,7 @@ body {
       }
     }
   }
-  // 폴라폴라 기능
+  // 폴라폴라 특징
   .feature-wrap {
     height: 1150px;
     background: #c7dcef;
@@ -1165,7 +1309,7 @@ body {
             background-repeat: no-repeat;
             width: 423px;
             height: 400px;
-            margin-top: 3rem;
+            margin-top: 50px;
             .item {
               margin: 59px 0 0 43px;
 
@@ -1176,7 +1320,6 @@ body {
               .title {
                 @extend %happy-font;
                 margin-top: 14px;
-                line-height: 1.29;
               }
               p {
                 margin: 0;
@@ -1188,11 +1331,26 @@ body {
     }
   }
   .message {
-    background: #d8d8d8;
+    position: relative;
 
     .text {
+      height: 180px;
+      background-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.9) 26%,
+        rgba(255, 255, 255, 0.9) 72%,
+        rgba(255, 255, 255, 0.3)
+      );
+      bottom: 0;
+      width: 100%;
+      position: absolute;
+      z-index: 5;
       font-size: 48px;
       text-align: center;
+      p {
+        margin-top: 40px;
+      }
     }
     .text {
     }
