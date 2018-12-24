@@ -41,17 +41,31 @@ export default class Slide extends React.Component {
     const { activeId } = this.state;
     return (
       <div className="slide-wrap">
-        <div
-          className="backward"
-          onClick={e => {
-            const id = activeId > 0 ? activeId - 1 : images.length - 1;
-            this.setState({
-              activeId: id
-            });
-            handleImageChange && handleImageChange(id);
-          }}
-        >
-          앞
+        <div className="button">
+          <div
+            className="backward"
+            onClick={e => {
+              const id = activeId > 0 ? activeId - 1 : images.length - 1;
+              this.setState({
+                activeId: id
+              });
+              handleImageChange && handleImageChange(id);
+            }}
+          >
+            앞
+          </div>
+          <div
+            className="forward"
+            onClick={e => {
+              const id = activeId < images.length - 1 ? activeId + 1 : 0;
+              this.setState({
+                activeId: id
+              });
+              handleImageChange && handleImageChange(id);
+            }}
+          >
+            뒤
+          </div>
         </div>
         <div className={classnames("slide", slideName)}>
           <ul className="list">
@@ -85,18 +99,6 @@ export default class Slide extends React.Component {
               {this.state.pause ? "시작" : "멈춤"}
             </div>
           </ul>
-        </div>
-        <div
-          className="forward"
-          onClick={e => {
-            const id = activeId < images.length - 1 ? activeId + 1 : 0;
-            this.setState({
-              activeId: id
-            });
-            handleImageChange && handleImageChange(id);
-          }}
-        >
-          뒤
         </div>
       </div>
     );
