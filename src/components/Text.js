@@ -1,4 +1,5 @@
 import React from "react";
+import classnaems from "classnames";
 
 export default class Text extends React.Component {
   matchText = text => {
@@ -29,10 +30,10 @@ export default class Text extends React.Component {
     return convertedText;
   };
   render() {
-    const { text } = this.props;
+    const { text, title } = this.props;
     const convertedText = this.convertP(text);
     return (
-      <p>
+      <p className={classnaems(title && title)}>
         {convertedText.map((arr, index) =>
           arr.map((t, i) =>
             Object.keys(t)[0] === "normal" ? (
