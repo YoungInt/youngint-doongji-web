@@ -32,6 +32,7 @@ export default class HappyPage extends React.Component {
     const { activeId } = this.state;
     const { lang, onChangeLang } = this.props.value;
     const text = happyText[lang];
+    const { mobile } = this.props;
     return (
       <React.Fragment>
         <Helmet>

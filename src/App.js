@@ -6,24 +6,29 @@ import MainPage from "./pages/MainPage";
 import HappyPage from "./pages/HappyPage";
 import PolaPage from "./pages/PolaPage";
 import { LanguageProvider, LanguageConsumer } from "./context/LanguageContext";
+import withDevice from "./HOC/withDevice";
 
-export default class App extends Component {
-  componentDidMount() {}
+class App extends Component {
   render() {
+    const { mobile } = this.props;
     return (
       <Router>
         <LanguageProvider>
           <LanguageConsumer>
             {value => (
               <Switch>
-                <Route exact path="/" component={MainPage} />
+                <Route
+                  exact
+                  path="/"
+                  component={() => <MainPage mobile={mobile} />}
+                />
                 <Route
                   path="/pola"
-                  component={() => <PolaPage value={value} />}
+                  component={() => <PolaPage value={value} mobile={mobile} />}
                 />
                 <Route
                   pah="/happy"
-                  component={() => <HappyPage value={value} />}
+                  component={() => <HappyPage value={value} mobile={mobile} />}
                 />
                 {/* <Route path="/map/:id" component={MapPage} />
           <Route path="/map/" component={MapPage} /> */}
@@ -37,3 +42,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default withDevice(App);

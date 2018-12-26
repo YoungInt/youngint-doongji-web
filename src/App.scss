@@ -167,7 +167,7 @@ $content-width: 1000px;
     transform: rotate(0);
   }
   50% {
-    transform: rotate(-20deg);
+    transform: rotate(-15deg);
   }
   100% {
     transform: rotate(0deg);
@@ -179,6 +179,7 @@ body {
   font-size: 16px;
   color: $main-font-color;
   line-height: 1.69;
+  overflow-x: hidden;
 }
 p {
   margin: 0;
@@ -457,18 +458,19 @@ p {
           width: 770px;
           height: 960px;
           z-index: 1;
-
+          position: relative;
           .img {
             z-index: 1;
 
             // 해피 캐릭터
             .happy-img {
-              background: pink;
-              // position: relative;
+              position: absolute;
+
+              left: -60px;
             }
             // 폴라 캐릭터
             .pola-img {
-              background: yellow;
+              // background: yellow;
             }
           }
 
@@ -751,7 +753,7 @@ p {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
+        margin-bottom: 49px;
         .text {
           width: 100%;
           text-align: center;
@@ -760,6 +762,7 @@ p {
           }
           .title {
             @extend %happy-font;
+            margin-bottom: 19px;
           }
           .desc {
             @extend %happy-font-sub;
@@ -770,6 +773,7 @@ p {
         display: flex;
         justify-content: space-between;
         width: 864px;
+        margin-top: 73px;
         .item {
           .img {
           }
@@ -1041,6 +1045,7 @@ p {
     align-items: center;
     color: #ffffff;
     div {
+      cursor: default;
       margin: 0 20px;
       &.backward {
         height: 30px;
@@ -1048,6 +1053,11 @@ p {
       }
       &.forward {
         background: blue;
+      }
+    }
+    &.happy {
+      div {
+        margin: 0 -40px;
       }
     }
   }
@@ -1193,8 +1203,10 @@ p {
   }
   .intro-wrap {
     height: 700px;
+
     .intro {
       .text {
+        padding-top: 140px;
         text-align: center;
         @extend %happy-font;
         h2 {
@@ -1207,7 +1219,7 @@ p {
     background-image: linear-gradient(to bottom, #e5f0f8, #c7dcef);
 
     .use {
-      padding: 120px 0;
+      padding: 150px 0 120px 0;
       ul {
         list-style: none;
         li {
@@ -1227,15 +1239,20 @@ p {
             }
             &.use-1 {
               position: relative;
-              .arm {
-                position: absolute;
-                top: 230px;
-                right: 133px;
-                width: 90px;
-                height: 90px;
-                margin: 0;
-
+              .pola-arm {
+                width: 135px;
+                height: 145px;
                 @include animation("swing-animation 2s infinite");
+                top: 235px;
+                right: 80px;
+                z-index: 3;
+                position: absolute;
+                // background: red;
+                .arm {
+                  width: 90px;
+                  height: 90px;
+                  margin: 0;
+                }
               }
             }
             img {
@@ -1255,7 +1272,7 @@ p {
                 height: 60px;
                 // bottom: 120px;
                 &.active {
-                  @include animation("chat-animation1 1s ease-out forwards");
+                  @include animation("chat-animation1 0.7s ease-out forwards");
                   // animation-fill-mode: forwards;
                 }
               }
@@ -1263,7 +1280,7 @@ p {
                 width: 120px;
                 height: 35px;
                 &.active {
-                  @include animation("chat-animation2 2s ease-out forwards");
+                  @include animation("chat-animation2 1.4s ease-out forwards");
                   // animation-fill-mode: forwards;
                 }
               }
@@ -1330,7 +1347,7 @@ p {
       }
     }
   }
-  .message {
+  .pola-slide {
     position: relative;
 
     .text {
@@ -1353,6 +1370,15 @@ p {
       }
     }
     .text {
+    }
+  }
+  .message {
+    height: 700px;
+    background: yellow;
+    @extend %happy-font;
+    text-align: center;
+    p {
+      padding-top: 140px;
     }
   }
 }

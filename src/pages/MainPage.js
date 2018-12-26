@@ -11,6 +11,7 @@ import { mainText } from "../API/textAPI";
 
 export default class MainPage extends React.Component {
   render() {
+    const { mobile } = this.props;
     return (
       <LanguageConsumer>
         {({ lang, onChangeLang }) => (

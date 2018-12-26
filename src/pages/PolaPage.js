@@ -21,6 +21,7 @@ import langLogo from "../images/button_language.svg";
 import Text from "../components/Text";
 import { polaText } from "../API/textAPI";
 import classnames from "classnames";
+
 export default class PolaPage extends React.Component {
   state = {
     activeId: 0,
@@ -60,6 +61,7 @@ export default class PolaPage extends React.Component {
   render() {
     const text = polaText[lang];
     const { lang, onChangeLang } = this.props.value;
+    const { mobile } = this.props;
     return (
       <React.Fragment>
         <Helmet>
