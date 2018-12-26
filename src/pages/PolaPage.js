@@ -6,21 +6,15 @@ import Footer from "../components/Footer";
 import titleNavy from "../images/00_title_navy";
 import titleSub from "../images/00_title_sub";
 import polaDeliver from "../images/10_pola_deliver.gif";
-import polabenefit1 from "../images/polapolar_benefit_01";
-import polabenefit2 from "../images/polapolar_benefit_02";
-import polabenefit3 from "../images/polapolar_benefit_03";
-import polabenefit4 from "../images/polapolar_benefit_04";
-import polapolar_usage_1 from "../images/polapolar_usage_1";
-import polapolar_keyword_0 from "../images/polapolar_keyword_0";
 import polapolar_keyword_1 from "../images/polapolar_keyword_1";
 import polapolar_keyword_2 from "../images/polapolar_keyword_2";
-import polapolar_selectyourpic from "../images/polapolar_selectyourpic";
 import polapolar_arm from "../images/polapolar_selectyourpic_arm";
 import homeLogo from "../images/button_home.svg";
 import langLogo from "../images/button_language.svg";
 import Text from "../components/Text";
 import { polaText } from "../API/textAPI";
 import classnames from "classnames";
+import { polabenefits, pola_chat, pola_usage } from "../API/imageAPI";
 
 export default class PolaPage extends React.Component {
   state = {
@@ -28,14 +22,7 @@ export default class PolaPage extends React.Component {
     keyword: false
   };
   someRefName = React.createRef();
-  polaImages = [
-    polapolar_usage_1,
-    "https://images.unsplash.com/photo-1544555103-3fc48768dcf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80",
-    "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
-    "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
-  ];
-  polabenefit = [polabenefit1, polabenefit2, polabenefit3, polabenefit4];
-  polause = [polapolar_keyword_0, polapolar_selectyourpic];
+
   onImageChange = id => {
     this.setState({
       activeId: id
@@ -113,7 +100,7 @@ export default class PolaPage extends React.Component {
                       {index !== 0 ? (
                         <img
                           className={`use-${index}`}
-                          src={this.polause[index]}
+                          src={pola_chat[index]}
                           alt="#"
                         />
                       ) : (
@@ -163,7 +150,7 @@ export default class PolaPage extends React.Component {
                     <div className="item-wrap">
                       <div className="item">
                         <div className="img">
-                          <img src={this.polabenefit[f]} alt="" />
+                          <img src={polabenefits[f]} alt="" />
                         </div>
                         <div className="title">
                           <Text text={text.featureTitle[f]} />
@@ -175,7 +162,7 @@ export default class PolaPage extends React.Component {
                     <div className="item-wrap">
                       <div className="item">
                         <div className="img">
-                          <img src={this.polabenefit[f + 1]} alt="" />
+                          <img src={polabenefits[f + 1]} alt="" />
                         </div>
                         <div className="title">
                           <Text text={text.featureTitle[f + 1]} />
@@ -196,7 +183,7 @@ export default class PolaPage extends React.Component {
               {/* 폴라 슬라이드 */}
 
               <Slide
-                images={this.polaImages}
+                images={pola_usage}
                 slideName={"pola"}
                 handleImageChange={this.onImageChange}
               />

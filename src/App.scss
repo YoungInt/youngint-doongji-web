@@ -365,6 +365,7 @@ p {
                   margin: 0 auto;
                 }
                 &:nth-child(3) {
+                  margin-top: 20px;
                   line-height: 24px;
                   font-size: 16px;
                   font-family: $main-font-Bold;
@@ -393,6 +394,7 @@ p {
               margin: 0;
             }
             .title {
+              margin-bottom: 15px;
               border: none;
               @extend %happy-font;
             }
@@ -530,7 +532,7 @@ p {
     // width: 80%;
     width: $content-width;
     margin: auto;
-    height: 70%;
+    height: 60%;
     display: flex;
     .content-text {
       display: flex;
@@ -966,8 +968,12 @@ p {
     .img {
       padding: 3rem 0 2rem 0;
       margin: auto;
+
       img {
-        width: 100%;
+        position: relative;
+        left: -200px;
+
+        width: 1439px;
         height: 100%;
       }
     }

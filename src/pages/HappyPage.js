@@ -1,10 +1,6 @@
 import React from "react";
 import mainHappy from "../images/main_happy";
-import happyUsage1 from "../images/happname_usage_1";
-import happyUsage2 from "../images/happname_usage_2";
-import happyCulture1 from "../images/happyname_culture_01";
-import happyCulture2 from "../images/happyname_culture_02";
-import happyCulture3 from "../images/happyname_culture_03";
+
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
@@ -13,23 +9,17 @@ import homeLogo from "../images/button_home.svg";
 import languageLogo from "../images/button_language.svg";
 import { happyText } from "../API/textAPI";
 import Text from "../components/Text";
-
+import { happy_usage, happy_culture } from "../API/imageAPI";
 export default class HappyPage extends React.Component {
   state = {
     activeId: 0
   };
-  happyImages = [
-    happyUsage1,
-    happyUsage2,
-    "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
-  ];
-  cultureImages = [happyCulture1, happyCulture2, happyCulture3];
+
   componentDidMount() {
     window.scroll(0, 0);
   }
 
   render() {
-    const { activeId } = this.state;
     const { lang, onChangeLang } = this.props.value;
     const text = happyText[lang];
     const { mobile } = this.props;
@@ -84,13 +74,13 @@ export default class HappyPage extends React.Component {
                 </div>
               </div>
               <div className="middle">
-                <Slide images={this.happyImages} slideName={"happy"} />
+                <Slide images={happy_usage} slideName={"happy"} />
               </div>
               <div className="bottom">
                 {text.culture.map((text, index) => (
                   <div key={index} className="item">
                     <div className="img">
-                      <img src={this.cultureImages[index]} alt="" />
+                      <img src={happy_culture[index]} alt="" />
                     </div>
                     <Text title={"text"} text={text} />
                   </div>
