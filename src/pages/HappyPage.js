@@ -1,6 +1,7 @@
 import React from "react";
 import mainHappy from "../images/main_happy";
 import happyUsage1 from "../images/happname_usage_1";
+import happyUsage2 from "../images/happname_usage_2";
 import happyCulture1 from "../images/happyname_culture_01";
 import happyCulture2 from "../images/happyname_culture_02";
 import happyCulture3 from "../images/happyname_culture_03";
@@ -19,7 +20,7 @@ export default class HappyPage extends React.Component {
   };
   happyImages = [
     happyUsage1,
-    "https://images.unsplash.com/photo-1544555103-3fc48768dcf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80",
+    happyUsage2,
     "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
   ];
   cultureImages = [happyCulture1, happyCulture2, happyCulture3];
@@ -29,8 +30,8 @@ export default class HappyPage extends React.Component {
 
   render() {
     const { activeId } = this.state;
-    const defaultLang = "ko";
-    const text = happyText[defaultLang];
+    const { lang, onChangeLang } = this.props.value;
+    const text = happyText[lang];
     return (
       <React.Fragment>
         <Helmet>
@@ -86,7 +87,7 @@ export default class HappyPage extends React.Component {
               </div>
               <div className="bottom">
                 {text.culture.map((text, index) => (
-                  <div className="item">
+                  <div key={index} className="item">
                     <div className="img">
                       <img src={this.cultureImages[index]} alt="" />
                     </div>
@@ -94,53 +95,31 @@ export default class HappyPage extends React.Component {
                   </div>
                 ))}
               </div>
-              {/* 슬라이드 */}
             </div>
           </section>
           {/* 버전 */}
           <section className="version-wrap">
             <div className="version">
               <div className="version__title">
-                <Text text={text.versionTitle} title={"title"} />
+                <Text text={text.versionTitle} title="title" />
+
                 <ul className="list">
-                  {text.version.map(text => (
-                    <li>
+                  {text.version.map((text, index) => (
+                    <li key={index}>
                       <div className="img">
                         <img src="" alt="" />
                       </div>
-
-                      <Text text={text} title="title" />
+                      <div className="title">
+                        <Text text={text} title="title" />
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
               {/* 버전 상세 */}
               <div className="version__detail">
-                <div className="detail">
-                  <div className="detail-wrap">
-                    <div className="img">
-                      <img src="#" alt="아이콘을 선택하는 이미지" />
-                    </div>
-                    <div className="text">
-                      <p>
-                        <span className="bold">글꼴 선택이 가능</span>
-                        합니다.
-                      </p>
-                      <p>
-                        여러번의 테스트를 거쳐 사용자가 글꼴을 편집할 수 있도록
-                        적용했습니다.
-                        <br />
-                        해피버전 UI내에서 네가지 글꼴 중 원하는 글꼴로 선택이
-                        가능합니다.
-                        <br />
-                        소비자와 제휴사의 의견을 적극 반영하여 업데이트 적용한
-                        부분입니다.
-                      </p>
-                    </div>
-                  </div>
-                </div>
                 {text.featureTitle.map((t, index) => (
-                  <div className="detail">
+                  <div key={index} className="detail">
                     <div className="detail-wrap">
                       <div className="img">
                         <img src="#" alt="" />

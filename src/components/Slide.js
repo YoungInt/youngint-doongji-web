@@ -41,7 +41,7 @@ export default class Slide extends React.Component {
     const { activeId } = this.state;
     return (
       <div className="slide-wrap">
-        <div className="button">
+        <div className={`button ${slideName}`}>
           <div
             className="backward"
             onClick={e => {

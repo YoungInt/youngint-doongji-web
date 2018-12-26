@@ -6,25 +6,31 @@ import Philosophy from "../components/Philosophy";
 import Brand from "../components/Brand";
 import Partner from "../components/Partner";
 import Contact from "../components/Contact";
+import { LanguageConsumer } from "../context/LanguageContext";
+import { mainText } from "../API/textAPI";
 
 export default class MainPage extends React.Component {
   render() {
     return (
-      <div>
-        <MainTop />
-        <div id="philosophy">
-          <Philosophy />
-        </div>
-        <Partner />
-        <div id="brand">
-          <Brand />
-        </div>
-        <div id="contact">
-          <Contact />
-        </div>
-        <TeamPC />
-        <Footer />
-      </div>
+      <LanguageConsumer>
+        {({ lang, onChangeLang }) => (
+          <div>
+            <MainTop text={mainText[lang]} />
+            <div id="philosophy">
+              <Philosophy text={mainText[lang]} />
+            </div>
+            <Partner text={mainText[lang]} />
+            <div id="brand">
+              <Brand text={mainText[lang]} />
+            </div>
+            <div id="contact">
+              <Contact text={mainText[lang]} />
+            </div>
+            <TeamPC text={mainText[lang]} />
+            <Footer text={mainText[lang]} />
+          </div>
+        )}
+      </LanguageConsumer>
     );
   }
 }

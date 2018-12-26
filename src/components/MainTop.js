@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { mainText } from "../API/textAPI";
+
 import languageIcon from "../images/button_language.svg";
 import Text from "../components/Text";
 
 export default class MainHeader extends React.Component {
   render() {
-    const defaultLang = "ko";
-    const text = mainText[defaultLang];
+    const { text } = this.props;
     return (
       <React.Fragment>
         <div className="mainTop">

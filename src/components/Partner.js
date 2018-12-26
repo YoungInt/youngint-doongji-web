@@ -1,12 +1,11 @@
 import React from "react";
 import partner from "../images/partnership";
-import { mainText } from "../API/textAPI";
+
 import Text from "../components/Text";
 
 export default class Pratner extends React.Component {
   render() {
-    const defaultLang = "ko";
-    const text = mainText[defaultLang];
+    const { text } = this.props;
 
     return (
       <div className="partner">

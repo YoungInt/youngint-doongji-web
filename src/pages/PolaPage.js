@@ -10,6 +10,7 @@ import polabenefit1 from "../images/polapolar_benefit_01";
 import polabenefit2 from "../images/polapolar_benefit_02";
 import polabenefit3 from "../images/polapolar_benefit_03";
 import polabenefit4 from "../images/polapolar_benefit_04";
+import polapolar_usage_1 from "../images/polapolar_usage_1";
 import polapolar_keyword_0 from "../images/polapolar_keyword_0";
 import polapolar_keyword_1 from "../images/polapolar_keyword_1";
 import polapolar_keyword_2 from "../images/polapolar_keyword_2";
@@ -27,7 +28,7 @@ export default class PolaPage extends React.Component {
   };
   someRefName = React.createRef();
   polaImages = [
-    "https://images.unsplash.com/photo-1544586571-42a0e47dad19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+    polapolar_usage_1,
     "https://images.unsplash.com/photo-1544555103-3fc48768dcf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80",
     "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
     "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
@@ -55,11 +56,10 @@ export default class PolaPage extends React.Component {
       this.setState({
         keyword: true
       });
-    console.log(window.scrollY);
   };
   render() {
-    const defaultLang = "ko";
-    const text = polaText[defaultLang];
+    const text = polaText[lang];
+    const { lang, onChangeLang } = this.props.value;
     return (
       <React.Fragment>
         <Helmet>
@@ -137,7 +137,9 @@ export default class PolaPage extends React.Component {
                         </div>
                       )}
                       {index === 1 ? (
-                        <img src={polapolar_arm} alt="" className="arm" />
+                        <div className="pola-arm">
+                          <img src={polapolar_arm} alt="" className="arm" />
+                        </div>
                       ) : null}
                     </div>
                     <div className="text">
@@ -153,7 +155,6 @@ export default class PolaPage extends React.Component {
               <div className="img">
                 <img src="#" alt="" />
               </div>
-
               <div className="detail-wrap">
                 {[0, 2].map((f, index) => (
                   <div className="detail-line" key={index}>
@@ -185,9 +186,9 @@ export default class PolaPage extends React.Component {
               </div>
             </div>
           </section>
-          <section className="message">
+          <section className="pola-slide">
             <div className="text">
-              <Text text={text.message[this.state.activeId]} />
+              <Text text={text.slideMessage[this.state.activeId]} />
             </div>
             <div className="img">
               {/* 폴라 슬라이드 */}
@@ -198,6 +199,9 @@ export default class PolaPage extends React.Component {
                 handleImageChange={this.onImageChange}
               />
             </div>
+          </section>
+          <section className="message">
+            <Text text={text.message} />
           </section>
           <Footer />
         </div>

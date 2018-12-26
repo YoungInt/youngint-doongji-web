@@ -2,6 +2,7 @@ import React from "react";
 
 export default class Footer extends React.Component {
   render() {
+    const { text } = this.props;
     return (
       <React.Fragment>
         <footer className="footer">

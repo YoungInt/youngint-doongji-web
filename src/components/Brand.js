@@ -3,12 +3,10 @@ import happy from "../images/main_happy";
 import pola from "../images/main_polapolar";
 import { Link } from "react-router-dom";
 import Text from "../components/Text";
-import { mainText } from "../API/textAPI";
 
 export default class Brand extends React.Component {
   render() {
-    const defaultLang = "ko";
-    const text = mainText[defaultLang];
+    const { text } = this.props;
     return (
       <React.Fragment>
         <div className="brand-container ">
