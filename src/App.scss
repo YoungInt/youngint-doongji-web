@@ -74,7 +74,7 @@ $content-width: 1000px;
     transform: scale(1);
   }
   100% {
-    transform: scale(1.5625);
+    transform: scale(1.466666666666666);
   }
 }
 
@@ -637,7 +637,6 @@ p {
             justify-content: center;
             align-items: center;
             &.active {
-              // width: 250px;
               width: 220px;
             }
             &__img {

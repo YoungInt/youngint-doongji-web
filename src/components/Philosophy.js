@@ -3,7 +3,7 @@ import Text from "../components/Text";
 
 export default class Philosophy extends React.Component {
   render() {
-    const { text } = this.props;
+    const { text, screenWidth } = this.props;
     return (
       <React.Fragment>
         <div className="philosophy">

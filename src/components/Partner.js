@@ -1,18 +1,23 @@
 import React from "react";
 import partner from "../images/partnership";
+import partner__mobile from "../images/main_partnership_mobile";
 
 import Text from "../components/Text";
 
 export default class Pratner extends React.Component {
   render() {
-    const { text } = this.props;
+    const { text, screenWidth } = this.props;
 
     return (
       <div className="partner">
         <div className="wrap">
           <h1 className="title">PARTNERSHIP</h1>
           <div className="img">
-            <img src={partner} alt="" />
+            {screenWidth > 480 ? (
+              <img src={partner} alt="" />
+            ) : (
+              <img src={partner__mobile} alt="" />
+            )}
           </div>
           <div className="desc">
             {/* 더 좋은 서비스를 제공하고 더 많은 고객들과 만나기 위해 다양한

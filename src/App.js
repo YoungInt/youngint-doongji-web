@@ -10,7 +10,7 @@ import withDevice from "./HOC/withDevice";
 
 class App extends Component {
   render() {
-    const { mobile } = this.props;
+    const { screenWidth } = this.props;
     return (
       <Router>
         <LanguageProvider>
@@ -20,15 +20,19 @@ class App extends Component {
                 <Route
                   exact
                   path="/"
-                  component={() => <MainPage mobile={mobile} />}
+                  component={() => <MainPage screenWidth={screenWidth} />}
                 />
                 <Route
                   path="/pola"
-                  component={() => <PolaPage value={value} mobile={mobile} />}
+                  component={() => (
+                    <PolaPage value={value} screenWidth={screenWidth} />
+                  )}
                 />
                 <Route
                   pah="/happy"
-                  component={() => <HappyPage value={value} mobile={mobile} />}
+                  component={() => (
+                    <HappyPage value={value} screenWidth={screenWidth} />
+                  )}
                 />
                 {/* <Route path="/map/:id" component={MapPage} />
           <Route path="/map/" component={MapPage} /> */}

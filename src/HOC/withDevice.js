@@ -2,15 +2,18 @@ import React from "react";
 
 const withDevice = WrappedComponent => {
   return class extends React.Component {
-    mobile = true;
-    componentDidMount() {
-      this.getDiviceWidth();
-    }
-    getDiviceWidth = () => {
-      console.log("hhhhh");
+    state = {
+      screenWidth: 1440
     };
+    screenWidth = 1440;
+    componentDidMount() {
+      this.setState({
+        screenWidth: window.innerWidth
+      });
+    }
+
     render() {
-      return <WrappedComponent mobile={this.mobile} />;
+      return <WrappedComponent screenWidth={this.state.screenWidth} />;
     }
   };
 };

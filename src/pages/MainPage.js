@@ -11,7 +11,8 @@ import { mainText } from "../API/textAPI";
 
 export default class MainPage extends React.Component {
   render() {
-    const { mobile } = this.props;
+    const { screenWidth } = this.props;
+    console.log("screenWidth:" + screenWidth);
     return (
       <LanguageConsumer>
         {({ lang, onChangeLang }) => (
@@ -20,7 +21,7 @@ export default class MainPage extends React.Component {
             <div id="philosophy">
               <Philosophy text={mainText[lang]} />
             </div>
-            <Partner text={mainText[lang]} />
+            <Partner screenWidth={screenWidth} text={mainText[lang]} />
             <div id="brand">
               <Brand text={mainText[lang]} />
             </div>

@@ -59,8 +59,8 @@ export default class PolaPage extends React.Component {
       });
   };
   render() {
-    const text = polaText[lang];
     const { lang, onChangeLang } = this.props.value;
+    const text = polaText[lang];
     const { mobile } = this.props;
     return (
       <React.Fragment>
