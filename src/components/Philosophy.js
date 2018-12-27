@@ -1,6 +1,6 @@
 import React from "react";
 import Text from "../components/Text";
-
+import achievement_arm from "../images/achievement-agreement-arms-1068523";
 export default class Philosophy extends React.Component {
   render() {
     const { text, screenWidth } = this.props;
@@ -26,10 +26,7 @@ export default class Philosophy extends React.Component {
               <div className="content__desc">
                 <div className="wrap">
                   <div className="img">
-                    <img
-                      src="https://images.unsplash.com/photo-1544273677-c433136021d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
-                      alt=""
-                    />
+                    <img src={achievement_arm} alt="" />
                   </div>
                   <div className="text">
                     <div className="title">

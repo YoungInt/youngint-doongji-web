@@ -6,21 +6,51 @@ import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import Slide from "../components/Slide";
 import homeLogo from "../images/button_home.svg";
-import languageLogo from "../images/button_language.svg";
+import langLogo from "../images/button_language.svg";
 import { happyText } from "../API/textAPI";
+import language_bubble from "../images/common_language_bubble";
 import Text from "../components/Text";
-import { happy_usage, happy_culture } from "../API/imageAPI";
+
+import {
+  happy_usage,
+  happy_culture,
+  happy_motif01,
+  happy_motif02,
+  designcut,
+  happy_version
+} from "../API/imageAPI";
+import classnames from "classnames";
+
+import motifcheck from "../images/happyname_motifcheck";
+
 export default class HappyPage extends React.Component {
   state = {
-    activeId: 0
+    activeId: 0,
+    activeFont: 1,
+    activeMotif: 0,
+    index: 0
   };
-
+  motifOrder = [0, 3, 5, 2, 1, 7, 4, 6];
   componentDidMount() {
     window.scroll(0, 0);
+    this.fontIdChangeInterval = setInterval(() => {
+      const { activeFont, activeMotif, index } = this.state;
+      const activeId = activeFont < 4 ? activeFont + 1 : 1;
+      const id = index < 7 ? index + 1 : 0;
+      this.setState({
+        activeFont: activeId,
+        activeMotif: this.motifOrder[id],
+        index: id
+      });
+    }, 2000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.fontIdChangeInterval);
   }
 
   render() {
     const { lang, onChangeLang } = this.props.value;
+    const { activeFont, activeMotif } = this.state;
     const text = happyText[lang];
     const { mobile } = this.props;
     return (
@@ -40,9 +70,26 @@ export default class HappyPage extends React.Component {
                       <img src={homeLogo} alt="" />
                     </Link>
                   </div>
-                  <div className="lang">
+                  {/* <div className="lang">
                     <img src={languageLogo} alt="" />
-                  </div>
+                  </div> */}
+                  <a href="#">
+                    <div className="language-icon">
+                      <div className="lang happy">
+                        <div className="text">
+                          {lang === "ko" ? "KOR" : "EN"}
+                        </div>
+                        <img
+                          className="lang-img"
+                          src={language_bubble}
+                          alt=""
+                        />
+                      </div>
+                      <div className="img">
+                        <img className="img" src={langLogo} alt="" />
+                      </div>
+                    </div>
+                  </a>
                 </nav>
               </header>
             </div>
@@ -98,7 +145,11 @@ export default class HappyPage extends React.Component {
                   {text.version.map((text, index) => (
                     <li key={index}>
                       <div className="img">
-                        <img src="" alt="" />
+                        <img
+                          src={happy_version[index]}
+                          className={`version-${index}`}
+                          alt=""
+                        />
                       </div>
                       <div className="title">
                         <Text text={text} title="title" />
@@ -107,30 +158,164 @@ export default class HappyPage extends React.Component {
                   ))}
                 </ul>
               </div>
+              {/* <div className="location">
+                구몬, 대구 박물관, 전주 박물관, 세노비스, 한수원,
+                유니버셜스튜디오
+              </div> */}
               {/* 버전 상세 */}
               <div className="version__detail">
-                {text.featureTitle.map((t, index) => (
-                  <div key={index} className="detail">
-                    <div className="detail-wrap">
-                      <div className="img">
-                        <img src="#" alt="" />
-                      </div>
-                      <div className="text">
-                        <Text text={t} />
-                        <Text text={text.featureDesc[index]} />
+                {/* 글꼴선택 */}
+                <div className="detail">
+                  <div className="detail-wrap">
+                    <div className="img img-1">
+                      <div className="fontSelect">
+                        <div
+                          className={classnames(
+                            "namesticker",
+                            `font-${activeFont}`
+                          )}
+                        >
+                          김해피
+                        </div>
+                        <div className="number-box">
+                          <div className="box-wrap">
+                            <div
+                              className={classnames("box", {
+                                active: activeFont === 1
+                              })}
+                            >
+                              1
+                            </div>
+                            <div
+                              className={classnames("box", {
+                                active: activeFont === 2
+                              })}
+                            >
+                              2
+                            </div>
+                          </div>
+                          <div className="box-wrap">
+                            <div
+                              className={classnames("box", {
+                                active: activeFont === 3
+                              })}
+                            >
+                              3
+                            </div>
+                            <div
+                              className={classnames("box", {
+                                active: activeFont === 4
+                              })}
+                            >
+                              4
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+
+                    <div className="text">
+                      <Text text={text.featureTitle[0]} />
+                      <Text text={text.featureDesc[0]} />
+                    </div>
                   </div>
-                ))}
+                </div>
+                {/* 그림 선택 */}
+                <div className="detail">
+                  <div className="detail-wrap">
+                    <div className="img img-2">
+                      <div className="box">
+                        <div className="motif">
+                          <div className="motif-pic">
+                            <div className="motif-wrap">
+                              {happy_motif01.map((motif, index) => (
+                                <div
+                                  key={index}
+                                  className={classnames("motif__img", {
+                                    active: activeMotif === index
+                                  })}
+                                >
+                                  <img key={index} src={motif} />
+                                  <img
+                                    className="motif-check"
+                                    src={motifcheck}
+                                    alt=""
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                            <div className="motif-wrap">
+                              {happy_motif02.map((motif, index) => (
+                                <div
+                                  key={index}
+                                  className={classnames("motif__img", {
+                                    active: activeMotif === index + 4
+                                  })}
+                                >
+                                  <img key={index} src={motif} />
+                                  <img
+                                    className="motif-check"
+                                    src={motifcheck}
+                                    alt=""
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="text">
+                      <Text text={text.featureTitle[1]} />
+                      <Text text={text.featureDesc[1]} />
+                    </div>
+                  </div>
+                </div>
+                {/*  스티커 품질   */}
+                <div className="detail">
+                  <div className="detail-wrap">
+                    <div className="img">
+                      <img src="#" alt="" />
+                    </div>
+
+                    <div className="text">
+                      <Text text={text.featureTitle[2]} />
+                      <Text text={text.featureDesc[2]} />
+                    </div>
+                  </div>
+                </div>
+                {/* 다양한 디자인 */}
+                <div className="detail detail-3">
+                  <div className="detail-wrap">
+                    <div className="img img-3">
+                      <div className="box">
+                        <div className="design">
+                          <div className="design-box">
+                            <img src={designcut[0]} alt="" />
+                            <img src={designcut[1]} alt="" />
+
+                            <div className="design-3">
+                              <img src={designcut[2]} alt="" />
+                              <img src={designcut[3]} alt="" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="text">
+                      <Text text={text.featureTitle[3]} />
+                      <Text text={text.featureDesc[3]} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
           {/* 해피네임 비전 */}
           <section className="vision-wrap">
             <div className="vision">
-              <div className="img">
-                <img src="#" alt="해피네임 이미지" />
-              </div>
               <div className="text-wrap">
                 <div className="text">
                   <Text text={text.messageTitle} />

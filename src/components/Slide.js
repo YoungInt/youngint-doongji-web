@@ -1,5 +1,10 @@
 import React from "react";
 import classnames from "classnames";
+import arrow_left from "../images/arrow_black_left";
+import arrow_right from "../images/arrow_black_right";
+import arrow_right_white from "../images/arrow_white_right";
+import arrow_left_white from "../images/arrow_white_left";
+
 export default class Slide extends React.Component {
   state = {
     activeId: 0,
@@ -33,7 +38,6 @@ export default class Slide extends React.Component {
   };
 
   componentWillUnmount() {
-    // this.interval && clearInterval(this.interval);
     this.pause();
   }
   render() {
@@ -41,7 +45,7 @@ export default class Slide extends React.Component {
     const { activeId } = this.state;
     return (
       <div className="slide-wrap">
-        <div className={`button ${slideName}`}>
+        <div className={`button ${slideName && slideName}`}>
           <div
             className="backward"
             onClick={e => {
@@ -52,7 +56,10 @@ export default class Slide extends React.Component {
               handleImageChange && handleImageChange(id);
             }}
           >
-            앞
+            <img
+              src={slideName === "happy" ? arrow_left : arrow_left_white}
+              alt=""
+            />
           </div>
           <div
             className="forward"
@@ -64,17 +71,20 @@ export default class Slide extends React.Component {
               handleImageChange && handleImageChange(id);
             }}
           >
-            뒤
+            <img
+              src={slideName === "happy" ? arrow_right : arrow_right_white}
+              alt=""
+            />
           </div>
         </div>
-        <div className={classnames("slide", slideName)}>
+        <div className={classnames("slide", slideName && slideName)}>
           <ul className="list">
             {images.map((img, index) => (
               <li
                 key={index}
                 className={classnames({ active: index === activeId })}
               >
-                <div className={classnames("img", slideName)}>
+                <div className={classnames("img", slideName && slideName)}>
                   <img src={img} alt="" />
                 </div>
               </li>

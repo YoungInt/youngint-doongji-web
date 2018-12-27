@@ -26,7 +26,7 @@ export default class Brand extends React.Component {
                     <div className="title">
                       <h3 className="bold">
                         {/* 해피네임스티커 */}
-                        <Text text={text.t8[0]} />
+                        <Text title={"detail-button"} text={text.t8[0]} />
                       </h3>
                       <h3>HAPPYNAME</h3>
                     </div>
@@ -35,7 +35,9 @@ export default class Brand extends React.Component {
                     </p> */}
                     <Text text={text.p8[0]} />
                     <Link to="/happy">
-                      <div className="button">자세히 보기 ></div>
+                      <div className="button happy-button">
+                        <Text title={"detail-button"} text={text.button8} />
+                      </div>
                     </Link>
                   </div>
                 </div>
@@ -59,7 +61,7 @@ export default class Brand extends React.Component {
                     <Text text={text.p8[1]} />
 
                     <Link to="/pola">
-                      <div className="button">
+                      <div className="button pola-button">
                         {/* 자세히보기 > */}
                         <Text text={text.button8} />
                       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import classnaems from "classnames";
+import classnames from "classnames";
 
 export default class Text extends React.Component {
   matchText = text => {
@@ -33,7 +33,7 @@ export default class Text extends React.Component {
     const { text, title } = this.props;
     const convertedText = this.convertP(text);
     return (
-      <p className={classnaems(title && title)}>
+      <p className={title}>
         {convertedText.map((arr, index) =>
           arr.map((t, i) =>
             Object.keys(t)[0] === "normal" ? (

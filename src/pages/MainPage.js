@@ -17,7 +17,7 @@ export default class MainPage extends React.Component {
       <LanguageConsumer>
         {({ lang, onChangeLang }) => (
           <div>
-            <MainTop text={mainText[lang]} />
+            <MainTop text={mainText[lang]} lang={lang} />
             <div id="philosophy">
               <Philosophy text={mainText[lang]} />
             </div>

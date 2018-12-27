@@ -16,12 +16,10 @@ export default class Pratner extends React.Component {
             {screenWidth > 480 ? (
               <img src={partner} alt="" />
             ) : (
-              <img src={partner__mobile} alt="" />
+              <img src={partner__mobile} style={{ width: "600px" }} alt="" />
             )}
           </div>
           <div className="desc">
-            {/* 더 좋은 서비스를 제공하고 더 많은 고객들과 만나기 위해 다양한
-            협력사와 함께 하고 있습니다. */}
             <Text text={text.p7} />
           </div>
         </div>

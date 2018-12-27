@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import languageIcon from "../images/button_language.svg";
+import langLogo from "../images/button_language.svg";
 import Text from "../components/Text";
+import language_bubble from "../images/common_language_bubble";
 
 export default class MainHeader extends React.Component {
   render() {
-    const { text } = this.props;
+    const { text, lang } = this.props;
+
     return (
       <React.Fragment>
         <div className="mainTop">
@@ -27,7 +29,21 @@ export default class MainHeader extends React.Component {
                   </li>
                   <li>
                     <a href="#">
-                      <img src={languageIcon} alt="언어 설정 버튼" />
+                      <div className="language-icon">
+                        <div className="lang main">
+                          <div className="text">
+                            {lang === "ko" ? "KOR" : "EN"}
+                          </div>
+                          <img
+                            className="lang-img"
+                            src={language_bubble}
+                            alt=""
+                          />
+                        </div>
+                        <div className="img">
+                          <img src={langLogo} alt="" />
+                        </div>
+                      </div>
                     </a>
                   </li>
                 </ul>
