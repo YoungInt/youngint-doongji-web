@@ -47,6 +47,11 @@ $content-width: 1000px;
   font-family: "NanumBarunpenB";
   src: url("../src/fonts/NanumBarunpenBold.ttf");
 }
+@font-face {
+  font-family: "NanumSquareL";
+  src: url("../src/fonts/NanumSquareLight.ttf");
+}
+$nanum-square-L: "NanumSquareL";
 $nanum-barunpen-B: "NanumBarunpenB";
 $nanum-myeongjo-EB: "NanumMyeongjoEB";
 $nanumSquare-Round-EB: "NanumSquareRoundEB", "sasn-serif";
@@ -144,6 +149,49 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
     left: -10%;
   }
 }
+@keyframes happy-main-animation {
+  from {
+    bottom: -150px;
+  }
+  to {
+    bottom: 0;
+  }
+}
+@keyframes motif-animation {
+  from {
+    bottom: -120px;
+    right: -80px;
+  }
+  20% {
+    bottom: -120px;
+    right: -80px;
+  }
+  50% {
+    bottom: -30px;
+    right: -20px;
+  }
+  70% {
+    bottom: -30px;
+    right: -20px;
+  }
+  to {
+    bottom: -120px;
+    right: -80px;
+  }
+}
+@keyframes check-animation {
+  0% {
+    width: 10px;
+    height: 10px;
+  }
+  10% {
+  }
+
+  100% {
+    width: 69.7px;
+    height: 42.5px;
+  }
+}
 @mixin keyframes($animation-name) {
   @keyframes #{$animation-name} {
     @content;
@@ -217,36 +265,40 @@ body {
 p {
   margin: 0;
 }
-.language-icon {
+// LangIcon 컴포넌트
+.lang {
+  height: 80px;
   display: flex;
-  // background: red;
-  .lang {
-    // background: blue;
+  cursor: pointer;
+  align-items: center;
+
+  &__bubble {
+    height: 80px;
     position: relative;
     margin-right: 5px;
-    background: yellow;
-    &.pola {
-      vertical-align: middle;
-      .lang-img {
-        background: red;
-      }
+    display: flex;
+
+    .icon {
+      align-self: center;
+      width: 38.6px !important;
+      height: 16px !important;
     }
     .text {
-      width: 35px;
-      text-align: center;
+      height: 100%;
       position: absolute;
+      &.happy {
+        top: 0;
+      }
+      top: 38%;
+      margin-left: 3px;
+      align-self: center;
+
       font-size: 12px;
-      color: $main-font-color;
       font-family: $point-font-bold;
-      letter-spacing: 0;
-    }
-    .lang-img {
-      width: 39px !important;
-      height: 15px !important;
     }
   }
-  .img {
-    margin-top: 10px;
+  &__global {
+    display: flex;
     img {
       width: 33px;
       height: 33px;
@@ -648,7 +700,9 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fbd48a;
+  // background: #fbd48a;
+  background: rgba(30, 30, 30, 0.35);
+
   width: 100vw;
   .team {
     width: $content-width;
@@ -688,10 +742,15 @@ p {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin: 0 22px;
+        img {
+          width: 18px;
+          height: 42px;
+        }
       }
       .carousel-box {
         margin: auto;
-        background: red;
+        // background: red;
         // width: 958px;
         width: 900px;
         //(160px * 4+ 17px * 4 + 250px);
@@ -717,11 +776,11 @@ p {
           left: 330px;
           display: flex;
           transition: transform 1s;
-          background: red;
+          // background: red;
           .item {
             // margin: 0 8.5px;
             margin: 0 10px;
-            background: skyblue;
+            // background: skyblue;
             min-width: $memberMargin;
             min-height: $memberwidth;
 
@@ -772,6 +831,7 @@ p {
           display: flex;
           justify-content: space-between;
           height: 100%;
+          align-items: center;
           div {
             line-height: $header-width;
           }
@@ -783,13 +843,6 @@ p {
               display: inline-block;
             }
           }
-          // .lang {
-          //   img {
-          //     width: 40px;
-          //     height: 40px;
-          //     vertical-align: middle;
-          //   }
-          // }
         }
       }
     }
@@ -820,11 +873,50 @@ p {
           padding-top: 100px;
         }
         .img {
-          width: 500px;
-          height: 400px;
-          background: skyblue;
+          display: flex;
           position: absolute;
-          bottom: 80px;
+          bottom: -105px;
+          .img-box {
+            @include animation("happy-main-animation 1s forwards");
+            position: relative;
+            bottom: -150px;
+            &:nth-child(1) {
+              width: 208px;
+              height: 301px;
+              margin-top: 10px;
+              bottom: 0px;
+              animation-delay: 0s;
+            }
+            &:nth-child(2) {
+              width: 227px;
+              height: 296px;
+              margin-top: 15px;
+
+              animation-delay: 0.5s;
+            }
+            &:nth-child(3) {
+              width: 227px;
+              height: 306px;
+              margin-top: 10px;
+              animation-delay: 1s;
+            }
+            &:nth-child(4) {
+              width: 219px;
+              height: 275px;
+              margin-top: 30px;
+              animation-delay: 1.5s;
+            }
+            &:nth-child(5) {
+              width: 190px;
+              height: 261px;
+              margin-top: 48px;
+              animation-delay: 2s;
+            }
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
     }
@@ -833,6 +925,7 @@ p {
   .culture-wrap {
     // 높이 지정하지 않고 패딩으로 조절함.
     display: flex;
+    background: rgba(251, 212, 138, 0.5);
     .culture {
       width: 864px;
       margin: auto;
@@ -893,7 +986,8 @@ p {
   }
   // 버전 해피 페이지
   .version-wrap {
-    background: rgba($yellow, $alpha-5);
+    // background: rgba($yellow, $alpha-5);
+    background: #ffffff;
     .version {
       position: relative;
       margin: auto;
@@ -985,6 +1079,7 @@ p {
                     text-align: center;
                     line-height: 114px;
                     margin-right: 6px;
+                    box-sizing: border-box;
                     &.font-1 {
                       font-family: $nanum-myeongjo-EB;
                     }
@@ -999,15 +1094,27 @@ p {
                       display: flex;
                     }
                     .box {
+                      box-sizing: border-box;
                       margin: 1px;
                       width: 58px;
                       height: 58px;
                       border-radius: 10px;
                       background: #ffffff;
-                      border: 2px solid $main-font-color;
+                      border: 8px solid $main-font-color;
                       font-size: 36px;
                       font-family: $nanumSquare-Round-EB;
                       text-align: center;
+
+                      // background: red;
+                      position: relative;
+                      .text {
+                        // background: pink;
+                        display: inline;
+                        position: absolute;
+                        right: 25%;
+                        bottom: -30%;
+                      }
+
                       &.active {
                         background-color: #f6aa00;
                       }
@@ -1015,6 +1122,7 @@ p {
                   }
                 }
               }
+              // 나만의 그림을 선택할 수 있습니다.
               &.img-2 {
                 .box {
                   margin: auto;
@@ -1026,6 +1134,33 @@ p {
                   position: relative;
 
                   display: flex;
+                  overflow: hidden;
+                  // 선택된 그림
+                  .selected {
+                    width: 108.3px;
+                    height: 91.5px;
+                    border: 8px solid $main-font-color;
+                    border-radius: 15px;
+                    background-color: #f6aa00;
+                    transform: rotate(-10deg);
+                    position: absolute;
+                    right: -20px;
+                    bottom: -30px;
+                    // box-sizing: border-box;
+                    z-index: 6;
+                    @include animation("motif-animation infinite 2s");
+                    .img {
+                      height: 100%;
+
+                      img {
+                        margin: 15px;
+                        display: flex;
+                        width: 50px;
+                        height: 48.2px;
+                        object-fit: contain;
+                      }
+                    }
+                  }
                   .motif {
                     margin: auto;
 
@@ -1034,6 +1169,7 @@ p {
                     border-radius: 5px;
                     border: 8px solid;
                     position: relative;
+
                     z-index: 5 !important;
                     .motif-pic {
                       display: flex;
@@ -1048,11 +1184,30 @@ p {
 
                         justify-content: space-around;
                         flex-direction: row;
+                        // 첫 째 줄
+                        &:nth-child(1) {
+                          .motif__img {
+                            // 선물 들고 있는 애
+                            &:nth-child(4) {
+                              width: 69.2px;
+                              height: 64.4px;
+                            }
+                          }
+
+                          // 두 째 줄
+                          &:nth-child(2) {
+                          }
+                        }
                         .motif__img {
                           width: 71px;
                           height: 71px;
                           position: relative;
-
+                          img {
+                            object-fit: contain;
+                            width: 100%;
+                            height: 100%;
+                          }
+                          // 모티브 체크
                           .motif-check {
                             position: absolute;
                             top: 0;
@@ -1062,6 +1217,16 @@ p {
                           &.active {
                             .motif-check {
                               display: block;
+
+                              @include animation(
+                                "check-animation 0.3s forwards"
+                              );
+                              overflow: hidden;
+
+                              img {
+                                width: 69.7px;
+                                height: 42.5;
+                              }
                             }
                           }
                         }
@@ -1088,6 +1253,35 @@ p {
                       .design-3 {
                         display: flex;
                         flex-direction: column;
+                      }
+                    }
+                  }
+                }
+              }
+              // 우수한 스티커 품질
+              &.img-4 {
+                .box {
+                  width: 450px;
+                  height: 220px;
+                  margin: auto;
+                  background: rgba(255, 255, 255, 0.6);
+                  border-radius: 15px;
+                  .box-wrap {
+                    height: 220px;
+                    display: flex;
+                    .namesticker {
+                      width: 275px;
+                      height: 114px;
+                      border-radius: 15px;
+                      border: 8px solid $main-font-color;
+                      background: #f6aa00;
+                      margin: auto;
+                      line-height: 114px;
+                      .text {
+                        font-size: 48px;
+                        text-align: center;
+                        font-family: $nanum-barunpen-B;
+                        margin: 0;
                       }
                     }
                   }
@@ -1245,9 +1439,9 @@ p {
       height: 328px;
 
       &__map {
-        width: 50%;
-        height: 100%;
         background: green;
+        width: 580px;
+        height: 382px;
       }
       &__text {
         height: 100%;
@@ -1255,8 +1449,11 @@ p {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        width: 570px;
         .title {
           @extend %happy-font;
+          font-family: $nanum-square-L;
         }
         .address {
           @extend %happy-font-sub;
@@ -1395,10 +1592,16 @@ p {
         display: flex;
         list-style: none;
         justify-content: space-between;
+        margin: 0;
+        align-items: center;
         li {
+          // background: red;
+          width: 33px;
+          height: 33px;
+
           img {
-            width: 33px;
-            height: 33px;
+            width: 100%;
+            height: 100%;
           }
         }
       }
@@ -1685,7 +1888,7 @@ p {
   }
   .message {
     height: 700px;
-    background: yellow;
+    // background: yellow;
     @extend %happy-font;
     text-align: center;
     p {

@@ -10,14 +10,14 @@ import polapolar_keyword_1 from "../images/polapolar_keyword_1";
 import polapolar_keyword_2 from "../images/polapolar_keyword_2";
 import polapolar_arm from "../images/polapolar_selectyourpic_arm";
 import homeLogo from "../images/button_home.svg";
-import langLogo from "../images/button_language.svg";
+
 import Text from "../components/Text";
 import { polaText } from "../API/textAPI";
-
+import LangIcon from "../components/LangIcon";
 import classnames from "classnames";
 import { polabenefits, pola_chat, pola_usage } from "../API/imageAPI";
 import pola_hi from "../images/polapolar_hi ";
-import language_bubble from "../images/common_language_bubble";
+
 import pola_profilepic from "../images/polapolar_profilepic";
 export default class PolaPage extends React.Component {
   state = {
@@ -68,25 +68,8 @@ export default class PolaPage extends React.Component {
                     <img src={homeLogo} alt="" />
                   </Link>
                 </li>
-                <li>
-                  <a href="#">
-                    <div className="language-icon">
-                      <div className="lang pola">
-                        <div className="text">
-                          {lang === "ko" ? "KOR" : "EN"}
-                        </div>
-                        <img
-                          className="lang-img"
-                          src={language_bubble}
-                          alt=""
-                        />
-                      </div>
-                      <div className="img">
-                        <img className="img" src={langLogo} alt="" />
-                      </div>
-                    </div>
-                  </a>
-                </li>
+
+                <LangIcon />
               </ul>
             </header>
           </div>
@@ -220,9 +203,9 @@ export default class PolaPage extends React.Component {
               />
             </div>
           </section>
-          <section className="message">
+          {/* <section className="message">
             <Text text={text.message} />
-          </section>
+          </section> */}
           <Footer />
         </div>
       </React.Fragment>

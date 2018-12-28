@@ -1,6 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 import teams from "../API/memberAPI";
+import arrow_left from "../images/arrow_black_left";
+import arrow_right from "../images/arrow_black_right";
 
 export default class TeamPC extends React.Component {
   state = {
@@ -62,7 +64,7 @@ export default class TeamPC extends React.Component {
                     });
                 }}
               >
-                {"<"}
+                <img src={arrow_left} alt="" />
               </div>
 
               <div
@@ -103,7 +105,7 @@ export default class TeamPC extends React.Component {
                   })
                 }
               >
-                >
+                <img src={arrow_right} alt="" />
               </div>
             </div>
             <div className="team__message">

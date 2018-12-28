@@ -52,9 +52,9 @@ export default class Philosophy extends React.Component {
                 <Text text={text.p6} />
               </div>
             </div>
-            <div className="content-img">
+            {/* <div className="content-img">
               <img src="#" alt="" />
-            </div>
+            </div> */}
           </div>
         </div>
       </React.Fragment>

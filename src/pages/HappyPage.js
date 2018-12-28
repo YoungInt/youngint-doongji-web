@@ -10,6 +10,7 @@ import langLogo from "../images/button_language.svg";
 import { happyText } from "../API/textAPI";
 import language_bubble from "../images/common_language_bubble";
 import Text from "../components/Text";
+import LangIcon from "../components/LangIcon";
 
 import {
   happy_usage,
@@ -17,7 +18,8 @@ import {
   happy_motif01,
   happy_motif02,
   designcut,
-  happy_version
+  happy_version,
+  happyname_main
 } from "../API/imageAPI";
 import classnames from "classnames";
 
@@ -53,6 +55,7 @@ export default class HappyPage extends React.Component {
     const { activeFont, activeMotif } = this.state;
     const text = happyText[lang];
     const { mobile } = this.props;
+    const motifs = [...happy_motif01, ...happy_motif02];
     return (
       <React.Fragment>
         <Helmet>
@@ -70,26 +73,7 @@ export default class HappyPage extends React.Component {
                       <img src={homeLogo} alt="" />
                     </Link>
                   </div>
-                  {/* <div className="lang">
-                    <img src={languageLogo} alt="" />
-                  </div> */}
-                  <a href="#">
-                    <div className="language-icon">
-                      <div className="lang happy">
-                        <div className="text">
-                          {lang === "ko" ? "KOR" : "EN"}
-                        </div>
-                        <img
-                          className="lang-img"
-                          src={language_bubble}
-                          alt=""
-                        />
-                      </div>
-                      <div className="img">
-                        <img className="img" src={langLogo} alt="" />
-                      </div>
-                    </div>
-                  </a>
+                  <LangIcon class="happy" />
                 </nav>
               </header>
             </div>
@@ -99,13 +83,17 @@ export default class HappyPage extends React.Component {
           <main className="main-wrap">
             <div className="main">
               <div className="main__content">
-                <div className="happy_main-img">
+                {/* <div className="happy_main-img">
                   <img src={mainHappy} alt="해피 네임" />
-                </div>
+                </div> */}
 
                 <Text text={text.main} />
                 <div className="img">
-                  <img src="#" alt="네임 스티커" />
+                  {happyname_main.map(happy => (
+                    <div className="img-box">
+                      <img src={happy} />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -184,14 +172,14 @@ export default class HappyPage extends React.Component {
                                 active: activeFont === 1
                               })}
                             >
-                              1
+                              <div className="text">1</div>
                             </div>
                             <div
                               className={classnames("box", {
                                 active: activeFont === 2
                               })}
                             >
-                              2
+                              <div className="text">2</div>
                             </div>
                           </div>
                           <div className="box-wrap">
@@ -200,14 +188,14 @@ export default class HappyPage extends React.Component {
                                 active: activeFont === 3
                               })}
                             >
-                              3
+                              <div className="text">3</div>
                             </div>
                             <div
                               className={classnames("box", {
                                 active: activeFont === 4
                               })}
                             >
-                              4
+                              <div className="text">4</div>
                             </div>
                           </div>
                         </div>
@@ -225,6 +213,11 @@ export default class HappyPage extends React.Component {
                   <div className="detail-wrap">
                     <div className="img img-2">
                       <div className="box">
+                        <div className="selected">
+                          <div className="img">
+                            <img src={motifs[activeMotif]} alt="" />
+                          </div>
+                        </div>
                         <div className="motif">
                           <div className="motif-pic">
                             <div className="motif-wrap">
@@ -235,12 +228,18 @@ export default class HappyPage extends React.Component {
                                     active: activeMotif === index
                                   })}
                                 >
-                                  <img key={index} src={motif} />
                                   <img
-                                    className="motif-check"
-                                    src={motifcheck}
-                                    alt=""
+                                    className="motif-img"
+                                    key={index}
+                                    src={motif}
                                   />
+                                  <div className="motif-check">
+                                    <img
+                                      className="check-img"
+                                      src={motifcheck}
+                                      alt=""
+                                    />
+                                  </div>
                                 </div>
                               ))}
                             </div>
@@ -252,7 +251,11 @@ export default class HappyPage extends React.Component {
                                     active: activeMotif === index + 4
                                   })}
                                 >
-                                  <img key={index} src={motif} />
+                                  <img
+                                    className="motif-img"
+                                    key={index}
+                                    src={motif}
+                                  />
                                   <img
                                     className="motif-check"
                                     src={motifcheck}
@@ -275,8 +278,14 @@ export default class HappyPage extends React.Component {
                 {/*  스티커 품질   */}
                 <div className="detail">
                   <div className="detail-wrap">
-                    <div className="img">
-                      <img src="#" alt="" />
+                    <div className="img img-4">
+                      <div className="box">
+                        <div className="box-wrap">
+                          <div className="namesticker">
+                            <div className="text">김해피</div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="text">

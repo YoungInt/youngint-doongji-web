@@ -30,8 +30,23 @@ import design03 from "../images/happyname_designcut_3";
 import design04 from "../images/happyname_designcut_4";
 
 import version03 from "../images/happyname_ver_custom";
+import version01 from "../images/happyname_ver_happy";
+import version02 from "../images/happyname_ver_character";
 
-const happy_version = ["", "", version03];
+import happyname_main_1 from "../images/happyname_main_1";
+import happyname_main_2 from "../images/happyname_main_2";
+import happyname_main_3 from "../images/happyname_main_3";
+import happyname_main_4 from "../images/happyname_main_4";
+import happyname_main_5 from "../images/happyname_main_5";
+
+const happyname_main = [
+  happyname_main_1,
+  happyname_main_2,
+  happyname_main_3,
+  happyname_main_4,
+  happyname_main_5
+];
+const happy_version = [version01, version02, version03];
 const designcut = [design01, design02, design03, design04];
 const polabenefits = [polabenefit1, polabenefit2, polabenefit3, polabenefit4];
 const pola_chat = [polapolar_keyword_0, polapolar_selectyourpic, pola_complete];
@@ -58,5 +73,6 @@ export {
   happy_motif01,
   happy_motif02,
   designcut,
+  happyname_main,
   happy_version
 };
