@@ -17,7 +17,7 @@ import LangIcon from "../components/LangIcon";
 import classnames from "classnames";
 import { polabenefits, pola_chat, pola_usage } from "../API/imageAPI";
 import pola_hi from "../images/polapolar_hi ";
-
+import Header from "../components/Header";
 import pola_profilepic from "../images/polapolar_profilepic";
 export default class PolaPage extends React.Component {
   state = {
@@ -60,7 +60,7 @@ export default class PolaPage extends React.Component {
         </Helmet>
         <div className="pola" ref={this.someRefName}>
           {/* 폴라 헤더 */}
-          <div className="header-wrap">
+          {/* <div className="header-wrap">
             <header className="header">
               <ul>
                 <li>
@@ -71,8 +71,9 @@ export default class PolaPage extends React.Component {
 
                 <LangIcon />
               </ul>
-            </header>
-          </div>
+            </header> */}
+          {/* </div> */}
+          <Header classname="brand" />
           {/* 폴라  */}
           <div className="main-wrap">
             <div className="main">

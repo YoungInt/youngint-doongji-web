@@ -4,6 +4,8 @@ import arrow_left from "../images/arrow_black_left";
 import arrow_right from "../images/arrow_black_right";
 import arrow_right_white from "../images/arrow_white_right";
 import arrow_left_white from "../images/arrow_white_left";
+import button_play from "../images/button_play";
+import button_stop from "../images/button_stop";
 
 export default class Slide extends React.Component {
   state = {
@@ -104,9 +106,17 @@ export default class Slide extends React.Component {
               />
             ))}
             <div
+              className="control"
               onClick={e => (this.state.pause ? this.timeout() : this.pause())}
             >
-              {this.state.pause ? "시작" : "멈춤"}
+              <img
+                className={classnames({
+                  stop: !this.state.pause,
+                  play: this.state.pause
+                })}
+                src={this.state.pause ? button_play : button_stop}
+                alt=""
+              />
             </div>
           </ul>
         </div>

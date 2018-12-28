@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Text from "../components/Text";
-
+import Header from "../components/Header";
 import LangIcon from "../components/LangIcon";
 export default class MainHeader extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export default class MainHeader extends React.Component {
       <React.Fragment>
         <div className="mainTop">
           <div className="box" />
-          <div className="header-wrap">
+          {/* <div className="header-wrap">
             <header className="header">
               <div className="log">logo-img</div>
               <nav className="menu">
@@ -31,7 +31,8 @@ export default class MainHeader extends React.Component {
                 </ul>
               </nav>
             </header>
-          </div>
+          </div> */}
+          <Header classname="main" />
           <div className="mainTop__img">
             <div className="content">
               <div className="content-wrap">

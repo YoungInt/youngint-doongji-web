@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import Slide from "../components/Slide";
-import homeLogo from "../images/button_home.svg";
+
 import langLogo from "../images/button_language.svg";
 import { happyText } from "../API/textAPI";
 import language_bubble from "../images/common_language_bubble";
 import Text from "../components/Text";
 import LangIcon from "../components/LangIcon";
-
+import Header from "../components/Header";
 import {
   happy_usage,
   happy_culture,
@@ -64,7 +64,7 @@ export default class HappyPage extends React.Component {
         </Helmet>
         <div className="happy">
           {/*헤더  */}
-          <div className="header-wrap">
+          {/* <div className="header-wrap">
             <div className="wrap">
               <header className="header">
                 <nav className="nav">
@@ -77,7 +77,8 @@ export default class HappyPage extends React.Component {
                 </nav>
               </header>
             </div>
-          </div>
+          </div> */}
+          <Header classname="brand" />
           {/* 메인 */}
 
           <main className="main-wrap">

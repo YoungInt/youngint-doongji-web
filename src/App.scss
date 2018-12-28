@@ -254,6 +254,17 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
     transform: rotate(0deg);
   }
 }
+@keyframes swing-head {
+  from {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  to {
+    transform: rotate(-15deg);
+  }
+}
 body {
   margin: 0;
   font-family: $main-font-light;
@@ -876,6 +887,8 @@ p {
           display: flex;
           position: absolute;
           bottom: -105px;
+
+          // @include animation("swing-head 2s infinite");
           .img-box {
             @include animation("happy-main-animation 1s forwards");
             position: relative;
@@ -1558,17 +1571,43 @@ p {
       display: flex;
       justify-content: center;
       position: absolute;
+      height: 30px;
       width: 100%;
       left: 0;
       bottom: 0;
+
       li {
         margin-right: 0.5rem;
         width: 10px;
         height: 10px;
         border-radius: 50%;
         background-color: rgba(30, 30, 30, 0.5);
+        list-style: none;
         &.active {
           background: $main-font-color;
+        }
+      }
+      .control {
+        display: flex;
+        align-items: flex-start;
+        width: 12px;
+        img {
+          width: 10px;
+          height: 10px;
+          opacity: 0.3;
+          padding: 3px 0 0 1px;
+          &.stop {
+            width: 8px;
+            height: 6px;
+            object-fit: contain;
+            padding-top: 2px;
+          }
+          &.play {
+            width: 11px;
+            height: 11px;
+            border-radius: 1px;
+            padding-top: 0;
+          }
         }
       }
     }
