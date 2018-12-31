@@ -7,8 +7,9 @@ import polapolar_keyword_0 from "../images/polapolar_keyword_0";
 import polapolar_selectyourpic from "../images/polapolar_selectyourpic";
 import pola_complete from "../images/polapolar_complete";
 
-import polapolar_usage_1 from "../images/polapolar_usage_0";
-import polapolar_usage_2 from "../images/polapolar_usage_1";
+import polapolar_usage_0 from "../images/polapolar_usage_0";
+import polapolar_usage_1 from "../images/polapolar_usage_1";
+import polapolar_usage_3 from "../images/polapolar_usage_3";
 import happyUsage1 from "../images/happname_usage_1";
 import happyUsage2 from "../images/happname_usage_2";
 
@@ -51,10 +52,10 @@ const designcut = [design01, design02, design03, design04];
 const polabenefits = [polabenefit1, polabenefit2, polabenefit3, polabenefit4];
 const pola_chat = [polapolar_keyword_0, polapolar_selectyourpic, pola_complete];
 const pola_usage = [
+  polapolar_usage_0,
   polapolar_usage_1,
-  polapolar_usage_2,
   "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
-  "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
+  polapolar_usage_3
 ];
 const happy_usage = [
   happyUsage1,

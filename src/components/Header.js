@@ -1,6 +1,7 @@
 import React from "react";
 import LangIcon from "../components/LangIcon";
 import homeLogo from "../images/button_home.svg";
+import young_logo from "../images/youngint_logo";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 
@@ -49,7 +50,7 @@ export default class Header extends React.Component {
               <div className={`logo ${classname}`}>
                 {classname === "main" ? (
                   <Link to="/">
-                    <img src={"#"} alt="로고 이미지" />
+                    <img src={young_logo} alt="로고 이미지" />
                   </Link>
                 ) : (
                   <a href="/">

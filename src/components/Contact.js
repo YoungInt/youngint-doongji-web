@@ -1,6 +1,6 @@
 import React from "react";
 import Text from "../components/Text";
-
+import { browser } from "react-router-dom";
 export default class Contact extends React.Component {
   componentDidMount() {
     const mapContainer = document.getElementById("map"), // 지도를 표시할 div
@@ -16,6 +16,9 @@ export default class Contact extends React.Component {
     // 마커를 생성합니다
     const marker = new daum.maps.Marker({
       position: markerPosition
+    });
+    daum.maps.event.addListener(marker, "click", function() {
+      location.href = "https://place.map.daum.net/1927481863";
     });
 
     // 마커가 지도 위에 표시되도록 설정합니다

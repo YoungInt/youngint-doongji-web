@@ -1,16 +1,9 @@
 import React from "react";
-import mainHappy from "../images/main_happy";
-
-import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import Slide from "../components/Slide";
-
-import langLogo from "../images/button_language.svg";
 import { happyText } from "../API/textAPI";
-import language_bubble from "../images/common_language_bubble";
 import Text from "../components/Text";
-import LangIcon from "../components/LangIcon";
 import Header from "../components/Header";
 import {
   happy_usage,
@@ -21,6 +14,7 @@ import {
   happy_version,
   happyname_main
 } from "../API/imageAPI";
+import drop from "../images/happyname_drop";
 import classnames from "classnames";
 
 import motifcheck from "../images/happyname_motifcheck";
@@ -71,15 +65,13 @@ export default class HappyPage extends React.Component {
           <main className="main-wrap">
             <div className="main">
               <div className="main__content">
-                {/* <div className="happy_main-img">
-                  <img src={mainHappy} alt="해피 네임" />
-                </div> */}
-
                 <Text text={text.main} />
                 <div className="img">
                   {happyname_main.map((happy, index) => (
-                    <div key={index} className="img-box">
-                      <img src={happy} />
+                    <div key={index} className="container">
+                      <div key={index} className="img-box">
+                        <img src={happy} />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -269,8 +261,14 @@ export default class HappyPage extends React.Component {
                     <div className="img img-4">
                       <div className="box">
                         <div className="box-wrap">
+                          <div className="drop">
+                            <img src={drop} alt="" />
+                            <img src={drop} alt="" />
+                            <img src={drop} alt="" />
+                          </div>
                           <div className="namesticker">
                             <div className="text">김해피</div>
+                            <div className="slash" />
                           </div>
                         </div>
                       </div>
