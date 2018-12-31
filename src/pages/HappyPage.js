@@ -64,20 +64,7 @@ export default class HappyPage extends React.Component {
         </Helmet>
         <div className="happy">
           {/*헤더  */}
-          {/* <div className="header-wrap">
-            <div className="wrap">
-              <header className="header">
-                <nav className="nav">
-                  <div className="home">
-                    <Link to="/">
-                      <img src={homeLogo} alt="" />
-                    </Link>
-                  </div>
-                  <LangIcon class="happy" />
-                </nav>
-              </header>
-            </div>
-          </div> */}
+
           <Header classname="brand" brand="happy" />
           {/* 메인 */}
 
@@ -90,8 +77,8 @@ export default class HappyPage extends React.Component {
 
                 <Text text={text.main} />
                 <div className="img">
-                  {happyname_main.map(happy => (
-                    <div className="img-box">
+                  {happyname_main.map((happy, index) => (
+                    <div key={index} className="img-box">
                       <img src={happy} />
                     </div>
                   ))}

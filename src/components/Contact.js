@@ -3,18 +3,18 @@ import Text from "../components/Text";
 
 export default class Contact extends React.Component {
   componentDidMount() {
-    var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+    const mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
         center: new daum.maps.LatLng(37.277493, 127.105616), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
       };
 
     // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-    var map = new daum.maps.Map(mapContainer, mapOption);
-    var markerPosition = new daum.maps.LatLng(37.277493, 127.105616);
+    const map = new daum.maps.Map(mapContainer, mapOption);
+    const markerPosition = new daum.maps.LatLng(37.277493, 127.105616);
 
     // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
+    const marker = new daum.maps.Marker({
       position: markerPosition
     });
 
