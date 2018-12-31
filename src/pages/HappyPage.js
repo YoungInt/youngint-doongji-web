@@ -78,7 +78,7 @@ export default class HappyPage extends React.Component {
               </header>
             </div>
           </div> */}
-          <Header classname="brand" />
+          <Header classname="brand" brand="happy" />
           {/* 메인 */}
 
           <main className="main-wrap">

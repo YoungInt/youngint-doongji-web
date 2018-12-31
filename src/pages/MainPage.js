@@ -8,7 +8,7 @@ import Partner from "../components/Partner";
 import Contact from "../components/Contact";
 import { LanguageConsumer } from "../context/LanguageContext";
 import { mainText } from "../API/textAPI";
-
+import Helmet from "react-helmet";
 export default class MainPage extends React.Component {
   render() {
     const { screenWidth } = this.props;
@@ -17,6 +17,9 @@ export default class MainPage extends React.Component {
       <LanguageConsumer>
         {({ lang, onChangeLang }) => (
           <div>
+            <Helmet>
+              <title>영인터내셔널</title>
+            </Helmet>
             <MainTop text={mainText[lang]} lang={lang} />
             <div id="philosophy">
               <Philosophy text={mainText[lang]} />

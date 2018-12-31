@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import Slide from "../components/Slide";
-import { Link } from "react-router-dom";
+
 import Footer from "../components/Footer";
 import titleNavy from "../images/00_title_navy";
 import titleSub from "../images/00_title_sub";
@@ -9,11 +9,10 @@ import polaDeliver from "../images/10_pola_deliver.gif";
 import polapolar_keyword_1 from "../images/polapolar_keyword_1";
 import polapolar_keyword_2 from "../images/polapolar_keyword_2";
 import polapolar_arm from "../images/polapolar_selectyourpic_arm";
-import homeLogo from "../images/button_home.svg";
 
 import Text from "../components/Text";
 import { polaText } from "../API/textAPI";
-import LangIcon from "../components/LangIcon";
+
 import classnames from "classnames";
 import { polabenefits, pola_chat, pola_usage } from "../API/imageAPI";
 import pola_hi from "../images/polapolar_hi ";
@@ -59,21 +58,7 @@ export default class PolaPage extends React.Component {
           <title>폴라폴라 포토자판기</title>
         </Helmet>
         <div className="pola" ref={this.someRefName}>
-          {/* 폴라 헤더 */}
-          {/* <div className="header-wrap">
-            <header className="header">
-              <ul>
-                <li>
-                  <Link to="/">
-                    <img src={homeLogo} alt="" />
-                  </Link>
-                </li>
-
-                <LangIcon />
-              </ul>
-            </header> */}
-          {/* </div> */}
-          <Header classname="brand" />
+          <Header classname="brand" brand="pola" />
           {/* 폴라  */}
           <div className="main-wrap">
             <div className="main">
