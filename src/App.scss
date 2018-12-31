@@ -317,6 +317,7 @@ p {
   }
 }
 //  헤더 header
+
 header {
   width: 100vw;
   height: 80px;
@@ -325,7 +326,12 @@ header {
   height: 80px;
   z-index: 100;
   position: fixed;
+  transition: opacity 1s;
+  opacity: 1;
 
+  &.hidden {
+    opacity: 0;
+  }
   .container {
     height: 80px;
     width: 100vw;
@@ -363,7 +369,6 @@ header {
       width: 70%;
     }
     .logo {
-      background: red;
       &.main {
         img {
         }
