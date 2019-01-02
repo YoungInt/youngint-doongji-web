@@ -1,6 +1,7 @@
 import React from "react";
 import Text from "../components/Text";
 import { browser } from "react-router-dom";
+import classnames from "classnames";
 export default class Contact extends React.Component {
   componentDidMount() {
     const mapContainer = document.getElementById("map"), // 지도를 표시할 div
@@ -40,19 +41,29 @@ export default class Contact extends React.Component {
               />
             </a>
             <div className="content__text">
-              <div className="title">
-                {/* 영인터내셔널은 <br />
-                입점제안 및 제휴문의를 <br />
-                기다리고 있습니다. */}
-                <Text text={text.contactTitle} />
+              <div
+                className={classnames("title", {
+                  en: this.props.lang === "en"
+                })}
+              >
+                <Text title="main" text={text.contactTitle1} />
+                {text.contactTitle2 ? (
+                  <Text title="sub" text={text.contactTitle2} />
+                ) : null}
               </div>
               <address className="address">
                 <p>
-                  <span className="bold">(주)영인터내셔널</span>
+                  <span className="bold">{text.contact.company}</span>
                   <br />
-                  (16967)경기도 용인시 기흥구 신갈로 121 영인터내셔널 <br />
-                  <a href="tel:031-123-4567">031-123-4567</a> 고객센터:
-                  <a href="tel:070-123-4567">070-123-4567</a>
+                  {text.contact.address} <br />
+                  {text.contact.address2 ? (
+                    <span>
+                      {text.contact.address2} <br />
+                    </span>
+                  ) : null}
+                  <a href={`tel:${text.contact.tel}`}>{text.contact.tel}</a>{" "}
+                  {text.contact.cs}:
+                  <a href={`tel:${text.contact.cstel}`}>{text.contact.cstel}</a>
                 </p>
               </address>
             </div>
