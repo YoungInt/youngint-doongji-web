@@ -6,8 +6,7 @@ class LanguageProvider extends React.Component {
   state = {
     lang: "ko"
   };
-  onChangeLang = () => {
-    const lang = this.state.lang === "ko" ? "en" : "ko";
+  onChangeLang = lang => {
     this.setState({
       lang
     });
