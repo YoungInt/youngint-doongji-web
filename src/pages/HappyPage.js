@@ -15,6 +15,7 @@ import {
   happyname_main
 } from "../API/imageAPI";
 import drop from "../images/happyname_drop";
+import happy_bubble from "../images/happyname_ver_happy_bubble";
 import classnames from "classnames";
 
 import motifcheck from "../images/happyname_motifcheck";
@@ -53,13 +54,7 @@ export default class HappyPage extends React.Component {
     return (
       <React.Fragment>
         <Helmet>
-          <meta charSet="utf-8" />
           <title>해피 네임스티커</title>
-          <meta name="description" content="영인터내셔널 홈페이지 입니다." />
-          <meta
-            name="keywords"
-            content="영인터내셔널, 폴라폴라, 해피네임스티커, 네임스티커, 포토 자판기, 자판기, 키오스크"
-          />
         </Helmet>
         <div className="happy">
           {/*헤더  */}
@@ -115,9 +110,15 @@ export default class HappyPage extends React.Component {
                 <Text text={text.versionTitle} title="title" />
 
                 <ul className="list">
-                  {text.version.map((text, index) => (
+                  {text.version.map((t, index) => (
                     <li key={index}>
                       <div className="img">
+                        {index === 0 ? (
+                          <div className="bubble__text">
+                            <img className="bubble" src={happy_bubble} />
+                            <Text text={text.bubble} />
+                          </div>
+                        ) : null}
                         <img
                           src={happy_version[index]}
                           className={`version-${index}`}
@@ -125,7 +126,7 @@ export default class HappyPage extends React.Component {
                         />
                       </div>
                       <div className="title">
-                        <Text text={text} title="title" />
+                        <Text text={t} title="title" />
                       </div>
                     </li>
                   ))}
@@ -144,7 +145,7 @@ export default class HappyPage extends React.Component {
                       <div className="fontSelect">
                         <div className={classnames("namesticker")}>
                           <div className={`text font-${activeFont}`}>
-                            김해피
+                            김해피/ kim happy
                           </div>
                         </div>
                         <div className="number-box">
@@ -269,7 +270,7 @@ export default class HappyPage extends React.Component {
                             <img src={drop} alt="" />
                           </div>
                           <div className="namesticker">
-                            <div className="text">김해피</div>
+                            <div className="text"> 김해피</div>
                             <div className="slash" />
                           </div>
                         </div>
