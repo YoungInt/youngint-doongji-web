@@ -55,6 +55,11 @@ export default class HappyPage extends React.Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>해피 네임스티커</title>
+          <meta name="description" content="영인터내셔널 홈페이지 입니다." />
+          <meta
+            name="keywords"
+            content="영인터내셔널, 폴라폴라, 해피네임스티커, 네임스티커, 포토 자판기, 자판기, 키오스크"
+          />
         </Helmet>
         <div className="happy">
           {/*헤더  */}
@@ -137,13 +142,10 @@ export default class HappyPage extends React.Component {
                   <div className="detail-wrap">
                     <div className="img img-1">
                       <div className="fontSelect">
-                        <div
-                          className={classnames(
-                            "namesticker",
-                            `font-${activeFont}`
-                          )}
-                        >
-                          김해피
+                        <div className={classnames("namesticker")}>
+                          <div className={`text font-${activeFont}`}>
+                            김해피
+                          </div>
                         </div>
                         <div className="number-box">
                           <div className="box-wrap">

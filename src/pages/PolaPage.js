@@ -56,6 +56,11 @@ export default class PolaPage extends React.Component {
         <Helmet>
           <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
           <title>폴라폴라 포토자판기</title>
+          <meta name="description" content="영인터내셔널 홈페이지 입니다." />
+          <meta
+            name="keywords"
+            content="영인터내셔널, 폴라폴라, 해피네임스티커, 네임스티커, 포토 자판기, 자판기, 키오스크"
+          />
         </Helmet>
         <div className="pola" ref={this.someRefName}>
           <Header classname="brand" brand="pola" />
