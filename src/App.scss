@@ -41,16 +41,37 @@ $content-width: 1000px;
 }
 @font-face {
   font-family: "NanumMyeongjoEB";
-  src: url("../src/fonts/NanumMyeongjoExtraBold.ttf");
+  src: url("../src/fonts/NanumMyeongjoExtraBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "NanumBarunpenB";
-  src: url("../src/fonts/NanumBarunpenBold.ttf");
+  src: url("../src/fonts/NanumBarunpenBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "NanumSquareL";
-  src: url("../src/fonts/NanumSquareLight.ttf");
+  src: url("../src/fonts/NanumSquareLight.ttf") format("truetype");
 }
+@font-face {
+  font-family: "heart";
+  src: url("../src/fonts/하트앤땡큐.ttf") format("truetype");
+}
+@font-face {
+  font-family: "iropkeBatang";
+  src: url("../src/fonts/IropkeBatangM.ttf") format("truetype");
+}
+@font-face {
+  font-family: "nanumBarunpenR";
+  src: url("../src/fonts/NanumBarunpenR.ttf") format("truetype");
+}
+@font-face {
+  font-family: "utoimage";
+  src: url("../src/fonts/UTOIMAGE_유토이미지별나라달님_OTF.ttf")
+    format("truetype");
+}
+$namestickerFont1: "heart", "sans-serif";
+$namestickerFont2: "iropkeBatang";
+$namestickerFont3: "nanumBarunpenR";
+$namestickerFont4: "utoimage";
 $nanum-square-L: "NanumSquareL";
 $nanum-barunpen-B: "NanumBarunpenB";
 $nanum-myeongjo-EB: "NanumMyeongjoEB";
@@ -66,7 +87,7 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
   display: inline;
 }
 %border-bottom {
-  border-bottom: 2px solid $main-font-color;
+  border-bottom: 3px solid $main-font-color;
 }
 %point-text {
   font-size: 48px;
@@ -74,7 +95,7 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
 }
 %happy-font {
   font-size: 48px;
-  line-height: 1.29;
+  line-height: 62px;
   letter-spacing: -1.6px;
   font-family: $nanum-square-L;
   .bold {
@@ -84,7 +105,7 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
 %happy-font-sub {
   font-size: 16px;
   line-height: 27px;
-  letter-spacing: -0.3;
+  letter-spacing: -0.3px;
 
   .bold {
     font-family: $main-font-ExtraBold;
@@ -122,7 +143,7 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
 // 폴라 애니메이션
 @keyframes pola-animation {
   from {
-    left: -5%;
+    left: -150px;
   }
   10% {
     transform: rotate(0deg);
@@ -147,16 +168,18 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
   }
   to {
     transform: scaleX(-1);
-    left: -10%;
+    left: -150px;
   }
 }
 @keyframes happy-main-animation {
   from {
     bottom: -150px;
   }
+
   50% {
-    bottom: 20px;
+    bottom: 30px;
   }
+
   to {
     bottom: 0;
   }
@@ -274,15 +297,6 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
   100% {
     transform: rotate(0);
   }
-  // from {
-  //   transform: rotate(15deg);
-  // }
-  // 50% {
-  //   transform: rotate(-15deg);
-  // }
-  // to {
-  //   transform: rotate(15deg);
-  // }
 }
 body {
   margin: 0;
@@ -345,7 +359,7 @@ header {
   height: 80px;
   z-index: 100;
   position: fixed;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
   opacity: 1;
 
   &.hidden {
@@ -427,13 +441,13 @@ header {
     }
   }
 }
+//  main page 메인 페이지
 //  MainTop 컴포넌트
 .mainTop {
   height: 100vh;
   position: relative;
-  // padding-top: 80px;
+
   .box {
-    // margin: 80px;
   }
 
   &__img {
@@ -462,8 +476,7 @@ header {
         }
         .desc {
           p {
-            line-height: 27px;
-            letter-spacing: 0.3px;
+            @extend %happy-font-sub;
           }
         }
       }
@@ -496,8 +509,7 @@ header {
           letter-spacing: -1.6px;
         }
         &:nth-child(2) {
-          line-height: 27px;
-          letter-spacing: -0.3px;
+          @extend %happy-font-sub;
         }
       }
     }
@@ -530,7 +542,7 @@ header {
         height: 50%;
         .wrap {
           height: 90%;
-          border-bottom: 2px solid #1e1e1e;
+          border-bottom: 2px solid rgba(30, 30, 30, 0.5);
           display: flex;
           justify-content: space-between;
 
@@ -597,8 +609,7 @@ header {
             }
 
             .desc {
-              line-height: 1.69;
-              letter-spacing: -0.3px;
+              @extend %happy-font-sub;
             }
           }
         }
@@ -633,7 +644,7 @@ header {
       }
     }
     p {
-      margin-top: 30px !important;
+      margin-top: 20px !important;
     }
   }
   .brand-wrap {
@@ -681,7 +692,6 @@ header {
             }
             // 폴라 캐릭터
             .pola-img {
-              // background: yellow;
             }
           }
 
@@ -701,7 +711,7 @@ header {
             z-index: 99;
 
             &.pola {
-              margin-left: 170px;
+              margin-left: 120px;
             }
             .title {
               p {
@@ -713,7 +723,9 @@ header {
               h3 {
                 margin: 0 10px 0 0;
                 line-height: 1.9;
-                // background: yellow;
+                &:nth-child(1) {
+                  margin-left: 3px;
+                }
               }
               .bold {
                 line-height: 1.29;
@@ -722,7 +734,7 @@ header {
               }
             }
             p {
-              margin-top: 50px;
+              margin-top: 8px;
             }
           }
         }
@@ -921,6 +933,7 @@ header {
           bottom: -105px;
           .container {
             @include animation("happy-main-animation 1s forwards");
+            z-index: 100;
             position: relative;
             bottom: -150px;
 
@@ -961,8 +974,9 @@ header {
               height: 100%;
             }
             .img-box {
-              @include animation("swing-head 1s infinite");
-              animation-delay: 2.5s;
+              padding-bottom: 311px;
+              @include animation("swing-head 1.5s infinite");
+              animation-delay: 3s;
               animation-timing-function: linear;
             }
           }
@@ -1021,9 +1035,7 @@ header {
           .text {
             padding-top: 16px;
             border-top: 6px solid $yellow;
-            font-size: 48px;
-            line-height: 1.29;
-            font-family: $nanum-square-L;
+            @extend %happy-font;
           }
         }
       }
@@ -1034,7 +1046,7 @@ header {
       }
     }
   }
-  // 버전 해피 페이지
+  // 버전 해피 페이지 happy page version
   .version-wrap {
     // background: rgba($yellow, $alpha-5);
     background: #ffffff;
@@ -1066,7 +1078,22 @@ header {
 
             height: 330px;
             vertical-align: middle;
+
             .img {
+              position: relative;
+              .bubble__text {
+                position: absolute;
+                top: 130px;
+                right: 40px;
+
+                p {
+                  text-align: center;
+                  position: absolute;
+
+                  top: 10px;
+                  left: 16px;
+                }
+              }
               width: 660px;
               height: 330px;
 
@@ -1099,10 +1126,24 @@ header {
       &__detail {
         background: #fbd48a;
         .detail {
-          width: 1040px;
+          @for $i from 1 through 3 {
+            &:nth-child(#{$i}) {
+              &:after {
+                content: "";
+                width: 1040px;
+                height: 2px;
+                background: #ffffff;
+                display: block;
+                margin: auto;
+                margin-top: 135px;
+              }
+            }
+          }
+          &:nth-child(4) {
+            padding-bottom: 135px;
+          }
+          padding-top: 135px;
           margin: auto;
-          border-bottom: 2px solid #ffffff;
-          padding: 135px 0;
           &.detail-3 {
             border-bottom: 0;
           }
@@ -1125,16 +1166,26 @@ header {
                     border-radius: 15px;
                     background: #ffffff;
                     border: 9px solid $main-font-color;
-                    font-size: 48px;
-                    text-align: center;
-                    line-height: 114px;
                     margin-right: 6px;
                     box-sizing: border-box;
-                    &.font-1 {
-                      font-family: $nanum-myeongjo-EB;
-                    }
-                    &.font-2 {
-                      font-family: $nanum-barunpen-B;
+                    .text {
+                      margin: 0;
+                      font-size: 48px;
+                      text-align: center;
+
+                      line-height: 96px;
+                      &.font-1 {
+                        font-family: $namestickerFont1;
+                      }
+                      &.font-2 {
+                        font-family: $namestickerFont2;
+                      }
+                      &.font-3 {
+                        font-family: $namestickerFont3;
+                      }
+                      &.font-4 {
+                        font-family: $namestickerFont4;
+                      }
                     }
                   }
                   .number-box {
@@ -1387,6 +1438,7 @@ header {
                 &:nth-child(2) {
                   margin-top: 10px;
                   @extend %happy-font-sub;
+                  font-family: $main-font-light;
                 }
               }
             }
@@ -1443,6 +1495,7 @@ header {
       margin-right: 50px;
       p {
         margin: 0;
+        font-family: $nanum-square-L !important;
         .bold {
           font-family: $main-font-Bold;
           font-size: 24px;
@@ -1525,7 +1578,7 @@ header {
     .content {
       display: flex;
       margin-top: 90px;
-      height: 328px;
+      height: 382px;
       #map {
         border: 1px solid rgba(30, 30, 30, 0.5);
       }
@@ -1544,11 +1597,16 @@ header {
 
         width: 570px;
         .title {
-          font-family: $nanum-square-L;
-          font-size: 48px;
-          line-height: 62px;
-          letter-spacing: -1.6px;
-          .bold {
+          @extend %happy-font;
+          &.en {
+            font-size: 48px;
+            line-height: 50px;
+            letter-spacing: -1px;
+            font-family: $nanum-square-L;
+          }
+          .main {
+          }
+          .sub {
             font-size: 28px;
             line-height: 32px;
             letter-spacing: -0.3px;
@@ -1663,7 +1721,7 @@ header {
       bottom: 0;
 
       li {
-        margin-right: 0.5rem;
+        margin-right: 20px;
         width: 10px;
         height: 10px;
         border-radius: 50%;
@@ -1689,7 +1747,7 @@ header {
             padding-top: 2px;
           }
           &.play {
-            width: 11px;
+            width: 8px;
             height: 11px;
             border-radius: 1px;
             padding-top: 0;
@@ -1779,12 +1837,13 @@ header {
     background-image: linear-gradient(to bottom, #e5f0f8, #c7dcef);
 
     .use {
-      padding: 150px 0 120px 0;
+      padding: 150px 0 122px 0;
       ul {
         list-style: none;
         li {
           text-align: center;
           position: relative;
+
           .use-2 {
             margin: auto;
             &__text {
@@ -1817,6 +1876,8 @@ header {
             line-height: 1;
             color: #9bbedf;
             font-family: $main-font-ExtraBold;
+
+            padding-top: 40px;
           }
           .use-2 {
             width: 679px;
@@ -1836,6 +1897,7 @@ header {
             padding: 0;
             margin: auto;
             position: relative;
+
             &.use-0 {
               background-image: url("../src/images/polapolar_keyword_0.png");
               width: 450px;
@@ -1843,16 +1905,16 @@ header {
             }
             &.use-1 {
               position: relative;
-              margin-bottom: 112px;
+
               .pola-arm {
                 width: 135px;
                 height: 145px;
                 @include animation("swing-animation 2s infinite");
-                top: 235px;
-                right: 80px;
+                top: 180px;
+                right: 100px;
                 z-index: 3;
                 position: absolute;
-                // background: red;
+
                 .arm {
                   width: 90px;
                   height: 90px;
@@ -1860,10 +1922,13 @@ header {
                 }
               }
             }
+
             img {
+              margin-top: 50px;
+
               width: 359px;
               height: 350px;
-              margin: 100px 45px 0 45px;
+              // margin: 100px 45px 0 45px;
             }
             .keyword {
               img {
@@ -1894,7 +1959,11 @@ header {
           .text {
             @extend %happy-font;
             text-align: center;
-            padding: 40px 0;
+            margin: 40px 0 80px 0;
+
+            p {
+              margin: 0;
+            }
           }
         }
       }
@@ -1950,6 +2019,9 @@ header {
                 @extend %happy-font;
                 margin: 11px 0 13px 0;
               }
+              .desc {
+                @extend %happy-font-sub;
+              }
               p {
                 margin: 0;
               }
@@ -1959,12 +2031,13 @@ header {
       }
     }
   }
+  //  폴라 슬라이드
   .pola-slide {
     position: relative;
 
     .text {
       font-family: $nanum-square-L;
-      height: 180px;
+      height: 200px;
       background-image: linear-gradient(
         to left,
         rgba(255, 255, 255, 0.3),
@@ -1972,17 +2045,20 @@ header {
         rgba(255, 255, 255, 0.9) 72%,
         rgba(255, 255, 255, 0.3)
       );
+
       bottom: 0;
       width: 100%;
       position: absolute;
       z-index: 5;
       font-size: 48px;
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       p {
-        margin-top: 40px;
+        align-self: center;
+        line-height: 1.29;
       }
-    }
-    .text {
     }
   }
   .message {
