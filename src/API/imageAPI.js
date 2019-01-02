@@ -9,9 +9,12 @@ import pola_complete from "../images/polapolar_complete";
 
 import polapolar_usage_0 from "../images/polapolar_usage_0";
 import polapolar_usage_1 from "../images/polapolar_usage_1";
+import polapolar_usage_2 from "../images/polapolar_usage_2";
 import polapolar_usage_3 from "../images/polapolar_usage_3";
+
 import happyUsage1 from "../images/happname_usage_1";
 import happyUsage2 from "../images/happname_usage_2";
+import happyUsage3 from "../images/happname_usage_3";
 
 import happyCulture1 from "../images/happyname_culture_01";
 import happyCulture2 from "../images/happyname_culture_02";
@@ -54,14 +57,10 @@ const pola_chat = [polapolar_keyword_0, polapolar_selectyourpic, pola_complete];
 const pola_usage = [
   polapolar_usage_0,
   polapolar_usage_1,
-  "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+  polapolar_usage_2,
   polapolar_usage_3
 ];
-const happy_usage = [
-  happyUsage1,
-  happyUsage2,
-  "https://images.unsplash.com/photo-1544585456-232ab700cc65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
-];
+const happy_usage = [happyUsage1, happyUsage2, happyUsage3];
 const happy_motif01 = [motif01, motif02, motif03, motif04];
 const happy_motif02 = [motif05, motif06, motif07, motif08];
 const happy_culture = [happyCulture1, happyCulture2, happyCulture3];
