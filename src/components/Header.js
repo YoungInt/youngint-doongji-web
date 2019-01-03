@@ -7,7 +7,8 @@ import classnames from "classnames";
 
 export default class Header extends React.Component {
   state = {
-    hidden: false
+    hidden: false,
+    polaheader: true
   };
   scrollPosition = 0;
 
@@ -15,10 +16,18 @@ export default class Header extends React.Component {
     this.scrollPosition = window.scrollY;
     this.scrollEvent = setInterval(() => {
       window.addEventListener("scroll", this.handleScroll);
-    }, 100);
+    }, 1000);
   }
   handleScroll = () => {
     const currentPosition = window.scrollY;
+    const innerHeight = window.innerHeight - 200;
+    currentPosition > innerHeight
+      ? this.setState({
+          polaheader: false
+        })
+      : this.setState({
+          polaheader: true
+        });
     const { hidden } = this.state;
     this.scrollPosition < currentPosition
       ? !hidden &&
@@ -35,6 +44,7 @@ export default class Header extends React.Component {
   componentWillUnmount() {
     clearInterval(this.scrollEvent);
   }
+
   render() {
     const { classname, brand } = this.props;
     const { hidden } = this.state;
@@ -45,7 +55,11 @@ export default class Header extends React.Component {
             hidden: hidden
           })}
         >
-          <div className={`container ${brand} ${classname}`}>
+          <div
+            className={classnames(`container ${brand} ${classname} `, {
+              polaBorderHidden: !this.state.polaheader
+            })}
+          >
             <div className={`header ${classname}`}>
               <div className={`logo ${classname}`}>
                 {classname === "main" ? (
@@ -62,13 +76,16 @@ export default class Header extends React.Component {
                 {classname === "main" ? (
                   <ul>
                     <li>
-                      <a href="#about">About</a>
+                      <a href="#philosophy">ABOUT</a>
                     </li>
                     <li>
-                      <a href="#brand">Brand</a>
+                      <a href="#brand">BRAND</a>
                     </li>
                     <li>
-                      <a href="#contact">Contact</a>
+                      <a href="#contact">CONTACT</a>
+                    </li>
+                    <li>
+                      <a href="http://youngint.com">SHOP</a>
                     </li>
                     <li>
                       <LangIcon />
