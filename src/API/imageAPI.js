@@ -43,6 +43,13 @@ import happyname_main_3 from "../images/happyname_main_3";
 import happyname_main_4 from "../images/happyname_main_4";
 import happyname_main_5 from "../images/happyname_main_5";
 
+import drop1 from "../images/drop_1";
+import drop2 from "../images/drop_2";
+import drop3 from "../images/drop_3";
+import drop4 from "../images/drop_4";
+import drop5 from "../images/drop_5";
+
+const drops = [drop1, drop2, drop3, drop4, drop5];
 const happyname_main = [
   happyname_main_1,
   happyname_main_2,
@@ -74,5 +81,6 @@ export {
   happy_motif02,
   designcut,
   happyname_main,
-  happy_version
+  happy_version,
+  drops
 };
