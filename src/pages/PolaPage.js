@@ -34,7 +34,6 @@ export default class PolaPage extends React.Component {
   componentDidMount() {
     window.scroll(0, 0);
     const height = this.divElement.scrollHeight;
-    console.log("height" + height);
     window.addEventListener("scroll", this.handleScroll);
   }
   componentWillUnmount() {

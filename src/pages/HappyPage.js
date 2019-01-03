@@ -12,12 +12,13 @@ import {
   happy_motif02,
   designcut,
   happy_version,
-  happyname_main
+  happyname_main,
+  drops
 } from "../API/imageAPI";
 import drop from "../images/happyname_drop";
 import happy_bubble from "../images/happyname_ver_happy_bubble";
 import classnames from "classnames";
-
+import eraser from "../images/eraser";
 import motifcheck from "../images/happyname_motifcheck";
 
 export default class HappyPage extends React.Component {
@@ -25,12 +26,20 @@ export default class HappyPage extends React.Component {
     activeId: 0,
     activeFont: 1,
     activeMotif: 0,
-    index: 0
+    index: 0,
+    dropAnimation: false
   };
   motifOrder = [0, 3, 5, 2, 1, 7, 4, 6];
   componentDidMount() {
     window.scroll(0, 0);
     this.fontIdChangeInterval = setInterval(() => {
+      const yOffset = window.pageYOffset;
+      yOffset >= 5200 &&
+        !this.state.dropAnimation &&
+        this.setState({
+          dropAnimation: true
+        });
+
       const { activeFont, activeMotif, index } = this.state;
       const activeId = activeFont < 4 ? activeFont + 1 : 1;
       const id = index < 7 ? index + 1 : 0;
@@ -70,7 +79,7 @@ export default class HappyPage extends React.Component {
                   {happyname_main.map((happy, index) => (
                     <div key={index} className="container">
                       <div key={index} className="img-box">
-                        <img src={happy} />
+                        <img className={`happy-${index}`} src={happy} />
                       </div>
                     </div>
                   ))}
@@ -145,7 +154,7 @@ export default class HappyPage extends React.Component {
                       <div className="fontSelect">
                         <div className={classnames("namesticker")}>
                           <div className={`text font-${activeFont}`}>
-                            김해피/ kim happy
+                            김해피
                           </div>
                         </div>
                         <div className="number-box">
@@ -264,14 +273,43 @@ export default class HappyPage extends React.Component {
                     <div className="img img-4">
                       <div className="box">
                         <div className="box-wrap">
-                          <div className="drop">
-                            <img src={drop} alt="" />
-                            <img src={drop} alt="" />
-                            <img src={drop} alt="" />
+                          <div
+                            className={classnames("drop", {
+                              active: this.state.dropAnimation
+                            })}
+                          >
+                            {drops.map((drop, index) => (
+                              <div key={index} className="drop-img">
+                                <img
+                                  className={classnames(`drop-${index}`, {
+                                    active: this.state.dropAnimation
+                                  })}
+                                  src={drop}
+                                  alt=""
+                                />
+                              </div>
+                            ))}
+                          </div>
+                          <div
+                            className={classnames("eraser", {
+                              active: this.state.dropAnimation
+                            })}
+                          >
+                            <img
+                              className={classnames({
+                                active: this.state.dropAnimation
+                              })}
+                              src={eraser}
+                              alt=""
+                            />
                           </div>
                           <div className="namesticker">
                             <div className="text"> 김해피</div>
-                            <div className="slash" />
+                            <div
+                              className={classnames("slash", {
+                                active: this.state.dropAnimation
+                              })}
+                            />
                           </div>
                         </div>
                       </div>
