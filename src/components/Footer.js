@@ -24,7 +24,7 @@ export default class Footer extends React.Component {
                 <address className="address">
                   <p>
                     경기도 용인시 기흥구 신갈로 121 영인터내셔널(16967) |
-                    <a href="tel:031-123-4567"> 031-123-4567 </a>| FAX
+                    <a href="tel:070-8856-6377"> 070-8856-6377 </a>| FAX
                     070-8611-0771
                   </p>
                 </address>
