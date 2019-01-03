@@ -6,7 +6,7 @@ import arrow_right_white from "../images/arrow_white_right";
 import arrow_left_white from "../images/arrow_white_left";
 import button_play from "../images/button_play";
 import button_stop from "../images/button_stop";
-
+import happyname_usage_1_text from "../images/happname_usage_1_text";
 export default class Slide extends React.Component {
   state = {
     activeId: 0,
@@ -88,6 +88,9 @@ export default class Slide extends React.Component {
               >
                 <div className={classnames("img", slideName && slideName)}>
                   <img src={img} alt="" />
+                  {slideName === "happy" && index === 0 ? (
+                    <img className="text" src={happyname_usage_1_text} alt="" />
+                  ) : null}
                 </div>
               </li>
             ))}
