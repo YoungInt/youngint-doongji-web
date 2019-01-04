@@ -51,27 +51,27 @@ $content-width: 1000px;
   font-family: "NanumSquareL";
   src: url("../src/fonts/NanumSquareLight.ttf") format("truetype");
 }
-@font-face {
-  font-family: "heart";
-  src: url("../src/fonts/하트앤땡큐.ttf") format("truetype");
-}
-@font-face {
-  font-family: "iropkeBatang";
-  src: url("../src/fonts/IropkeBatangM.ttf") format("truetype");
-}
-@font-face {
-  font-family: "nanumBarunpenR";
-  src: url("../src/fonts/NanumBarunpenR.ttf") format("truetype");
-}
-@font-face {
-  font-family: "utoimage";
-  src: url("../src/fonts/UTOIMAGE_유토이미지별나라달님_OTF.ttf")
-    format("truetype");
-}
-$namestickerFont1: "heart", "sans-serif";
-$namestickerFont2: "iropkeBatang";
-$namestickerFont3: "nanumBarunpenR";
-$namestickerFont4: "utoimage";
+// @font-face {
+//   font-family: "heart";
+//   src: url("../src/fonts/하트앤땡큐.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: "iropkeBatang";
+//   src: url("../src/fonts/IropkeBatangM.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: "nanumBarunpenR";
+//   src: url("../src/fonts/NanumBarunpenR.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: "utoimage";
+//   src: url("../src/fonts/UTOIMAGE_유토이미지별나라달님_OTF.ttf")
+//     format("truetype");
+// }
+// $namestickerFont1: "heart", "sans-serif";
+// $namestickerFont2: "iropkeBatang";
+// $namestickerFont3: "nanumBarunpenR";
+// $namestickerFont4: "utoimage";
 $nanum-square-L: "NanumSquareL";
 $nanum-barunpen-B: "NanumBarunpenB";
 $nanum-myeongjo-EB: "NanumMyeongjoEB";
@@ -1322,17 +1322,8 @@ header {
                       text-align: center;
 
                       line-height: 96px;
-                      &.font-1 {
-                        font-family: $namestickerFont1;
-                      }
-                      &.font-2 {
-                        font-family: $namestickerFont2;
-                      }
-                      &.font-3 {
-                        font-family: $namestickerFont3;
-                      }
-                      &.font-4 {
-                        font-family: $namestickerFont4;
+                      img {
+                        margin-top: 7.5px;
                       }
                     }
                   }

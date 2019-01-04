@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import Slide from "../components/Slide";
-import { happyText } from "../API/textAPI";
+import { happyText, mainText } from "../API/textAPI";
 import Text from "../components/Text";
 import Header from "../components/Header";
 import {
@@ -13,13 +13,16 @@ import {
   designcut,
   happy_version,
   happyname_main,
-  drops
+  drops,
+  font,
+  fontImages
 } from "../API/imageAPI";
 import drop from "../images/happyname_drop";
 import happy_bubble from "../images/happyname_ver_happy_bubble";
 import classnames from "classnames";
 import eraser from "../images/eraser";
 import motifcheck from "../images/happyname_motifcheck";
+import { LanguageConsumer } from "../context/LanguageContext";
 
 export default class HappyPage extends React.Component {
   state = {
@@ -55,8 +58,8 @@ export default class HappyPage extends React.Component {
   }
 
   render() {
-    const { lang, onChangeLang } = this.props.value;
     const { activeFont, activeMotif } = this.state;
+    const { lang } = this.props.value;
     const text = happyText[lang];
     const { mobile } = this.props;
     const motifs = [...happy_motif01, ...happy_motif02];
@@ -153,8 +156,8 @@ export default class HappyPage extends React.Component {
                     <div className="img img-1">
                       <div className="fontSelect">
                         <div className={classnames("namesticker")}>
-                          <div className={`text font-${activeFont}`}>
-                            김해피
+                          <div className={`text`}>
+                            <img src={fontImages[activeFont - 1]} alt="" />
                           </div>
                         </div>
                         <div className="number-box">
@@ -360,7 +363,7 @@ export default class HappyPage extends React.Component {
               </div>
             </div>
           </section>
-          <Footer />
+          <Footer lang={lang} />
         </div>
       </React.Fragment>
     );
