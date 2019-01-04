@@ -29,6 +29,13 @@ const mainText = {
     ],
     button8: "자세히 보기",
 
+    footer: {
+      business:
+        "(주)영인터내셔널 | 사업자 등록번호: 120-88-01280 | 대표:김영은",
+      address: "경기도 용인시 기흥구 신갈로 121 영인터내셔널(16967) |",
+      tel: "070-8856-6377",
+      fax: "070-8611-0771"
+    },
     contactTitle1: "입점 및 제휴 문의",
     contactTitle2: "PARTNERSHIP PROPOSAL",
     contact: {
@@ -68,6 +75,14 @@ const mainText = {
       "행복한 사진배달부 북극곰 폴라폴라의 //n 폴라로이드 사진 스티커 자판기 "
     ],
     button8: "자세히 보기 >",
+    footer: {
+      business:
+        "(주)영인터내셔널 | 사업자 등록번호: 120-88-01280 | 대표:김영은",
+      address:
+        "(16967)121, Singal-ro, Giheung-gu, Yongin-si, Gyeonggi-do, Republic of Korea |",
+      tel: "070-8856-6377",
+      fax: "070-8611-0771"
+    },
     contactTitle1: " PARTNERSHIP PROPOSAL",
     contact: {
       company: "Young International",
