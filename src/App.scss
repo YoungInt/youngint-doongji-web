@@ -1005,6 +1005,7 @@ header {
         img {
           width: 18px;
           height: 42px;
+          cursor: pointer;
         }
       }
       .carousel-box {
@@ -1907,6 +1908,10 @@ header {
     flex-direction: row;
     align-items: center;
     color: #ffffff;
+
+    img {
+      cursor: pointer;
+    }
     div {
       cursor: default;
       margin: 0 50px;
@@ -1989,6 +1994,7 @@ header {
       bottom: 0;
 
       li {
+        cursor: pointer;
         margin-right: 20px;
         width: 10px;
         height: 10px;
@@ -2003,6 +2009,7 @@ header {
         display: flex;
         align-items: flex-start;
         width: 12px;
+        cursor: pointer;
         img {
           width: 10px;
           height: 10px;
