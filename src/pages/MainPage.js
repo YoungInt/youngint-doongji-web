@@ -12,7 +12,7 @@ import Helmet from "react-helmet";
 export default class MainPage extends React.Component {
   render() {
     const { screenWidth } = this.props;
-    console.log("screenWidth:" + screenWidth);
+
     return (
       <LanguageConsumer>
         {({ lang, onChangeLang }) => (
@@ -32,7 +32,7 @@ export default class MainPage extends React.Component {
               <Contact lang={lang} text={mainText[lang]} />
             </div>
             <TeamPC text={mainText[lang]} />
-            <Footer text={mainText[lang]} />
+            <Footer lang={lang} />
           </div>
         )}
       </LanguageConsumer>

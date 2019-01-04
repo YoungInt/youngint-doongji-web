@@ -49,6 +49,12 @@ import drop3 from "../images/drop_3";
 import drop4 from "../images/drop_4";
 import drop5 from "../images/drop_5";
 
+import iropge from "../images/happyname_font_iropge";
+import nanumpen from "../images/happyname_font_nanumpen";
+import byeol from "../images/happyname_font_byeolnara";
+import heart from "../images/happyname_font_heartandthankyou";
+
+const fontImages = [iropge, nanumpen, byeol, heart];
 const drops = [drop1, drop2, drop3, drop4, drop5];
 const happyname_main = [
   happyname_main_1,
@@ -82,5 +88,6 @@ export {
   designcut,
   happyname_main,
   happy_version,
-  drops
+  drops,
+  fontImages
 };
