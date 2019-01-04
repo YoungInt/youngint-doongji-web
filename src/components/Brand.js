@@ -63,7 +63,7 @@ export default class Brand extends React.Component {
                     </p> */}
                     <Text text={text.p8[1]} />
 
-                    <Link to="/pola">
+                    <Link to="/polapolar">
                       <div className="button pola-button">
                         {/* 자세히보기 > */}
                         <Text text={text.button8} />

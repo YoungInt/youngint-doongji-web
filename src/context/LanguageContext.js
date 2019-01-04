@@ -14,7 +14,7 @@ class LanguageProvider extends React.Component {
   componentDidMount() {
     let lang = navigator.language.slice(0, 2);
     lang = lang === "ko" ? "ko" : "en";
-    this.onChangeLang("en");
+    this.onChangeLang(lang);
   }
   render() {
     const { lang } = this.state;

@@ -23,7 +23,7 @@ class App extends Component {
                   component={() => <MainPage screenWidth={screenWidth} />}
                 />
                 <Route
-                  path="/pola"
+                  path="/polapolar"
                   component={() => (
                     <PolaPage value={value} screenWidth={screenWidth} />
                   )}
