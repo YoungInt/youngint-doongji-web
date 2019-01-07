@@ -187,9 +187,7 @@ export default class PolaPage extends React.Component {
               />
             </div>
           </section>
-          {/* <section className="message">
-            <Text text={text.message} />
-          </section> */}
+
           <Footer lang={lang} />
         </div>
       </React.Fragment>

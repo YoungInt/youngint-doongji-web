@@ -30,12 +30,13 @@ export default class Brand extends React.Component {
                         <Text title={"detail-button"} text={text.t8[0]} />
                       </h3>
                     </div>
-                    {/* <p>
-                      행복한 사진배달부 폴라폴라의 폴라로이드 사진 스티커 자판기
-                    </p> */}
+
                     <Text text={text.p8[0]} />
                     <Link to="/happy">
-                      <div className="button happy-button">
+                      <div
+                        onClick={this.handleButton}
+                        className="button happy-button"
+                      >
                         <Text title={"detail-button"} text={text.button8} />
                         <div className="img">
                           <img src={brand_arrow} alt="" />
@@ -58,14 +59,11 @@ export default class Brand extends React.Component {
                         <Text text={text.t8[1]} />
                       </h3>
                     </div>
-                    {/* <p>
-                      남녀노소 나이불문 쉽게 사용할 수 있는 네임스티커 자판기
-                    </p> */}
+
                     <Text text={text.p8[1]} />
 
                     <Link to="/polapolar">
                       <div className="button pola-button">
-                        {/* 자세히보기 > */}
                         <Text text={text.button8} />
                         <div className="img">
                           <img src={brand_arrow} alt="" />

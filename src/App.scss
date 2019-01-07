@@ -17,8 +17,7 @@ $white: rgb(255, 255, 255);
 $alpha-2: 0.2;
 $alpha-5: 0.5;
 $alpha-8: 0.8;
-// $memberwidth: 160px;
-// $memberMargin: 17px;
+
 $memberMargin: 20px;
 $memberwidth: 150px;
 $activeMemberWidth: 250px;
@@ -1841,14 +1840,12 @@ header {
     .content {
       display: flex;
       margin-top: 90px;
-      height: 382px;
-      #map {
-        border: 1px solid rgba(30, 30, 30, 0.5);
-      }
+      height: 400px;
 
-      &__map {
-        background: green;
-        width: 580px;
+      #daumRoughmapContainer1546819626423 {
+        border: 1px solid rgba(30, 30, 30, 0.5);
+        margin-top: 10px;
+        width: 580px !important;
         height: 382px;
       }
       &__text {
@@ -1858,7 +1855,7 @@ header {
         flex-direction: column;
         justify-content: space-between;
 
-        width: 570px;
+        // width: 570px;
         .title {
           @extend %happy-font;
           &.en {
