@@ -1,7 +1,7 @@
 import React from "react";
 import happy from "../images/main_happy";
 import pola from "../images/main_brand_polapolar";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Text from "../components/Text";
 import brand_arrow from "../images/main_brand_arrow";
 export default class Brand extends React.Component {
@@ -35,7 +35,10 @@ export default class Brand extends React.Component {
                     </p> */}
                     <Text text={text.p8[0]} />
                     <Link to="/happy">
-                      <div className="button happy-button">
+                      <div
+                        onClick={this.handleButton}
+                        className="button happy-button"
+                      >
                         <Text title={"detail-button"} text={text.button8} />
                         <div className="img">
                           <img src={brand_arrow} alt="" />
