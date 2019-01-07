@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import Slide from "../components/Slide";
-import { happyText, mainText } from "../API/textAPI";
+import { happyText } from "../API/textAPI";
 import Text from "../components/Text";
 import Header from "../components/Header";
 import {
@@ -17,12 +17,11 @@ import {
   font,
   fontImages
 } from "../API/imageAPI";
-import drop from "../images/happyname_drop";
+
 import happy_bubble from "../images/happyname_ver_happy_bubble";
 import classnames from "classnames";
 import eraser from "../images/eraser";
 import motifcheck from "../images/happyname_motifcheck";
-import { LanguageConsumer } from "../context/LanguageContext";
 
 export default class HappyPage extends React.Component {
   state = {
@@ -69,10 +68,7 @@ export default class HappyPage extends React.Component {
           <title>해피 네임스티커</title>
         </Helmet>
         <div className="happy">
-          {/*헤더  */}
-
           <Header classname="brand" brand="happy" />
-          {/* 메인 */}
 
           <main className="main-wrap">
             <div className="main">
@@ -144,10 +140,7 @@ export default class HappyPage extends React.Component {
                   ))}
                 </ul>
               </div>
-              {/* <div className="location">
-                구몬, 대구 박물관, 전주 박물관, 세노비스, 한수원,
-                유니버셜스튜디오
-              </div> */}
+
               {/* 버전 상세 */}
               <div className="version__detail">
                 {/* 글꼴선택 */}

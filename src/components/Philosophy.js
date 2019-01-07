@@ -48,13 +48,9 @@ export default class Philosophy extends React.Component {
                 <Text text={text.t6} />
               </div>
               <div className="date">
-                {/* 2018년 10월 기준 */}
                 <Text text={text.p6} />
               </div>
             </div>
-            {/* <div className="content-img">
-              <img src="#" alt="" />
-            </div> */}
           </div>
         </div>
       </React.Fragment>
