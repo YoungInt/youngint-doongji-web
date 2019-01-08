@@ -3,7 +3,8 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.join(__dirname, "public", "index.html"),
-  filename: "./index.html"
+  filename: "./index.html",
+  favicon: "./src/images/favicon.png"
 });
 require("svg-inline-loader");
 module.exports = {
