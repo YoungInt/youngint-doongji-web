@@ -2047,7 +2047,7 @@ header {
 .pola {
   .main-wrap {
     position: relative;
-    height: calc(100vh - 80px);
+    height: 100vh;
 
     .main {
       text-align: center;
@@ -2057,7 +2057,7 @@ header {
 
       .top {
         width: 450px;
-        margin-top: 10rem;
+        margin-top: 200px;
       }
       .bottom {
         width: 632.4px;
