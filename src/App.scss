@@ -377,11 +377,32 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
   20% {
     opacity: 1;
   }
-  to {
+  90% {
     opacity: 1;
+  }
+  95% {
+    opacity: 0;
   }
 }
 @keyframes design-animation2 {
+  from {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+}
+@keyframes design-animation3 {
   from {
     opacity: 0;
   }
@@ -391,37 +412,28 @@ $main-font-Bold: "NanumSquareBold", sans-serif;
   40% {
     opacity: 1;
   }
-
-  to {
+  90% {
     opacity: 1;
   }
-}
-@keyframes design-animation3 {
-  from {
+  95% {
     opacity: 0;
-  }
-  40% {
-    opacity: 0;
-  }
-  60% {
-    opacity: 1;
-  }
-  to {
-    opacity: 1;
   }
 }
 @keyframes design-animation4 {
   from {
     opacity: 0;
   }
-  60% {
+  30% {
     opacity: 0;
   }
-  80% {
+  50% {
     opacity: 1;
   }
-  to {
+  90% {
     opacity: 1;
+  }
+  95% {
+    opacity: 0;
   }
 }
 body {
