@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const fs = require('fs');
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.join(__dirname, "public", "index.html"),
   filename: "./index.html",
@@ -9,8 +9,18 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 require("svg-inline-loader");
 
+const createRedirect = () => {
+  if (!fs.existsSync(path.join(__dirname, 'dist'))){
+    fs.mkdirSync(path.join(__dirname, 'dist'));
+  }
+  fs.createReadStream(path.join(__dirname, 'public', '_redirects')).pipe(fs.createWriteStream(path.join(__dirname, 'dist', '_redirects')));
+}
+
 module.exports = (env, argv) => {
   const isProduct = argv.mode === 'production';
+  if (isProduct) {
+    createRedirect();
+  }
 
   return {
     entry: ["@babel/polyfill", path.join(__dirname, "src", "App.jsx")],
@@ -58,15 +68,7 @@ module.exports = (env, argv) => {
       filename: "bundle.js"
     },
     plugins: [new webpack.HotModuleReplacementPlugin(), htmlPlugin].concat(
-      isProduct ? [
-        new CopyWebpackPlugin([{
-          from: './public/_redirects',
-          to: '_redirects',
-          toType: 'file'
-        }], {
-          debug: 'info'
-        })
-      ] : [ ]
+      isProduct ? [ ] : [ ]
     ),
     devServer: {
       historyApiFallback: true,
