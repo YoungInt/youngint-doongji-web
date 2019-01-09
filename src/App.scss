@@ -1,0 +1,2371 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+
+// 미디어쿼리
+// 모바일
+$mobile-width: 480px;
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+$class-slug: for !default;
+$header-width: 80px;
+$main-font-color: #1e1e1e;
+$yellow: rgb(251, 212, 138);
+$white: rgb(255, 255, 255);
+$alpha-2: 0.2;
+$alpha-5: 0.5;
+$alpha-8: 0.8;
+
+$memberMargin: 20px;
+$memberwidth: 150px;
+$activeMemberWidth: 250px;
+$content-width: 1000px;
+@font-face {
+  font-family: "NanumSquareR";
+  src: url("../src/fonts/NanumSquareRegular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumSquareBold";
+  src: url("../src/fonts/NanumSquareBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumSquareExtraBold";
+  src: url("../src/fonts/NanumSquareExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumSquareRoundEB";
+  src: url("../src/fonts/NanumSquareRoundEB.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumMyeongjoEB";
+  src: url("../src/fonts/NanumMyeongjoExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumBarunpenB";
+  src: url("../src/fonts/NanumBarunpenBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumSquareL";
+  src: url("../src/fonts/NanumSquareLight.ttf") format("truetype");
+}
+
+$nanum-square-L: "NanumSquareL";
+$nanum-barunpen-B: "NanumBarunpenB";
+$nanum-myeongjo-EB: "NanumMyeongjoEB";
+$nanumSquare-Round-EB: "NanumSquareRoundEB", "sasn-serif";
+$point-font-bold: "Montserrat", sans-serif;
+$main-font-light: "NanumSquareR", sans-serif;
+$main-font-ExtraBold: "NanumSquareExtraBold", sans-serif;
+$main-font-Bold: "NanumSquareBold", sans-serif;
+
+%title-font {
+  font-size: 24px;
+  font-family: $point-font-bold;
+  display: inline;
+}
+%border-bottom {
+  border-bottom: 3px solid $main-font-color;
+}
+%point-text {
+  font-size: 48px;
+  font-family: $main-font-ExtraBold;
+}
+%happy-font {
+  font-size: 48px;
+  line-height: 62px;
+  letter-spacing: -1.6px;
+  font-family: $nanum-square-L;
+  .bold {
+    font-family: $main-font-ExtraBold;
+  }
+}
+%happy-font-sub {
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: -0.3px;
+
+  .bold {
+    font-family: $main-font-ExtraBold;
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.466666666666666);
+  }
+}
+
+@mixin keyframes-slide($num) {
+  @keyframes slide {
+    0% {
+    }
+    100% {
+      right: $num * 250px;
+      background: red;
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.99;
+  }
+}
+// 폴라 애니메이션
+@keyframes pola-animation {
+  from {
+    left: -150px;
+  }
+  10% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-30deg);
+  }
+  35% {
+    transform: rotate(0deg);
+  }
+  50% {
+    left: 110%;
+    transform: scaleX(0);
+  }
+  51% {
+    left: 105%;
+    transform: scaleX(-1);
+  }
+  75% {
+  }
+  90% {
+  }
+  to {
+    transform: scaleX(-1);
+    left: -150px;
+  }
+}
+@keyframes happy-main-animation {
+  from {
+    bottom: -150px;
+  }
+
+  50% {
+    bottom: 30px;
+  }
+
+  to {
+    bottom: 0;
+  }
+}
+@keyframes motif-animation {
+  from {
+    bottom: -120px;
+    right: -80px;
+  }
+  20% {
+    bottom: -120px;
+    right: -80px;
+  }
+  50% {
+    bottom: -30px;
+    right: -20px;
+  }
+  70% {
+    bottom: -30px;
+    right: -20px;
+  }
+  to {
+    bottom: -120px;
+    right: -80px;
+  }
+}
+@keyframes check-animation {
+  0% {
+    width: 10px;
+    height: 10px;
+  }
+  10% {
+  }
+
+  100% {
+    width: 69.7px;
+    height: 42.5px;
+  }
+}
+@keyframes drop-animation {
+  from {
+    opacity: 1;
+    top: -100px;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    top: 5px;
+  }
+  95% {
+    opacity: 0.5;
+    top: 0;
+  }
+  to {
+    opacity: 0;
+    top: 0;
+  }
+}
+@keyframes slash-animation {
+  from {
+    left: -10px;
+  }
+  10% {
+    left: 110%;
+  }
+  to {
+    left: 110%;
+  }
+}
+@keyframes eraser-animation {
+  from {
+    left: 0;
+    opacity: 1;
+  }
+  10% {
+    left: 100%;
+  }
+  20% {
+    left: 0;
+  }
+  25% {
+    left: 100%;
+  }
+  30% {
+    left: 0;
+  }
+  35% {
+    left: 100%;
+  }
+  40% {
+    left: 0%;
+  }
+  45% {
+    left: 100%;
+  }
+  50% {
+    left: 0;
+  }
+  55% {
+    left: 100%;
+  }
+  60% {
+    left: 0;
+  }
+  65% {
+    left: 100%;
+  }
+  70% {
+    left: 100%;
+  }
+  75% {
+    left: 0%;
+  }
+  80% {
+    left: 100%;
+  }
+  // 85% {
+  //   left: 0;
+  // }
+  90% {
+    left: 0;
+    // left: 100%;
+  }
+
+  98% {
+    opacity: 1;
+    top: 10px;
+  }
+
+  to {
+    opacity: 0;
+    top: 0;
+  }
+}
+@mixin keyframes($animation-name) {
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+@mixin animation($str) {
+  animation: #{$str};
+}
+@include keyframes(chat-animation1) {
+  0% {
+  }
+  80% {
+    transform: scale(1);
+  }
+  95% {
+    transform: scale(0.9);
+  }
+  100% {
+    bottom: 120px;
+    transform: scale(1);
+  }
+}
+@include keyframes(chat-animation2) {
+  0% {
+    transform: sclae(0.7);
+  }
+  50% {
+    bottom: -50px;
+  }
+  88% {
+    transform: scale(1);
+  }
+  98% {
+    transform: scale(0.9);
+  }
+  to {
+    transform: sclae(1);
+    bottom: 75px;
+  }
+}
+@keyframes chat-animation {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+@keyframes swing-animation {
+  from {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes swing-head {
+  from {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes design-animation1 {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+}
+@keyframes design-animation2 {
+  from {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+}
+@keyframes design-animation3 {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+}
+@keyframes design-animation4 {
+  from {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+}
+body {
+  margin: 0;
+  font-family: $main-font-light;
+
+  font-size: 16px;
+  color: $main-font-color;
+  line-height: 1.69;
+  overflow-x: hidden;
+}
+p {
+  margin: 0;
+}
+// LangIcon 컴포넌트
+.lang {
+  height: 80px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+
+  &__bubble {
+    height: 80px;
+    position: relative;
+    margin-right: 5px;
+    display: flex;
+
+    .icon {
+      align-self: center;
+      width: 38.6px !important;
+      height: 16px !important;
+      margin-left: 3px;
+    }
+    .text {
+      height: 100%;
+      position: absolute;
+
+      &.happy {
+        top: 0;
+      }
+      top: 38%;
+      margin-left: 7px;
+      align-self: center;
+      letter-spacing: 0;
+      font-size: 12px;
+      font-family: $point-font-bold;
+    }
+  }
+  &__global {
+    display: flex;
+    img {
+      width: 33px;
+      height: 33px;
+    }
+  }
+}
+//  헤더 header
+
+header {
+  width: 100vw;
+  // height: 80px;
+}
+.container-wrap {
+  // height: 80px;
+  z-index: 100;
+  position: fixed;
+  transition: opacity 0.5s;
+  opacity: 1;
+
+  &.hidden {
+    opacity: 0;
+  }
+  .container {
+    position: relative;
+    z-index: 1000;
+    // height: 80px;
+    width: 100vw;
+
+    &.happy {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    &.pola {
+      background: rgba(255, 255, 255, 0.2);
+      border-bottom: 2px solid #d8d8d8;
+      &.polaBorderHidden {
+        border-bottom: 0;
+      }
+    }
+    &.main {
+      background: rgba(255, 255, 255, 0.8);
+    }
+  }
+  padding: 0;
+  top: 0;
+
+  &.happy {
+  }
+  &.pola {
+  }
+
+  &.main {
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    width: $content-width;
+    margin: auto;
+    &.brand {
+      width: 70%;
+    }
+    .logo {
+      &.main {
+        img {
+          width: 123px;
+          height: 40px;
+        }
+      }
+      &.brand {
+        a {
+          display: flex;
+        }
+        img {
+          width: 41px;
+          height: 41px;
+        }
+      }
+    }
+    .menu {
+      ul {
+        justify-content: space-between;
+        display: flex;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        li {
+          font-family: $point-font-bold;
+          font-size: 18px;
+          letter-spacing: 1px;
+          align-self: center;
+          list-style: none;
+          margin-left: 49px;
+          &:nth-child(4) {
+            width: 69px;
+            height: 20px;
+            border-radius: 10px;
+            background: $main-font-color;
+            text-align: center;
+            position: relative;
+
+            a {
+              position: absolute;
+              top: -0.5px;
+              left: 7px;
+              font-size: 18px;
+              line-height: 22px;
+              letter-spacing: 1px;
+              color: #ffffff;
+              font-family: $point-font-bold;
+            }
+          }
+
+          a {
+            text-decoration: none;
+            color: $main-font-color;
+          }
+        }
+      }
+    }
+  }
+}
+//  main page 메인 페이지
+//  MainTop 컴포넌트
+.mainTop {
+  height: 100vh;
+  position: relative;
+
+  .box {
+  }
+
+  &__img {
+    background-image: url("../src/images/main_pic_mono.png");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+
+    .content {
+      height: 100%;
+      width: $content-width;
+      margin: auto;
+      .content-wrap {
+        position: absolute;
+        bottom: calc((100vh - 274px) * 0.3);
+        p {
+          margin: 0;
+        }
+        .title {
+          height: 197px;
+          @extend %point-text;
+          p {
+            line-height: 62px;
+            letter-spacing: -0.7px;
+          }
+        }
+        .desc {
+          p {
+            @extend %happy-font-sub;
+          }
+        }
+      }
+    }
+  }
+}
+// map 지도
+.map {
+  height: 608px;
+  width: 1200px;
+  background: url("../src/images/main_worldmap.png");
+  margin: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .wrap {
+    width: $content-width;
+    margin: auto;
+    position: relative;
+    .content {
+      position: absolute;
+      top: 260px;
+      right: 0;
+      // background: pink;
+      p {
+        margin: 0;
+        &:nth-child(1) {
+          @extend %point-text;
+          line-height: 62px;
+          letter-spacing: -1.6px;
+          margin-bottom: 13px;
+        }
+        &:nth-child(2) {
+          @extend %happy-font-sub;
+        }
+      }
+    }
+  }
+}
+//  philosophy 컴포넌트
+
+.philosophy {
+  height: 1115px;
+  background: url("../src/images/main_bg_philosophy.png");
+
+  background-size: cover;
+  display: flex;
+  &__wrap {
+    margin: auto;
+    // width: 80%;
+    width: $content-width;
+    height: 80%;
+    .title {
+      display: inline-block;
+      @extend %title-font;
+      @extend %border-bottom;
+    }
+    .content {
+      padding-top: 3rem;
+      width: 1000px;
+      height: 90%;
+      margin: auto;
+      &__keyword {
+        height: 50%;
+        .wrap {
+          height: 90%;
+          border-bottom: 2px solid rgba(30, 30, 30, 0.5);
+          display: flex;
+          justify-content: space-between;
+
+          .keyword {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 300px;
+            border: 2px solid $main-font-color;
+            border-radius: 50%;
+            .text {
+              p {
+                font-size: 48px;
+
+                &:nth-child(1) {
+                  line-height: 50px;
+                  margin: 0;
+                  letter-spacing: -1.4px;
+                  font-family: $nanum-square-L;
+                }
+                &:nth-child(2) {
+                  width: 50px;
+                  height: 2px;
+                  background-color: $main-font-color;
+                  margin: 18px auto;
+                }
+                &:nth-child(3) {
+                  line-height: 24px;
+                  font-size: 16px;
+                  font-family: $main-font-Bold;
+                }
+              }
+            }
+          }
+        }
+      }
+      &__desc {
+        padding-top: 3rem;
+        height: 40%;
+        .wrap {
+          height: 90%;
+          display: flex;
+          .img {
+            width: 470px;
+            height: 265px;
+            img {
+              width: 90%;
+              height: 100%;
+            }
+          }
+          .text {
+            p {
+              margin: 0;
+            }
+            .title {
+              margin-bottom: 15px;
+              border: none;
+              @extend %happy-font;
+            }
+
+            .desc {
+              @extend %happy-font-sub;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// our brand 컴포넌트
+.brand-container {
+  height: 960px;
+  overflow: hidden;
+  position: relative;
+  .button {
+    border: none;
+    width: 140px;
+    height: 42px;
+    border-radius: 22px;
+    background: $main-font-color;
+    text-align: center;
+    line-height: 42px;
+    font-family: $main-font-ExtraBold;
+    z-index: 5;
+    color: #ffffff;
+    margin-left: -5px;
+    position: relative;
+    p {
+      width: 80px;
+      margin: 0 20px;
+    }
+
+    .img {
+      position: absolute;
+      top: 30px;
+      right: 10px;
+      margin-right: 20px;
+    }
+    &.happy-button {
+      &:hover {
+        background: #f6aa00;
+      }
+    }
+    &.pola-button {
+      &:hover {
+        background: #386ba7;
+      }
+    }
+  }
+  .brand-wrap {
+    width: 3000px;
+    overflow: hidden;
+
+    .brand {
+      height: 960px;
+      width: 1500px;
+      position: absolute;
+      &.happy {
+        transform: skew(-10deg);
+        background-image: linear-gradient(to bottom, #fdecbe, #fbd48a);
+        right: 50%;
+      }
+      &.pola {
+        background: linear-gradient(to bottom, #d5edff, #abd7ff);
+        left: 50%;
+        transform: skew(-10deg);
+      }
+    }
+    .box {
+      width: 100vw;
+
+      .center {
+        // width: 80%;
+        width: $content-width;
+        margin: auto;
+        display: flex;
+
+        .brand-box {
+          // border: 1px solid black;
+          width: 770px;
+          height: 960px;
+          z-index: 1;
+          position: relative;
+          .img {
+            z-index: 1;
+
+            // 해피 캐릭터
+            .happy-img {
+              position: absolute;
+
+              left: -60px;
+            }
+            // 폴라 캐릭터
+            .pola-img {
+            }
+          }
+
+          .container-title {
+            height: 300px;
+
+            .title {
+              margin-top: 140px;
+
+              @extend %title-font;
+              display: inline-block;
+              @extend %border-bottom;
+            }
+          }
+          .content {
+            position: relative;
+            z-index: 99;
+
+            &.pola {
+              margin-left: 120px;
+            }
+            .title {
+              p {
+                margin: 0;
+              }
+              // display: flex;
+              font-size: 24px;
+              // background: blue;
+              h3 {
+                margin: 0 10px 0 0;
+                line-height: 1.9;
+                &:nth-child(1) {
+                  margin-left: 3px;
+                }
+                p {
+                  margin-bottom: 3px;
+                }
+              }
+              .bold {
+                line-height: 1.29;
+                font-family: $main-font-ExtraBold;
+                font-size: 48px;
+              }
+            }
+            p {
+              margin-top: 5px;
+            }
+          }
+        }
+      }
+
+      img {
+        position: absolute;
+        bottom: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+// 해피 폴라 박스
+
+.accomplish {
+  height: 800px;
+  background: rgba(242, 242, 242, 0.5);
+  display: flex;
+  .wrap {
+    // width: 80%;
+    width: $content-width;
+    margin: auto;
+    height: 60%;
+    display: flex;
+    // background: pink;
+    .content-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .text {
+        p {
+          @extend %happy-font;
+        }
+      }
+    }
+    .content-img {
+      background: #fbd48a;
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+// TeamPC 컴포넌트
+
+.team-container {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background: #fbd48a;
+  background-color: rgba(30, 30, 30, 0.22);
+
+  width: 100vw;
+  .team {
+    width: $content-width;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__title {
+      .title {
+        @extend %title-font;
+        display: flex;
+        display: inline-block;
+        @extend %border-bottom;
+      }
+    }
+    &__message {
+      .name {
+        margin: 1rem 0;
+        text-align: center;
+        font-family: $main-font-Bold;
+      }
+      .message {
+        font-size: 36px;
+
+        text-align: center;
+        letter-spacing: -0.68px;
+        line-height: 27px;
+        font-family: $nanum-square-L;
+      }
+    }
+
+    &__member {
+      display: inline-block;
+
+      margin: auto;
+
+      // display: flex;
+      display: flex;
+      .button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 22px;
+        img {
+          width: 18px;
+          height: 42px;
+          cursor: pointer;
+        }
+      }
+      .carousel-box {
+        margin: auto;
+        // background: red;
+        // width: 958px;
+        width: 900px;
+        //(160px * 4+ 17px * 4 + 250px);
+        @include mobile {
+          width: 150px;
+        }
+        display: flex;
+        height: $activeMemberWidth;
+        overflow: hidden;
+        position: relative;
+
+        @for $i from 0 through 33 {
+          .carousel-#{$i} {
+            // transform: translate(-177px * $i);
+            transform: translate(-170px * $i);
+          }
+        }
+
+        .carousel {
+          position: relative;
+          //
+          // left: calc(337px + 8.5px);
+          left: 330px;
+          display: flex;
+          transition: transform 1s;
+          // background: red;
+          .item {
+            // margin: 0 8.5px;
+            margin: 0 10px;
+            // background: skyblue;
+            min-width: $memberMargin;
+            min-height: $memberwidth;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &.active {
+              width: 220px;
+            }
+            &__img {
+              display: flex;
+              width: $memberwidth;
+              height: $memberwidth;
+              &.active {
+                animation-name: scale;
+                animation-fill-mode: forwards;
+                animation-duration: 1s;
+              }
+              img {
+                max-width: 100%;
+                max-height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// happy page
+
+.happy {
+  // 메인 섹션
+  .main-wrap {
+    height: calc(100vh);
+    overflow: hidden;
+    background: #fbd48a;
+    .main {
+      width: $content-width;
+      margin: auto;
+      position: relative;
+      height: 100%;
+      // background: green;
+
+      &__content {
+        .happy_main-img {
+          width: 500px;
+          position: absolute;
+          right: 0;
+          bottom: -10px;
+        }
+        p {
+          @extend %happy-font;
+          position: absolute;
+          top: 200px;
+        }
+        .img {
+          display: flex;
+          position: absolute;
+          bottom: -105px;
+          z-index: 10;
+          .container {
+            @include animation("happy-main-animation 1s forwards");
+            z-index: 100;
+            position: relative;
+            bottom: -150px;
+
+            &:nth-child(1) {
+              bottom: 0px;
+              animation-delay: 0s;
+            }
+            &:nth-child(2) {
+              animation-delay: 0.5s;
+            }
+            &:nth-child(3) {
+              animation-delay: 1s;
+            }
+            &:nth-child(4) {
+              margin-top: 30px;
+              animation-delay: 1.5s;
+            }
+            &:nth-child(5) {
+              animation-delay: 2s;
+            }
+            img {
+              position: relative;
+              top: 0;
+              &.happy-0 {
+                margin-top: 10px;
+                width: 208px;
+                height: 301px;
+              }
+              &.happy-1 {
+                margin-top: 15px;
+                width: 227px;
+                height: 296px;
+              }
+              &.happy-2 {
+                width: 227px;
+                height: 306px;
+                margin-top: 10px;
+              }
+              &.happy-3 {
+                margin-top: 30px;
+                width: 219px;
+                height: 275px;
+              }
+              &.happy-4 {
+                margin-top: 48px;
+                width: 190px;
+                height: 261px;
+              }
+            }
+            .img-box {
+              @include animation("swing-head 3.5s infinite");
+              animation-delay: 3s;
+              animation-timing-function: linear;
+              position: relative;
+              height: 600px;
+              bottom: -315px;
+            }
+          }
+        }
+      }
+    }
+    // 컬쳐
+  }
+  .culture-wrap {
+    // 높이 지정하지 않고 패딩으로 조절함.
+    display: flex;
+    background: rgba(251, 212, 138, 0.5);
+    .culture {
+      width: 864px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 140px 0;
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 49px;
+        .text {
+          width: 100%;
+          text-align: center;
+          p {
+            margin: 0;
+          }
+          .title {
+            @extend %happy-font;
+            margin-bottom: 19px;
+          }
+          .desc {
+            @extend %happy-font-sub;
+          }
+        }
+      }
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+        width: 864px;
+        margin-top: 73px;
+        .item {
+          .img {
+            width: 221px;
+            height: 220px;
+            margin-bottom: 6px;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .text {
+            padding-top: 16px;
+            border-top: 6px solid $yellow;
+            @extend %happy-font;
+          }
+        }
+      }
+      // 슬라이드 해피
+      .middle {
+        margin: 0;
+        padding: 45px 0;
+      }
+    }
+  }
+  // 버전 해피 페이지 happy page version
+  .version-wrap {
+    // background: rgba($yellow, $alpha-5);
+    background: #ffffff;
+    .version {
+      position: relative;
+      margin: auto;
+      .location {
+        position: absolute;
+        left: 12%;
+        top: 36.5%;
+      }
+      &__title {
+        padding: 143px 0;
+        .title {
+          text-align: center;
+          margin-bottom: 60px;
+          @extend %happy-font;
+        }
+        .list {
+          padding: 0;
+          list-style: none;
+
+          margin: auto;
+
+          li {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+
+            height: 330px;
+            vertical-align: middle;
+
+            .img {
+              position: relative;
+              .bubble__text {
+                position: absolute;
+                top: 130px;
+                right: 40px;
+
+                p {
+                  text-align: center;
+                  position: absolute;
+
+                  top: 10px;
+                  left: 16px;
+                }
+              }
+              width: 660px;
+              height: 330px;
+
+              img {
+                &.version-0 {
+                }
+                &.version-1 {
+                }
+                &.version-2 {
+                  width: 660px;
+                  height: 330px;
+                }
+              }
+            }
+            .title {
+              text-align: left;
+              width: 334px;
+              padding-left: 15px;
+              @extend %happy-font;
+              margin: 0;
+              display: flex;
+              align-items: flex-end;
+              p {
+                display: inline;
+              }
+            }
+          }
+        }
+      }
+      &__detail {
+        background: #fbd48a;
+        .detail {
+          @for $i from 1 through 3 {
+            &:nth-child(#{$i}) {
+              &:after {
+                content: "";
+                width: 1040px;
+                height: 2px;
+                background: #ffffff;
+                display: block;
+                margin: auto;
+                margin-top: 135px;
+              }
+            }
+          }
+          &:nth-child(4) {
+            padding-bottom: 135px;
+          }
+          padding-top: 135px;
+          margin: auto;
+          &.detail-3 {
+            border-bottom: 0;
+          }
+          .detail-wrap {
+            .img {
+              // 글꼴선택
+              &.img-1 {
+                .fontSelect {
+                  width: 450px;
+                  height: 220px;
+                  background: rgba(255, 255, 255, 0.6);
+                  border-radius: 15px;
+                  display: flex;
+                  justify-content: center;
+                  margin: auto;
+                  align-items: center;
+                  .namesticker {
+                    width: 275px;
+                    height: 114px;
+                    border-radius: 15px;
+                    background: #ffffff;
+                    border: 9px solid $main-font-color;
+                    margin-right: 6px;
+                    box-sizing: border-box;
+                    .text {
+                      margin: 0;
+                      font-size: 48px;
+                      text-align: center;
+
+                      line-height: 96px;
+                      img {
+                        margin-top: 7.5px;
+                      }
+                    }
+                  }
+                  .number-box {
+                    display: flex;
+                    flex-direction: column;
+                    .box-wrap {
+                      display: flex;
+                    }
+                    .box {
+                      box-sizing: border-box;
+                      margin: 1px;
+                      width: 58px;
+                      height: 58px;
+                      border-radius: 10px;
+                      background: #ffffff;
+                      border: 8px solid $main-font-color;
+                      font-size: 36px;
+                      font-family: $nanumSquare-Round-EB;
+                      text-align: center;
+
+                      // background: red;
+                      position: relative;
+                      .text {
+                        // background: pink;
+                        display: inline;
+                        position: absolute;
+                        right: 25%;
+                        bottom: -30%;
+                      }
+
+                      &.active {
+                        background-color: #f6aa00;
+                      }
+                    }
+                  }
+                }
+              }
+              // 나만의 그림을 선택할 수 있습니다.
+              &.img-2 {
+                .box {
+                  margin: auto;
+                  width: 450px;
+                  height: 220px;
+                  background: rgba(255, 255, 255, 0.6);
+                  // opacity: 0.6;
+                  border-radius: 15px;
+                  position: relative;
+
+                  display: flex;
+                  overflow: hidden;
+                  // 선택된 그림
+                  .selected {
+                    width: 108.3px;
+                    height: 91.5px;
+                    border: 8px solid $main-font-color;
+                    border-radius: 15px;
+                    background-color: #f6aa00;
+                    transform: rotate(-10deg);
+                    position: absolute;
+                    right: -20px;
+                    bottom: -30px;
+                    // box-sizing: border-box;
+                    z-index: 6;
+                    @include animation("motif-animation infinite 2s");
+                    .img {
+                      height: 100%;
+
+                      img {
+                        margin: 15px;
+                        display: flex;
+                        width: 50px;
+                        height: 48.2px;
+                        object-fit: contain;
+                      }
+                    }
+                  }
+                  .motif {
+                    margin: auto;
+
+                    width: 345px;
+                    height: 170px;
+                    border-radius: 5px;
+                    border: 8px solid;
+                    position: relative;
+
+                    z-index: 5 !important;
+                    .motif-pic {
+                      display: flex;
+                      flex-direction: column;
+                      margin: 14px 10px;
+                      position: relative;
+                      z-index: 10;
+                      z-index: 100;
+
+                      .motif-wrap {
+                        display: flex;
+
+                        justify-content: space-around;
+                        flex-direction: row;
+                        // 첫 째 줄
+                        &:nth-child(1) {
+                          .motif__img {
+                            // 선물 들고 있는 애
+                            &:nth-child(4) {
+                              width: 69.2px;
+                              height: 64.4px;
+                            }
+                          }
+                          // background: pink;
+                        }
+                        // 두 째 줄
+                        &:nth-child(2) {
+                          // background: green;
+                          margin-top: 2px;
+                        }
+                        .motif__img {
+                          width: 71px;
+                          height: 71px;
+                          position: relative;
+                          img {
+                            object-fit: contain;
+                            width: 100%;
+                            height: 100%;
+                          }
+                          // 모티브 체크
+                          .motif-check {
+                            position: absolute;
+                            top: 0;
+                            display: none;
+                            mix-blend-mode: multiply;
+                          }
+                          &.active {
+                            .motif-check {
+                              display: block;
+
+                              @include animation(
+                                "check-animation 0.3s forwards"
+                              );
+                              overflow: hidden;
+
+                              img {
+                                width: 69.7px;
+                                height: 42.5;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              // 다양한 디자인 시도
+              &.img-3 {
+                .box {
+                  margin: auto;
+                  width: 450px;
+                  height: 220px;
+                  border-radius: 20px;
+                  background: rgba(255, 255, 255, 0.6);
+                  text-align: center;
+                  .design {
+                    padding-top: 62px;
+                    &-box {
+                      line-height: 220px;
+                      display: flex;
+                      justify-content: center;
+                      .design-3 {
+                        display: flex;
+                        flex-direction: column;
+                      }
+                      img {
+                        opacity: 0;
+
+                        &.design-0 {
+                          @include animation("design-animation1 4s infinite");
+
+                          animation-timing-function: linear;
+                        }
+                        &.design-1 {
+                          @include animation("design-animation2 4s infinite");
+                          animation-timing-function: linear;
+                        }
+                        &.design-2 {
+                          @include animation("design-animation3 4s infinite");
+
+                          animation-timing-function: linear;
+                        }
+
+                        &.design-3 {
+                          @include animation("design-animation4 4s infinite");
+                          animation-timing-function: linear;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              // 우수한 스티커 품질
+              &.img-4 {
+                .box {
+                  width: 450px;
+                  height: 220px;
+                  margin: auto;
+                  background: rgba(255, 255, 255, 0.6);
+                  border-radius: 15px;
+                  .box-wrap {
+                    overflow: hidden;
+                    height: 220px;
+                    display: flex;
+                    // 물방울
+                    position: relative;
+                    .drop {
+                      position: relative;
+                      z-index: 10;
+
+                      .drop-img {
+                        animation-timing-function: linear;
+                        position: absolute;
+                        img {
+                          &.active {
+                            @include animation("drop-animation 0.5s forwards ");
+                            animation-timing-function: linear;
+                          }
+                          position: relative;
+                          top: -100px;
+                          opacity: 0;
+                          &.drop-0 {
+                            animation-delay: 0s;
+                          }
+                          &.drop-1 {
+                            animation-delay: 1s;
+                          }
+                          &.drop-2 {
+                            animation-delay: 1.5s;
+                          }
+                          &.drop-3 {
+                            animation-delay: 1.3s;
+                          }
+                          &.drop-4 {
+                            animation-delay: 0.5s;
+                          }
+                        }
+                        &:nth-child(1) {
+                          // background: red;
+                          left: 210px;
+                          top: 45px;
+                          animation-delay: 0.5s;
+                        }
+                        &:nth-child(2) {
+                          // background: yellow;
+                          top: 50px;
+                          left: 170px;
+                          animation-delay: 1s;
+                        }
+                        &:nth-child(3) {
+                          // background: green;
+
+                          left: 250px;
+                          top: 45px;
+                          animation-delay: 1.5s;
+                        }
+                        &:nth-child(4) {
+                          // background: pink;
+                          left: 190px;
+                          top: 30px;
+                          animation-delay: 2s;
+                        }
+                        &:nth-child(5) {
+                          // background: blue;
+                          margin-top: 10px;
+                          left: 240px;
+                          animation-delay: 2.5s;
+                        }
+                      }
+                    }
+                    .eraser {
+                      position: absolute;
+                      z-index: 10;
+                      top: 15px;
+                      left: 150px;
+                      width: 91px;
+                      height: 90px;
+                      img {
+                        &.active {
+                          @include animation("eraser-animation 1.7s ");
+                          animation-delay: 4s;
+                          animation-timing-function: linear;
+                        }
+                        opacity: 0;
+                        position: relative;
+                      }
+                    }
+                    .namesticker {
+                      width: 275px;
+                      height: 114px;
+                      border-radius: 15px;
+                      border: 8px solid $main-font-color;
+                      background: #f6aa00;
+                      margin: auto;
+                      line-height: 114px;
+                      overflow: hidden;
+                      position: relative;
+                      // 띠
+                      .slash {
+                        width: 25px;
+                        height: 300px;
+                        transform: rotate(20deg);
+                        background-color: #ffffff;
+                        position: absolute;
+                        top: -100px;
+                        left: -45px;
+                        &.active {
+                          @include animation(
+                            "slash-animation 3.5s forwards linear infinite"
+                          );
+                          animation-delay: 2.5s;
+                        }
+                      }
+                      .text {
+                        font-size: 48px;
+                        text-align: center;
+                        font-family: $nanum-barunpen-B;
+                        margin: 0;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .text {
+              margin-top: 40px;
+              p {
+                margin: 0;
+                text-align: center;
+                @extend %happy-font;
+                &:nth-child(2) {
+                  margin-top: 10px;
+                  @extend %happy-font-sub;
+                  font-family: $main-font-light;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // 해피네임 비전
+  .vision-wrap {
+    height: 700px;
+    background: url("../src/images/happyname_bg_global.png");
+    background-size: cover;
+    margin: auto;
+    position: relative;
+
+    .vision {
+      height: 100%;
+      width: $content-width;
+      margin: auto;
+
+      .text-wrap {
+        position: absolute;
+        right: 18%;
+        bottom: 140px;
+        .text {
+          p {
+            margin: 0;
+            @extend %happy-font-sub;
+
+            &:nth-child(1) {
+              @extend %happy-font;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// footer 컴포넌트 푸터
+
+.footer {
+  padding-top: 47px;
+  background: #4a4a4a;
+  color: #ffffff;
+  height: 300px;
+  &__wrap {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+    .right {
+      margin-right: 50px;
+      p {
+        margin: 0;
+        font-family: $nanum-square-L !important;
+        .bold {
+          font-family: $main-font-Bold;
+          font-size: 24px;
+        }
+      }
+    }
+    .left-wrap {
+      display: inline;
+
+      .left {
+        p {
+          margin: 0;
+        }
+        .business {
+          margin: 5px 0;
+        }
+        .address {
+          display: flex;
+          font-style: normal;
+          a {
+            text-decoration: none;
+            color: #ffffff;
+            margin: 0 3px;
+          }
+        }
+      }
+    }
+  }
+}
+// partner component
+
+.partner {
+  // height: 680px;
+  display: flex;
+
+  .wrap {
+    margin: 127px auto;
+    width: $content-width;
+    height: 80%;
+    margin-bottom: 0;
+
+    .title {
+      @extend %title-font;
+      @extend %border-bottom;
+    }
+    .img {
+      padding: 37px 0 45px 0;
+      margin: auto;
+
+      img {
+        position: relative;
+        left: -200px;
+
+        width: 1400px;
+        height: 100%;
+      }
+    }
+    .desc {
+      margin: 0 auto 150px auto;
+      text-align: center;
+    }
+  }
+}
+
+// contact component
+.contact {
+  height: 800px;
+  display: flex;
+  background: url("../src/images/main_bg_contactus.png");
+  background-size: cover;
+  .wrap {
+    // width: 80%;
+    width: $content-width;
+    margin: auto;
+    height: 70%;
+    .component-title {
+      @extend %title-font;
+      @extend %border-bottom;
+    }
+    .content {
+      display: flex;
+      margin-top: 90px;
+      height: 400px;
+
+      #daumRoughmapContainer1546819626423 {
+        border: 1px solid rgba(30, 30, 30, 0.5);
+        margin-top: 10px;
+        width: 580px !important;
+        height: 382px;
+      }
+      &__text {
+        height: 100%;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        // width: 570px;
+        .title {
+          @extend %happy-font;
+          &.en {
+            font-size: 48px;
+            line-height: 50px;
+            letter-spacing: -1px;
+            font-family: $nanum-square-L;
+          }
+          .main {
+          }
+          .sub {
+            font-size: 28px;
+            line-height: 32px;
+            letter-spacing: -0.3px;
+            margin-top: 5px;
+          }
+        }
+        .address {
+          @extend %happy-font-sub;
+          font-style: normal;
+          p {
+            margin: 0;
+            a {
+              text-decoration: none;
+              color: $main-font-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 슬라이드
+.slide-wrap {
+  display: flex;
+  position: relative;
+
+  .button {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    height: 100%;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    color: #ffffff;
+
+    img {
+      cursor: pointer;
+    }
+    div {
+      cursor: default;
+      margin: 0 50px;
+      width: 18px;
+      height: 48px;
+    }
+    &.happy {
+      div {
+        margin: 0 -30px;
+      }
+    }
+    &.pola {
+    }
+  }
+  .slide {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    //  해피 슬라이드
+    &.happy {
+      width: 864px;
+      height: 394px;
+    }
+    // 폴라 슬라이드
+    &.pola {
+      width: 100vw;
+      height: 800px;
+    }
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background: #1e1e1e;
+      li {
+        z-index: 1;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity 1s;
+        &.active {
+          z-index: 2;
+          opacity: 1;
+        }
+        .img {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            &.text {
+              width: 276px;
+              height: 79px;
+              object-fit: contain;
+              position: absolute;
+              right: 63px;
+              bottom: 23px;
+            }
+          }
+        }
+      }
+    }
+    // 슬라이드 내비게이션
+
+    &__nav {
+      margin: 0;
+      z-index: 5;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      height: 30px;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+
+      li {
+        cursor: pointer;
+        margin-right: 20px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(30, 30, 30, 0.5);
+        list-style: none;
+        &.active {
+          background: $main-font-color;
+        }
+      }
+      .control {
+        display: flex;
+        align-items: flex-start;
+        width: 12px;
+        cursor: pointer;
+        img {
+          width: 10px;
+          height: 10px;
+          opacity: 0.3;
+          padding: 3px 0 0 1px;
+          &.stop {
+            width: 8px;
+            height: 6px;
+            object-fit: contain;
+            padding-top: 2px;
+          }
+          &.play {
+            width: 8px;
+            height: 11px;
+            border-radius: 1px;
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+// 폴라 페이지
+// pola page
+
+.pola {
+  .main-wrap {
+    position: relative;
+    height: 100vh;
+
+    .main {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .top {
+        width: 450px;
+        margin-top: 200px;
+      }
+      .bottom {
+        width: 632.4px;
+        height: 95.1px;
+      }
+    }
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 124px;
+      background-image: linear-gradient(to bottom, #e5f0f8, #c7dcef);
+      position: absolute;
+      bottom: 0;
+    }
+    // 폴라 애니메이션
+    .pola {
+      position: absolute;
+      z-index: 3;
+      width: 150px;
+      height: 147px;
+      bottom: 100px;
+      left: 3%;
+      animation-name: pola-animation;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+  }
+  .intro-wrap {
+    height: 700px;
+    position: relative;
+    background-image: url("../src/images/polapolar_back_photo.png");
+    background-size: cover;
+    .intro {
+      .img-wrap {
+        .img {
+          width: 586px;
+          height: 367px;
+          margin: auto;
+          position: relative;
+          img {
+            position: absolute;
+            bottom: -10px;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .text {
+        padding-top: 140px;
+        text-align: center;
+        @extend %happy-font;
+        h2 {
+          display: inline;
+        }
+      }
+    }
+  }
+  .use-wrap {
+    background-image: linear-gradient(to bottom, #e5f0f8, #c7dcef);
+
+    .use {
+      padding: 150px 0 122px 0;
+      ul {
+        list-style: none;
+        li {
+          text-align: center;
+          position: relative;
+
+          .use-2 {
+            margin: auto;
+            &__text {
+              top: 0;
+              margin-left: 50px;
+              z-index: 0;
+              position: absolute;
+              font-size: 200px;
+              line-height: 1;
+              color: #9bbedf;
+              font-family: $main-font-ExtraBold;
+
+              height: 337px;
+            }
+            &__img {
+              position: relative;
+              z-index: 5;
+              width: 679px;
+              height: 328px;
+
+              .img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+          .use-2__text {
+            position: absolute;
+            font-size: 200px;
+            line-height: 1;
+            color: #9bbedf;
+            font-family: $main-font-ExtraBold;
+
+            padding-top: 40px;
+          }
+          .use-2 {
+            width: 679px;
+            height: 328px;
+            padding-top: 98px;
+            .img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .img {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #9bbedf;
+            padding: 0;
+            margin: auto;
+            position: relative;
+
+            &.use-0 {
+              background-image: url("../src/images/polapolar_keyword_0.png");
+              width: 450px;
+              height: 450px;
+            }
+            &.use-1 {
+              position: relative;
+              .use-1 {
+                margin: 0;
+                width: 451px;
+                height: 451px;
+              }
+              .pola-arm {
+                // width: 135px;
+                // height: 145px;
+                top: 170px;
+                right: 60px;
+                width: 165px;
+                height: 165px;
+                @include animation("swing-animation 2s infinite");
+                // top: 180px;
+                // right: 100px;
+                z-index: 3;
+                position: absolute;
+
+                .arm {
+                  position: relative;
+                  top: 0;
+                  left: -20px;
+
+                  width: 110px;
+                  height: 110px;
+                  margin: 0;
+                }
+              }
+            }
+
+            img {
+              margin-top: 50px;
+
+              width: 359px;
+              height: 350px;
+              // margin: 100px 45px 0 45px;
+            }
+            .keyword {
+              img {
+                position: absolute;
+                left: 30%;
+                bottom: -50px;
+                margin: 0;
+              }
+              &-1 {
+                width: 238px;
+                height: 58px;
+                // bottom: 120px;
+                &.active {
+                  @include animation("chat-animation1 0.7s ease-out forwards");
+                  // animation-fill-mode: forwards;
+                }
+              }
+              &-2 {
+                width: 92px;
+                height: 33px;
+                &.active {
+                  @include animation("chat-animation2 1.4s ease-out forwards");
+                  // animation-fill-mode: forwards;
+                }
+              }
+            }
+          }
+          .text {
+            @extend %happy-font;
+            text-align: center;
+            margin: 40px 0 80px 0;
+
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+      &:after {
+        margin: auto;
+        content: "";
+        display: block;
+        width: 1000px;
+        height: 2px;
+        background: #ffffff;
+        margin-top: 150px;
+      }
+    }
+  }
+  // 폴라폴라 특징
+  .feature-wrap {
+    height: 1150px;
+    background: #c7dcef;
+    .feature {
+      width: 1000px;
+      margin: auto;
+      display: flex;
+      .img {
+        width: 180px;
+        height: 180px;
+      }
+      .detail-wrap {
+        .detail-line {
+          display: flex;
+          .item-wrap {
+            // 폴라폴라 기능 말풍선
+            margin-left: 25px;
+            background: url("../src/images/polapolar_talkbubble.png");
+            background-size: 423px 400px;
+            background-repeat: no-repeat;
+            width: 423px;
+            height: 400px;
+            margin-top: 50px;
+            .item {
+              &.item-1,
+              &.item-0 {
+                margin: 53px 0 0 43px;
+              }
+              &.item-2,
+              &.item-3 {
+                margin: 27px 0 0 43px;
+              }
+
+              .img {
+                width: 220px;
+                height: 114px;
+              }
+              .title {
+                @extend %happy-font;
+                margin: 18px 0 18px 0;
+              }
+              .desc {
+                @extend %happy-font-sub;
+              }
+              p {
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  //  폴라 슬라이드
+  .pola-slide {
+    position: relative;
+
+    .text {
+      font-family: $nanum-square-L;
+      height: 200px;
+      background-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.9) 26%,
+        rgba(255, 255, 255, 0.9) 72%,
+        rgba(255, 255, 255, 0.3)
+      );
+
+      bottom: 0;
+      width: 100%;
+      position: absolute;
+      z-index: 5;
+      font-size: 48px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        margin-bottom: 5px;
+        align-self: center;
+        line-height: 1.29;
+      }
+    }
+  }
+  .message {
+    height: 700px;
+    // background: yellow;
+    @extend %happy-font;
+    text-align: center;
+    p {
+      padding-top: 140px;
+    }
+  }
+}
