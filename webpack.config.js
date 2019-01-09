@@ -1,12 +1,12 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.join(__dirname, "public", "index.html"),
   filename: "./index.html",
   favicon: "./src/images/favicon.png"
 });
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 require("svg-inline-loader");
 
 module.exports = (env, argv) => {
