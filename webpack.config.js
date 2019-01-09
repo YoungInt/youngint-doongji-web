@@ -6,54 +6,72 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: "./index.html",
   favicon: "./src/images/favicon.png"
 });
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 require("svg-inline-loader");
-module.exports = {
-  entry: ["@babel/polyfill", path.join(__dirname, "src", "App.jsx")],
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: "babel-loader"
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          { loader: "style-loader" },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              localIdentName: "[local]"
-            }
-          },
 
-          { loader: "sass-loader" }
-        ]
-      },
-      {
-        test: /\.(svg|png|gif|ttf|woff2)$/,
-        loader: "file-loader",
-        options: {
-          name: "[path][name].[ext]",
-          outputPath: "./",
-          publicPath: "/"
+module.exports = (env, argv) => {
+  const isProduct = argv.mode === 'production';
+
+  return {
+    entry: ["@babel/polyfill", path.join(__dirname, "src", "App.jsx")],
+    module: {
+      rules: [{
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: "babel-loader"
+        },
+        {
+          test: /\.scss$/,
+          use: [{
+              loader: "style-loader"
+            },
+            {
+              loader: "css-loader",
+              options: {
+                modules: true,
+                localIdentName: "[local]"
+              }
+            },
+
+            {
+              loader: "sass-loader"
+            }
+          ]
+        },
+        {
+          test: /\.(svg|png|gif|ttf|woff2)$/,
+          loader: "file-loader",
+          options: {
+            name: "[path][name].[ext]",
+            outputPath: "./",
+            publicPath: "/"
+          }
         }
-      }
-    ]
-  },
-  resolve: {
-    extensions: ["*", ".js", ".jsx", ".png"]
-  },
-  output: {
-    path: __dirname + "/dist",
-    publicPath: "/",
-    filename: "bundle.js"
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin(), htmlPlugin],
-  devServer: {
-    historyApiFallback: true,
-    contentBase: "./dist",
-    hot: true
-  }
-};
+      ]
+    },
+    resolve: {
+      extensions: ["*", ".js", ".jsx", ".png"]
+    },
+    output: {
+      path: __dirname + "/dist",
+      publicPath: "/",
+      filename: "bundle.js"
+    },
+    plugins: [new webpack.HotModuleReplacementPlugin(), htmlPlugin].concat(
+      isProduct ? [
+        new CopyWebpackPlugin([{
+          from: './public/_redirects',
+          to: '_redirects',
+          toType: 'file'
+        }], {
+          debug: 'info'
+        })
+      ] : [ ]
+    ),
+    devServer: {
+      historyApiFallback: true,
+      contentBase: "./dist",
+      hot: true
+    }
+  };
+}
