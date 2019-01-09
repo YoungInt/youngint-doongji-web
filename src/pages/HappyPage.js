@@ -324,23 +324,27 @@ export default class HappyPage extends React.Component {
                       <div className="box">
                         <div className="design">
                           <div className="design-box">
-                            <img
-                              className="design-0"
-                              src={designcut[0]}
-                              alt=""
-                            />
-                            <img
-                              className="design-1"
-                              src={designcut[1]}
-                              alt=""
-                            />
-
+                            <div className="img">
+                              <img
+                                className="design-0"
+                                src={designcut[0]}
+                                alt=""
+                              />
+                            </div>
+                            <div className="img">
+                              <img
+                                className="design-1"
+                                src={designcut[1]}
+                                alt=""
+                              />
+                            </div>
                             <div className="design-3">
                               <img
                                 className="design-2"
                                 src={designcut[2]}
                                 alt=""
                               />
+
                               <img
                                 className="design-3"
                                 src={designcut[3]}
