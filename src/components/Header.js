@@ -85,7 +85,7 @@ export default class Header extends React.Component {
                       <a href="#contact">CONTACT</a>
                     </li>
                     <li>
-                      <a href="http://youngint.com">SHOP</a>
+                      <a href="http://yintnl.cafe24.com">SHOP</a>
                     </li>
                     <li>
                       <LangIcon />
