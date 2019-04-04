@@ -549,6 +549,7 @@ header {
     .logo {
       &.main {
         img {
+
           width: 123px;
           height: 40px;
         }
@@ -577,6 +578,7 @@ header {
           align-self: center;
           list-style: none;
           margin-left: 49px;
+
           &:nth-child(4) {
             width: 69px;
             height: 20px;
@@ -595,12 +597,20 @@ header {
               color: #ffffff;
               font-family: $point-font-bold;
             }
+
           }
 
           a {
             text-decoration: none;
             color: $main-font-color;
           }
+
+          // 세형 호버 색상 변경
+          a:hover {
+          color: #F6A900;
+          text-decoration: none;
+          }
+
         }
       }
     }
@@ -1536,7 +1546,7 @@ header {
                   .design {
                     padding-top: 62px;
                     &-box {
-                      line-height: 220px;
+                      // line-height: 220px;
                       display: flex;
                       justify-content: center;
                       .design-3 {
