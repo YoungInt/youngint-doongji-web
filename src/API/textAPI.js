@@ -16,8 +16,8 @@ const mainText = {
     p5:
       "무인자판기 시장은 오래되었지만 그동안 큰 변화가 없었습니다. //n우리는 이 시장에서 통용되는 틀을 넘어, //n고객들의 숨은 니즈를 찾고 솔루션을 찾고자 합니다.//n키오스크의 장점을 '무인'과 '자동화'에만 초점을 두지 않고, //n키오스크를 통한 새로운 문화를 만들어 가고자 합니다.",
     t6:
-      "네임스티커 자판기 개발 *국내최초* //n카카오톡&키오스크 연동 *국내 최초* //n누적 매출 *70억원*//n국내 누적 사용자 *300만명*//n누적 설치대수 *1000대*",
-    p6: "2018년 10월 기준",
+      "네임스티커 자판기 개발 *국내최초* //n카카오톡&키오스크 연동 *국내 최초* //n국내 누적 사용자 *300만명*//n누적 설치대수 *1000대*",
+    p6: "2018년 10월 기준", 
     // 파트너
     p7:
       "더 좋은 서비스를 제공하고 더 많은 고객들과 만나기 위해 다양한 협력사와 함께 하고 있습니다.",
@@ -63,7 +63,7 @@ const mainText = {
     p5:
       'The market for unmanned vending machines has been around for a long time,//n but there has not been much change in the past. //n We go beyond the frame of this market, //n seeking the hidden needs of our customers and finding solutions. //n We do not just focus on "unattended" and "automation", //n we want to create a new culture through kiosk.',
     t6:
-      "Development of name sticker vending machine *First in Korea* //n KakaoTalk & Kiosk interlocking *First in Korea* //n Cumulative sales *7 billion* //n Domestic cumulative users *3 million* //n Cumulative installations *1000* ",
+      "Development of name sticker vending machine *First in Korea* //n KakaoTalk & Kiosk interlocking *First in Korea* //n Domestic cumulative users *3 million* //n Cumulative installations *1000* ",
     p6: "As of October 2018",
     p7:
       "We are partnering with a variety of partners to provide better service and meet more customers.",

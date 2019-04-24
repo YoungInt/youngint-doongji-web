@@ -9,6 +9,7 @@ import img8 from "../images/ourteam_8";
 import img9 from "../images/ourteam_9";
 import img10 from "../images/ourteam_10";
 import img11 from "../images/ourteam_11";
+import img12 from '../images/ourteam_12'
 
 const members = [
   {
@@ -59,7 +60,7 @@ const members = [
     id: 9,
     img: img10,
     name: "Koo, Developer",
-    message: "홈페이지 천천히 봐주세요...ㅎ"
+    message: "안녕하세요"
   },
   {
     id: 10,
