@@ -7,9 +7,7 @@ import img6 from "../images/ourteam_6";
 import img7 from "../images/ourteam_7";
 import img8 from "../images/ourteam_8";
 import img9 from "../images/ourteam_9";
-import img10 from "../images/ourteam_10";
 import img11 from "../images/ourteam_11";
-import img12 from '../images/ourteam_12'
 
 const members = [
   {
@@ -58,23 +56,12 @@ const members = [
   },
   {
     id: 9,
-    img: img10,
-    name: "Koo, Developer",
-    message: "안녕하세요"
-  },
-  {
-    id: 10,
     img: img11,
     name: "Ssum Ssum, Sales",
     message: "기계가 안정화되는 그 날 까지..."
-  },
-  {
-    id: 11,
-    img: img11,
-    name: "LJG, Sales",
-    message: "빠르고! 정확하게! 신갈동호날두"
   }
 ];
+
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
