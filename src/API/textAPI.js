@@ -33,8 +33,8 @@ const mainText = {
       business:
         "(주)영인터내셔널 | 사업자 등록번호: 120-88-01280 | 대표:김영은",
       address: "경기도 용인시 기흥구 신갈로 121 영인터내셔널(16967) |",
-      tel: "070-8856-6377",
-      fax: "070-8611-0771"
+      tel: "010-5625-7234",
+      fax: "0507-489-0148"
     },
     contactTitle1: "입점 및 제휴 문의",
     contactTitle2: "PARTNERSHIP PROPOSAL",
@@ -43,7 +43,7 @@ const mainText = {
       address: "(16967)경기도 용인시 기흥구 신갈로 121 영인터내셔널",
       cs: "고객센터",
       cstel: "010-5625-7234",
-      tel: "070-8856-6377"
+      tel: "010-5625-7234"
     }
   },
   en: {
@@ -79,8 +79,8 @@ const mainText = {
         "Young International Inc. | Business Registration No .: 120-88-01280 |",
       address:
         "121 Young International (16967) | Shingalou, Giheung-gu, Yongin-si, Gyeonggi-do",
-      tel: "070-8856-6377",
-      fax: "070-8611-0771"
+      tel: "010-5625-7234",
+      fax: "0507-489-0148"
     },
     contactTitle1: " PARTNERSHIP PROPOSAL",
     contact: {
